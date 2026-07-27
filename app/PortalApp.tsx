@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import municipalitiesData from "./data/municipios.json";
 
 type Level = "complete" | "progress" | "warning" | "none" | "unknown";
-type PmdState = "current" | "draft" | "historical" | "progress" | "none";
+type PmdState = "official" | "draft" | "historical" | "progress" | "none";
 type Scope = "all" | PmdState;
 
 type Municipality = {
@@ -36,6 +36,14 @@ type Municipality = {
     hasFormalBody: boolean;
     hasHistorical: boolean;
     hasCurrent: boolean;
+    has7_12: boolean;
+    has8_12: boolean;
+    hasOfficialEvidence: boolean;
+    officialEvidenceCount: number;
+    officialEvidenceTitles: string[];
+    officialEvidences: { title: string; href: string }[];
+    officialUrl: string;
+    officialReason: string;
   };
   action: "ver" | "continuar" | "actualizar" | "elaborar";
   actionLabel: string;
@@ -90,11 +98,12 @@ const statusMeta: Record<
   PmdState,
   { label: string; shortLabel: string; color: string; description: string }
 > = {
-  current: {
-    label: "PMD vigente",
-    shortLabel: "Vigente",
+  official: {
+    label: "PMD oficial",
+    shortLabel: "Oficial",
     color: "#167b67",
-    description: "PMD con período actualmente vigente y documento consultable.",
+    description:
+      "SISMAP 2.02 al 100% o evidencia 8-12 de publicación/aprobación.",
   },
   draft: {
     label: "Borrador disponible",
@@ -106,19 +115,19 @@ const statusMeta: Record<
     label: "PMD histórico / vencido",
     shortLabel: "Histórico",
     color: "#c57632",
-    description: "Sirve como insumo para actualizar, pero no cuenta como PMD vigente.",
+    description: "Sirve como insumo para actualizar, pero no cuenta como PMD oficial.",
   },
   progress: {
     label: "En elaboración",
     shortLabel: "En proceso",
     color: "#8c6a24",
-    description: "Hay evidencias de avance, sin PMD vigente confirmado.",
+    description: "Hay evidencias de avance, sin PMD oficial confirmado.",
   },
   none: {
     label: "Sin PMD confirmado",
     shortLabel: "Sin PMD",
     color: "#aeb9b6",
-    description: "No se confirmó un PMD vigente ni un expediente suficiente.",
+    description: "No se confirmó un PMD oficial ni un expediente suficiente.",
   },
 };
 
@@ -162,15 +171,15 @@ function territoryKey(municipality: string, province: string) {
 }
 
 function getPmdState(item: Municipality): PmdState {
-  if (item.action === "ver" && item.pmd.hasCurrent && item.pmd.pdfUrl) return "current";
-  if (item.pmd.hasDraft) return "draft";
+  if (item.pmd.hasOfficialEvidence) return "official";
+  if (item.pmd.has7_12 || item.pmd.hasDraft) return "draft";
   if (item.action === "actualizar" || item.pmd.hasHistorical) return "historical";
   if (item.action === "continuar" || item.pmd.documentCount > 0) return "progress";
   return "none";
 }
 
-function isCurrentPmd(item: Municipality) {
-  return getPmdState(item) === "current";
+function isOfficialPmd(item: Municipality) {
+  return getPmdState(item) === "official";
 }
 
 function statusFor(item: Municipality) {
@@ -337,7 +346,7 @@ export function PortalApp() {
   const stats = useMemo(
     () => ({
       total: filtered.length,
-      current: filtered.filter(isCurrentPmd).length,
+      official: filtered.filter(isOfficialPmd).length,
       draft: filtered.filter((item) => getPmdState(item) === "draft").length,
       historical: filtered.filter(
         (item) => getPmdState(item) === "historical",
@@ -368,8 +377,12 @@ export function PortalApp() {
   const displayMunicipality = hovered ?? selected;
 
   const handleAction = (item: Municipality) => {
-    if (isCurrentPmd(item) && item.pmd.pdfUrl) {
-      window.open(item.pmd.pdfUrl, "_blank", "noopener,noreferrer");
+    if (isOfficialPmd(item)) {
+      window.open(
+        item.pmd.officialUrl || item.pmd.pdfUrl || item.sismapUrl,
+        "_blank",
+        "noopener,noreferrer",
+      );
       return;
     }
     setWizard(item);
@@ -407,7 +420,7 @@ export function PortalApp() {
         </div>
         <p>
           Explore el territorio y abra el camino correcto: consultar un PMD
-          vigente, continuar un borrador, actualizar un plan anterior o iniciar
+          oficial, continuar un borrador, actualizar un plan anterior o iniciar
           el Paquete Mínimo.
         </p>
       </section>
@@ -417,10 +430,10 @@ export function PortalApp() {
           <span>Municipios</span>
           <strong>{stats.total}</strong>
         </article>
-        <article className="summary-current">
-          <span>PMD vigente</span>
-          <strong>{stats.current}</strong>
-          <small>Solo período actual</small>
+        <article className="summary-official">
+          <span>PMD oficial</span>
+          <strong>{stats.official}</strong>
+          <small>100% SISMAP o 8-12</small>
         </article>
         <article className="summary-draft">
           <span>Borrador</span>
@@ -634,7 +647,27 @@ export function PortalApp() {
                 </div>
                 <div>
                   <dt>Período PMD</dt>
-                  <dd>{selected.pmd.period || "No confirmado"}</dd>
+                  <dd>
+                    {selected.pmd.period || "No confirmado"}
+                    {isOfficialPmd(selected) && (
+                      <small>
+                        {selected.pmd.hasCurrent
+                          ? "Período vigente"
+                          : "Vigencia separada de la condición oficial"}
+                      </small>
+                    )}
+                  </dd>
+                </div>
+                <div>
+                  <dt>Oficialidad</dt>
+                  <dd>
+                    {selected.pmd.officialReason || "No confirmada"}
+                    {selected.pmd.has8_12 && (
+                      <small>
+                        {selected.pmd.officialEvidenceCount} evidencia(s) 8-12
+                      </small>
+                    )}
+                  </dd>
                 </div>
                 <div>
                   <dt>Documentos</dt>
@@ -648,19 +681,31 @@ export function PortalApp() {
                     SISMAP municipal ↗
                   </a>
                 )}
-                {selected.pmd.pdfUrl && (
+                {selected.pmd.pdfUrl &&
+                  (!isOfficialPmd(selected) ||
+                    selected.pmd.officialEvidences.length === 0) && (
                   <a href={selected.pmd.pdfUrl} target="_blank" rel="noreferrer">
-                    Documento PMD ↗
+                    Documento asociado ↗
                   </a>
                 )}
+                {selected.pmd.officialEvidences.map((evidence) => (
+                  <a
+                    key={evidence.href}
+                    href={evidence.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    8-12 · {evidence.title} ↗
+                  </a>
+                ))}
               </div>
 
               <button
                 className={`primary-action action-${getPmdState(selected)}`}
                 onClick={() => handleAction(selected)}
               >
-                {isCurrentPmd(selected)
-                  ? "Abrir PMD vigente"
+                {isOfficialPmd(selected)
+                  ? "Abrir evidencia del PMD oficial"
                   : selected.actionLabel}
                 <span aria-hidden="true">→</span>
               </button>
@@ -678,9 +723,9 @@ export function PortalApp() {
               <div className="current-rule">
                 <strong>Regla del mapa</strong>
                 <p>
-                  Solo los PMD con período actualmente vigente cuentan como
-                  “PMD vigente”. Los planes anteriores se muestran como
-                  históricos.
+                  “PMD oficial” significa SISMAP 2.02 al 100% o evidencia 8-12.
+                  La vigencia del período se registra por separado y no elimina
+                  la condición oficial del documento.
                 </p>
               </div>
             </div>
