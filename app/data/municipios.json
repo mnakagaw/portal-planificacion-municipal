@@ -67,7 +67,7 @@
     "id": 2,
     "municipio": "Azua",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21200",
     "ompp": {
       "label": "Establecida + técnico",
@@ -114,7 +114,7 @@
     "id": 3,
     "municipio": "Estebanía",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/329",
     "ompp": {
       "label": "Establecida + técnico",
@@ -161,7 +161,7 @@
     "id": 4,
     "municipio": "Guayabal",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/328",
     "ompp": {
       "label": "Responsable designado",
@@ -208,7 +208,7 @@
     "id": 5,
     "municipio": "Las Charcas",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/321",
     "ompp": {
       "label": "No confirmada",
@@ -255,7 +255,7 @@
     "id": 6,
     "municipio": "Las Yayas de Viajama",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/322",
     "ompp": {
       "label": "No confirmada",
@@ -302,7 +302,7 @@
     "id": 7,
     "municipio": "Padre Las Casas",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20812",
     "ompp": {
       "label": "Responsable designado",
@@ -349,7 +349,7 @@
     "id": 8,
     "municipio": "Peralta",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/324",
     "ompp": {
       "label": "Responsable designado",
@@ -396,7 +396,7 @@
     "id": 9,
     "municipio": "Pueblo Viejo",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/326",
     "ompp": {
       "label": "No confirmada",
@@ -443,7 +443,7 @@
     "id": 10,
     "municipio": "Sabana Yegua",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/325",
     "ompp": {
       "label": "Establecida + técnico",
@@ -490,7 +490,7 @@
     "id": 11,
     "municipio": "Tábara Arriba",
     "provincia": "Azua",
-    "region": "Valdesia",
+    "region": "El Valle",
     "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/327",
     "ompp": {
       "label": "Responsable designado",

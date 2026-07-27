@@ -465,7 +465,7 @@ export function PortalApp() {
             />
           </label>
           <label>
-            <span>Región</span>
+            <span>Región (Ley 345-22)</span>
             <select
               value={region}
               onChange={(event) => {
