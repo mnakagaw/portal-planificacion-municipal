@@ -78,5 +78,5 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /setRegion\(item\.region\)/);
   assert.match(source, /setProvince\(item\.provincia\)/);
   assert.match(source, /onClick=\{\(\) => item && chooseMunicipality\(item\)\}/);
-  assert.match(source, /fetch\("\/data\/adm2\.geojson"\)/);
+  assert.match(source, /import\.meta\.env\.BASE_URL.*data\/adm2\.geojson/);
 });

@@ -318,7 +318,7 @@ export function PortalApp() {
 
   useEffect(() => {
     let active = true;
-    fetch("/data/adm2.geojson")
+    fetch(`${import.meta.env.BASE_URL}data/adm2.geojson`)
       .then((response) => {
         if (!response.ok) throw new Error(`GeoJSON ${response.status}`);
         return response.json() as Promise<GeoCollection>;
