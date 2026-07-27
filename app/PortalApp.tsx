@@ -4,8 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import municipalitiesData from "./data/municipios.json";
 
 type Level = "complete" | "progress" | "warning" | "none" | "unknown";
-type PmdState = "official" | "draft" | "historical" | "progress" | "none";
-type Scope = "all" | PmdState;
+type MapLayer = "pmdOfficial" | "pmdDraft" | "cdm" | "ompp";
 
 type Municipality = {
   id: number;
@@ -33,22 +32,15 @@ type Municipality = {
     pdfTitle: string;
     documentCount: number;
     hasDraft: boolean;
-    hasFormalBody: boolean;
     hasHistorical: boolean;
     hasCurrent: boolean;
     has7_12: boolean;
     has8_12: boolean;
     hasOfficialEvidence: boolean;
-    officialEvidenceCount: number;
-    officialEvidenceTitles: string[];
-    officialEvidences: { title: string; href: string }[];
     officialUrl: string;
     officialReason: string;
   };
-  action: "ver" | "continuar" | "actualizar" | "elaborar";
-  actionLabel: string;
   checkedAt: string;
-  dataQuality: string;
 };
 
 type GeoGeometry = {
@@ -61,7 +53,6 @@ type GeoFeature = {
     adm2_code: string;
     municipio: string;
     provincia: string;
-    region: string;
   };
   geometry: GeoGeometry;
 };
@@ -75,7 +66,6 @@ type MapShape = {
   adm2Code: string;
   municipalityKey: string;
   name: string;
-  province: string;
   path: string;
 };
 
@@ -94,40 +84,43 @@ const regionOrder = [
   "Yuma",
 ];
 
-const statusMeta: Record<
-  PmdState,
-  { label: string; shortLabel: string; color: string; description: string }
+const layerMeta: Record<
+  MapLayer,
+  {
+    label: string;
+    shortLabel: string;
+    color: string;
+    softColor: string;
+    description: string;
+  }
 > = {
-  official: {
+  pmdOfficial: {
     label: "PMD oficial",
-    shortLabel: "Oficial",
-    color: "#167b67",
-    description:
-      "SISMAP 2.02 al 100% o evidencia 8-12 de publicación/aprobación.",
+    shortLabel: "PMD Oficial",
+    color: "#12805c",
+    softColor: "#e5f4ee",
+    description: "SISMAP 2.02 al 100% o evidencia 8-12 confirmada.",
   },
-  draft: {
-    label: "Borrador disponible",
-    shortLabel: "Borrador",
-    color: "#3f6fb6",
-    description: "Documento de trabajo que aún requiere revisión o validación.",
+  pmdDraft: {
+    label: "PMD borrador",
+    shortLabel: "PMD Borrador",
+    color: "#2968c8",
+    softColor: "#e8f0fc",
+    description: "Borrador 7-12 disponible, sin condición oficial confirmada.",
   },
-  historical: {
-    label: "PMD histórico / vencido",
-    shortLabel: "Histórico",
-    color: "#c57632",
-    description: "Sirve como insumo para actualizar, pero no cuenta como PMD oficial.",
+  cdm: {
+    label: "CDM constituido",
+    shortLabel: "CDM",
+    color: "#7452b8",
+    softColor: "#f0ebfa",
+    description: "El CDM figura como constituido o institucionalizado.",
   },
-  progress: {
-    label: "En elaboración",
-    shortLabel: "En proceso",
-    color: "#8c6a24",
-    description: "Hay evidencias de avance, sin PMD oficial confirmado.",
-  },
-  none: {
-    label: "Sin PMD confirmado",
-    shortLabel: "Sin PMD",
-    color: "#aeb9b6",
-    description: "No se confirmó un PMD oficial ni un expediente suficiente.",
+  ompp: {
+    label: "OMPP establecida",
+    shortLabel: "OMPP",
+    color: "#c66b24",
+    softColor: "#fbefe5",
+    description: "La OMPP figura como establecida en la evidencia revisada.",
   },
 };
 
@@ -139,7 +132,6 @@ const municipalityAliases: Record<string, string> = {
   lamata: "villalamata",
   neiba: "neyba",
   sanfelipedepuertoplata: "puertoplata",
-  sanjosédelosllanos: "losllanos",
   sanjosedelosllanos: "losllanos",
   sanjuandelamaguana: "sanjuan",
   santabarbaradesamana: "samana",
@@ -170,20 +162,19 @@ function territoryKey(municipality: string, province: string) {
   return `${canonicalMunicipality(municipality)}|${canonicalProvince(province)}`;
 }
 
-function getPmdState(item: Municipality): PmdState {
-  if (item.pmd.hasOfficialEvidence) return "official";
-  if (item.pmd.has7_12 || item.pmd.hasDraft) return "draft";
-  if (item.action === "actualizar" || item.pmd.hasHistorical) return "historical";
-  if (item.action === "continuar" || item.pmd.documentCount > 0) return "progress";
-  return "none";
-}
-
-function isOfficialPmd(item: Municipality) {
-  return getPmdState(item) === "official";
-}
-
-function statusFor(item: Municipality) {
-  return statusMeta[getPmdState(item)];
+function hasLayerStatus(item: Municipality, layer: MapLayer) {
+  switch (layer) {
+    case "pmdOfficial":
+      return item.pmd.hasOfficialEvidence;
+    case "pmdDraft":
+      return (
+        !item.pmd.hasOfficialEvidence && (item.pmd.has7_12 || item.pmd.hasDraft)
+      );
+    case "cdm":
+      return item.cdm.level === "complete";
+    case "ompp":
+      return item.ompp.level === "complete";
+  }
 }
 
 function projectPoint([longitude, latitude]: number[]) {
@@ -210,52 +201,75 @@ function geometryToPath(geometry: GeoGeometry) {
   return polygons.flatMap((polygon) => polygon.map(ringToPath)).join(" ");
 }
 
-function StatusBadge({ item }: { item: Municipality }) {
-  const state = getPmdState(item);
-  const meta = statusMeta[state];
-  return (
-    <span className={`status-badge status-${state}`}>
-      <span style={{ background: meta.color }} aria-hidden="true" />
-      {meta.label}
-    </span>
-  );
+function documentInfo(item: Municipality) {
+  if (item.pmd.hasOfficialEvidence) {
+    return {
+      label: "Abrir PMD oficial",
+      note: item.pmd.period || "Período por confirmar",
+      url: item.pmd.officialUrl || item.pmd.pdfUrl || item.sismapUrl,
+      tone: "official",
+    };
+  }
+  if (item.pmd.has7_12 || item.pmd.hasDraft) {
+    return {
+      label: "Abrir borrador existente",
+      note: "Documento de trabajo para revisión",
+      url: item.pmd.pdfUrl || item.sismapUrl,
+      tone: "draft",
+    };
+  }
+  return {
+    label: "Borrador Word en preparación",
+    note: "Se publicará aquí cuando esté listo",
+    url: "",
+    tone: "pending",
+  };
 }
 
-function SourceCard({
-  label,
-  title,
-  note,
-  href,
+function StatusItem({
+  item,
+  layer,
 }: {
-  label: string;
-  title: string;
-  note: string;
-  href?: string;
+  item: Municipality;
+  layer: MapLayer;
 }) {
-  const content = (
-    <>
-      <span>{label}</span>
-      <strong>{title}</strong>
-      <small>{note}</small>
-    </>
-  );
-  return href ? (
-    <a className="source-card" href={href} target="_blank" rel="noreferrer">
-      {content}
-    </a>
-  ) : (
-    <article className="source-card">{content}</article>
+  const active = hasLayerStatus(item, layer);
+  const meta = layerMeta[layer];
+  return (
+    <div
+      className={`municipal-status ${active ? "is-active" : ""}`}
+      style={
+        {
+          "--status-color": meta.color,
+          "--status-soft": meta.softColor,
+        } as React.CSSProperties
+      }
+    >
+      <span className="status-symbol" aria-hidden="true">
+        {active ? "✓" : "−"}
+      </span>
+      <span>
+        <strong>{meta.shortLabel}</strong>
+        <small>
+          {active
+            ? layer === "cdm"
+              ? item.cdm.label
+              : layer === "ompp"
+                ? item.ompp.label
+                : "Disponible"
+            : "No confirmado"}
+        </small>
+      </span>
+    </div>
   );
 }
 
 export function PortalApp() {
   const [region, setRegion] = useState("Todas");
   const [province, setProvince] = useState("Todas");
-  const [query, setQuery] = useState("");
-  const [scope, setScope] = useState<Scope>("all");
   const [selected, setSelected] = useState<Municipality | null>(null);
   const [hovered, setHovered] = useState<Municipality | null>(null);
-  const [wizard, setWizard] = useState<Municipality | null>(null);
+  const [activeLayer, setActiveLayer] = useState<MapLayer>("pmdOfficial");
   const [mapShapes, setMapShapes] = useState<MapShape[]>([]);
   const [mapError, setMapError] = useState(false);
 
@@ -287,7 +301,6 @@ export function PortalApp() {
               feature.properties.provincia,
             ),
             name: feature.properties.municipio,
-            province: feature.properties.provincia,
             path: geometryToPath(feature.geometry),
           })),
         );
@@ -311,55 +324,33 @@ export function PortalApp() {
   );
 
   const provinces = useMemo(() => {
-    const source =
+    const items =
       region === "Todas"
         ? municipalities
         : municipalities.filter((item) => item.region === region);
     return [
       "Todas",
-      ...Array.from(new Set(source.map((item) => item.provincia))).sort(),
+      ...Array.from(new Set(items.map((item) => item.provincia))).sort((a, b) =>
+        a.localeCompare(b, "es"),
+      ),
     ];
   }, [region]);
 
-  const filtered = useMemo(() => {
-    const normalized = cleanName(query.trim());
-    return municipalities.filter((item) => {
-      if (region !== "Todas" && item.region !== region) return false;
-      if (province !== "Todas" && item.provincia !== province) return false;
-      if (
-        normalized &&
-        !cleanName(`${item.municipio} ${item.provincia} ${item.region}`).includes(
-          normalized,
-        )
-      )
-        return false;
-      if (scope !== "all" && getPmdState(item) !== scope) return false;
-      return true;
-    });
-  }, [province, query, region, scope]);
+  const municipalityOptions = useMemo(
+    () =>
+      municipalities
+        .filter((item) => region === "Todas" || item.region === region)
+        .filter((item) => province === "Todas" || item.provincia === province)
+        .sort((a, b) => a.municipio.localeCompare(b.municipio, "es")),
+    [province, region],
+  );
 
   const filteredIds = useMemo(
-    () => new Set(filtered.map((item) => item.id)),
-    [filtered],
+    () => new Set(municipalityOptions.map((item) => item.id)),
+    [municipalityOptions],
   );
 
-  const stats = useMemo(
-    () => ({
-      total: filtered.length,
-      official: filtered.filter(isOfficialPmd).length,
-      draft: filtered.filter((item) => getPmdState(item) === "draft").length,
-      historical: filtered.filter(
-        (item) => getPmdState(item) === "historical",
-      ).length,
-      needsWork: filtered.filter(
-        (item) =>
-          getPmdState(item) === "progress" || getPmdState(item) === "none",
-      ).length,
-    }),
-    [filtered],
-  );
-
-  const mappedMunicipalityIds = useMemo(
+  const mappedIds = useMemo(
     () =>
       new Set(
         mapShapes
@@ -369,36 +360,35 @@ export function PortalApp() {
     [mapShapes, municipalityLookup],
   );
 
-  const unmapped = useMemo(
-    () => municipalities.filter((item) => !mappedMunicipalityIds.has(item.id)),
-    [mappedMunicipalityIds],
+  const unmappedCount = municipalities.filter(
+    (item) => !mappedIds.has(item.id),
+  ).length;
+
+  const layerCounts = useMemo(
+    () =>
+      Object.fromEntries(
+        (Object.keys(layerMeta) as MapLayer[]).map((layer) => [
+          layer,
+          municipalities.filter((item) => hasLayerStatus(item, layer)).length,
+        ]),
+      ) as Record<MapLayer, number>,
+    [],
   );
 
   const displayMunicipality = hovered ?? selected;
+  const activeMeta = layerMeta[activeLayer];
+  const selectedDocument = selected ? documentInfo(selected) : null;
 
-  const handleAction = (item: Municipality) => {
-    if (isOfficialPmd(item)) {
-      window.open(
-        item.pmd.officialUrl || item.pmd.pdfUrl || item.sismapUrl,
-        "_blank",
-        "noopener,noreferrer",
-      );
-      return;
-    }
-    setWizard(item);
-  };
-
-  const resetFilters = () => {
-    setRegion("Todas");
-    setProvince("Todas");
-    setQuery("");
-    setScope("all");
+  const chooseMunicipality = (item: Municipality) => {
+    setRegion(item.region);
+    setProvince(item.provincia);
+    setSelected(item);
   };
 
   return (
     <main className="portal">
       <header className="app-header">
-        <a className="brand" href="#" aria-label="Inicio">
+        <div className="brand">
           <span className="brand-mark" aria-hidden="true">
             PM
           </span>
@@ -406,127 +396,126 @@ export function PortalApp() {
             <strong>Planificación Municipal</strong>
             <small>República Dominicana</small>
           </span>
-        </a>
-        <div className="header-note">
-          <span className="live-dot" aria-hidden="true" />
-          Datos revisados · 27 jul 2026
         </div>
+        <p>Estado de 162 municipios · 27 jul 2026</p>
       </header>
 
-      <section className="intro">
+      <section className="page-heading">
         <div>
-          <span className="eyebrow">162 municipios · OMPP · CDM · PMD</span>
-          <h1>El mapa de la planificación municipal.</h1>
+          <span>Portal municipal</span>
+          <h1>Seleccione un municipio</h1>
         </div>
         <p>
-          Explore el territorio y abra el camino correcto: consultar un PMD
-          oficial, continuar un borrador, actualizar un plan anterior o iniciar
-          el Paquete Mínimo.
+          Consulte el PMD, el borrador disponible y la situación del CDM y la
+          OMPP.
         </p>
       </section>
 
-      <section className="summary-row" aria-label="Resumen de la selección">
-        <article>
-          <span>Municipios</span>
-          <strong>{stats.total}</strong>
-        </article>
-        <article className="summary-official">
-          <span>PMD oficial</span>
-          <strong>{stats.official}</strong>
-          <small>100% SISMAP o 8-12</small>
-        </article>
-        <article className="summary-draft">
-          <span>Borrador</span>
-          <strong>{stats.draft}</strong>
-        </article>
-        <article className="summary-historical">
-          <span>Histórico</span>
-          <strong>{stats.historical}</strong>
-        </article>
-        <article>
-          <span>Requiere trabajo</span>
-          <strong>{stats.needsWork}</strong>
-        </article>
+      <section className="layer-switcher" aria-label="Información mostrada en el mapa">
+        {(Object.keys(layerMeta) as MapLayer[]).map((layer) => {
+          const meta = layerMeta[layer];
+          return (
+            <button
+              key={layer}
+              className={activeLayer === layer ? "is-selected" : ""}
+              onClick={() => setActiveLayer(layer)}
+              style={
+                {
+                  "--layer-color": meta.color,
+                  "--layer-soft": meta.softColor,
+                } as React.CSSProperties
+              }
+            >
+              <span className="layer-dot" aria-hidden="true" />
+              <span>
+                <small>{meta.shortLabel}</small>
+                <strong>{layerCounts[layer]}</strong>
+              </span>
+            </button>
+          );
+        })}
       </section>
 
-      <section className="map-workspace">
-        <aside className="control-panel">
-          <div className="panel-title">
-            <span>Explorar</span>
-            <button onClick={resetFilters}>Restablecer</button>
-          </div>
-
-          <label>
-            <span>Buscar municipio</span>
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Ej. Moca"
-            />
-          </label>
-          <label>
-            <span>Región (Ley 345-22)</span>
-            <select
-              value={region}
-              onChange={(event) => {
-                setRegion(event.target.value);
-                setProvince("Todas");
-              }}
-            >
-              {regions.map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            <span>Provincia</span>
-            <select
-              value={province}
-              onChange={(event) => setProvince(event.target.value)}
-            >
-              {provinces.map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
-          </label>
-
-          <div className="status-filter" aria-label="Filtrar por estado del PMD">
-            <span>Estado del PMD</span>
-            <button
-              className={scope === "all" ? "active" : ""}
-              onClick={() => setScope("all")}
-            >
-              <i className="all-status" />
-              Todos
-              <b>{municipalities.length}</b>
-            </button>
-            {(Object.keys(statusMeta) as PmdState[]).map((state) => (
-              <button
-                key={state}
-                className={scope === state ? "active" : ""}
-                onClick={() => setScope(state)}
-              >
-                <i style={{ background: statusMeta[state].color }} />
-                {statusMeta[state].shortLabel}
-                <b>
-                  {
-                    municipalities.filter(
-                      (item) => getPmdState(item) === state,
-                    ).length
-                  }
-                </b>
-              </button>
+      <section className="selection-bar" aria-label="Selección territorial">
+        <label>
+          <span>Región</span>
+          <select
+            value={region}
+            onChange={(event) => {
+              setRegion(event.target.value);
+              setProvince("Todas");
+              setSelected(null);
+            }}
+          >
+            {regions.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
             ))}
-          </div>
-        </aside>
+          </select>
+        </label>
 
+        <span className="selection-arrow" aria-hidden="true">
+          →
+        </span>
+
+        <label>
+          <span>Provincia</span>
+          <select
+            value={province}
+            onChange={(event) => {
+              setProvince(event.target.value);
+              setSelected(null);
+            }}
+          >
+            {provinces.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <span className="selection-arrow" aria-hidden="true">
+          →
+        </span>
+
+        <label>
+          <span>Municipio</span>
+          <select
+            value={selected?.id ?? ""}
+            onChange={(event) => {
+              const id = Number(event.target.value);
+              const item = municipalities.find((municipality) => municipality.id === id);
+              if (item) chooseMunicipality(item);
+              else setSelected(null);
+            }}
+          >
+            <option value="">Seleccione un municipio</option>
+            {municipalityOptions.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.municipio}
+              </option>
+            ))}
+          </select>
+        </label>
+      </section>
+
+      <section className="workspace">
         <article className="map-panel">
-          <div className="map-toolbar">
+          <div className="map-header">
             <div>
-              <span>República Dominicana</span>
-              <strong>{filtered.length} municipios en la selección</strong>
+              <span
+                className="map-layer-dot"
+                style={{ background: activeMeta.color }}
+                aria-hidden="true"
+              />
+              <span>
+                <strong>{activeMeta.label}</strong>
+                <small>{activeMeta.description}</small>
+              </span>
             </div>
-            <div className="map-hint">Seleccione un municipio en el mapa</div>
+            <p>Haga clic en el mapa para elegir un municipio</p>
           </div>
 
           <div className="map-canvas">
@@ -535,46 +524,55 @@ export function PortalApp() {
                 No fue posible cargar la cartografía.
               </div>
             ) : mapShapes.length === 0 ? (
-              <div className="map-message">Cargando límites municipales…</div>
+              <div className="map-message">Cargando mapa…</div>
             ) : (
               <svg
                 className="dominican-map"
                 viewBox="0 0 1000 670"
                 role="img"
-                aria-label="Mapa interactivo de municipios de República Dominicana"
+                aria-label="Mapa de municipios de la República Dominicana"
               >
                 <g>
                   {mapShapes.map((shape) => {
                     const item = municipalityLookup.get(shape.municipalityKey);
                     const included = item ? filteredIds.has(item.id) : false;
+                    const active = item ? hasLayerStatus(item, activeLayer) : false;
                     const isSelected = item?.id === selected?.id;
-                    const meta = item ? statusFor(item) : statusMeta.none;
+                    const fill = !included
+                      ? "#eef1f0"
+                      : active
+                        ? activeMeta.color
+                        : "#d9dfdd";
                     return (
                       <path
                         key={shape.adm2Code}
                         d={shape.path}
-                        fill={included ? meta.color : "#e8eeec"}
-                        fillOpacity={included ? 0.88 : 0.5}
+                        fill={fill}
+                        fillOpacity={included ? 1 : 0.58}
                         fillRule="evenodd"
-                        stroke={isSelected ? "#102b27" : "#ffffff"}
-                        strokeWidth={isSelected ? 3.4 : 1.15}
+                        stroke={isSelected ? "#152f2a" : "#ffffff"}
+                        strokeWidth={isSelected ? 3.6 : 1.15}
                         vectorEffect="non-scaling-stroke"
-                        className={item ? "map-shape" : "map-shape map-shape-muted"}
+                        className={item ? "map-shape" : "map-shape is-muted"}
                         onMouseEnter={() => item && setHovered(item)}
                         onMouseLeave={() => setHovered(null)}
                         onFocus={() => item && setHovered(item)}
                         onBlur={() => setHovered(null)}
-                        onClick={() => item && setSelected(item)}
+                        onClick={() => item && chooseMunicipality(item)}
                         tabIndex={item ? 0 : -1}
                         aria-label={
                           item
-                            ? `${item.municipio}, ${statusFor(item).label}`
+                            ? `${item.municipio}, ${hasLayerStatus(item, activeLayer) ? activeMeta.label : "no confirmado"}`
                             : shape.name
                         }
                       >
                         <title>
                           {item
-                            ? `${item.municipio} · ${statusFor(item).label}`
+                            ? `${item.municipio} · ${
+                                hasLayerStatus(item, activeLayer)
+                                  ? activeMeta.label
+                                  : "No confirmado"
+                              }`
                             : shape.name}
                         </title>
                       </path>
@@ -586,343 +584,104 @@ export function PortalApp() {
 
             {displayMunicipality && (
               <div className="map-tooltip" aria-live="polite">
-                <span>{displayMunicipality.provincia}</span>
+                <small>{displayMunicipality.provincia}</small>
                 <strong>{displayMunicipality.municipio}</strong>
-                <small>{statusFor(displayMunicipality).label}</small>
+                <span>
+                  {hasLayerStatus(displayMunicipality, activeLayer)
+                    ? activeMeta.label
+                    : "No confirmado"}
+                </span>
               </div>
             )}
 
-            <div className="map-attribution">
-              Cartografía ADM2 · 158 límites municipales
-            </div>
-          </div>
-
-          <div className="map-legend">
-            {(Object.keys(statusMeta) as PmdState[]).map((state) => (
-              <span key={state}>
-                <i style={{ background: statusMeta[state].color }} />
-                {statusMeta[state].shortLabel}
+            <div className="map-legend">
+              <span>
+                <i style={{ background: activeMeta.color }} />
+                Sí
               </span>
-            ))}
+              <span>
+                <i className="legend-no" />
+                No confirmado
+              </span>
+            </div>
           </div>
 
-          {unmapped.length > 0 && mapShapes.length > 0 && (
-            <div className="unmapped-note">
-              <strong>{unmapped.length} municipios nuevos sin geometría ADM2:</strong>{" "}
-              {unmapped.map((item) => item.municipio).join(", ")}. Se mantienen
-              disponibles en la búsqueda y el listado.
-            </div>
-          )}
+          <div className="map-footer">
+            <span>Cartografía disponible para 158 municipios</span>
+            {unmappedCount > 0 && (
+              <span>{unmappedCount} municipios nuevos disponibles en el selector</span>
+            )}
+          </div>
         </article>
 
-        <aside className={`detail-panel ${selected ? "has-selection" : ""}`}>
+        <aside className="detail-panel">
           {selected ? (
             <>
-              <button
-                className="detail-close"
-                onClick={() => setSelected(null)}
-                aria-label="Cerrar detalle"
-              >
-                ×
-              </button>
-              <span className="detail-region">{selected.region}</span>
-              <h2>{selected.municipio}</h2>
-              <p>Provincia {selected.provincia}</p>
-              <StatusBadge item={selected} />
-              <p className="status-description">
-                {statusFor(selected).description}
-              </p>
+              <div className="detail-heading">
+                <span>{selected.region}</span>
+                <h2>{selected.municipio}</h2>
+                <p>{selected.provincia}</p>
+              </div>
 
-              <dl className="detail-facts">
-                <div>
-                  <dt>OMPP</dt>
-                  <dd>{selected.ompp.label}</dd>
-                </div>
-                <div>
-                  <dt>CDM</dt>
-                  <dd>
-                    {selected.cdm.label}
-                    <small>{selected.cdm.score ?? 0}% SISMAP</small>
-                  </dd>
-                </div>
-                <div>
-                  <dt>Período PMD</dt>
-                  <dd>
-                    {selected.pmd.period || "No confirmado"}
-                    {isOfficialPmd(selected) && (
-                      <small>
-                        {selected.pmd.hasCurrent
-                          ? "Período vigente"
-                          : "Vigencia separada de la condición oficial"}
-                      </small>
-                    )}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Oficialidad</dt>
-                  <dd>
-                    {selected.pmd.officialReason || "No confirmada"}
-                    {selected.pmd.has8_12 && (
-                      <small>
-                        {selected.pmd.officialEvidenceCount} evidencia(s) 8-12
-                      </small>
-                    )}
-                  </dd>
-                </div>
-                <div>
-                  <dt>Documentos</dt>
-                  <dd>{selected.pmd.documentCount} PDF</dd>
-                </div>
-              </dl>
-
-              <div className="detail-links">
-                {selected.sismapUrl && (
-                  <a href={selected.sismapUrl} target="_blank" rel="noreferrer">
-                    SISMAP municipal ↗
-                  </a>
-                )}
-                {selected.pmd.pdfUrl &&
-                  (!isOfficialPmd(selected) ||
-                    selected.pmd.officialEvidences.length === 0) && (
-                  <a href={selected.pmd.pdfUrl} target="_blank" rel="noreferrer">
-                    Documento asociado ↗
-                  </a>
-                )}
-                {selected.pmd.officialEvidences.map((evidence) => (
-                  <a
-                    key={evidence.href}
-                    href={evidence.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    8-12 · {evidence.title} ↗
-                  </a>
+              <div className="status-grid">
+                {(Object.keys(layerMeta) as MapLayer[]).map((layer) => (
+                  <StatusItem key={layer} item={selected} layer={layer} />
                 ))}
               </div>
 
-              <button
-                className={`primary-action action-${getPmdState(selected)}`}
-                onClick={() => handleAction(selected)}
+              <section className="document-card">
+                <span>Documento</span>
+                <strong>{selectedDocument?.label}</strong>
+                <small>{selectedDocument?.note}</small>
+                {selectedDocument?.url ? (
+                  <a
+                    href={selectedDocument.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`document-action action-${selectedDocument.tone}`}
+                  >
+                    {selectedDocument.label}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <button className="document-action" disabled>
+                    Próximamente
+                  </button>
+                )}
+              </section>
+
+              <a
+                className="sismap-link"
+                href={selected.sismapUrl}
+                target="_blank"
+                rel="noreferrer"
               >
-                {isOfficialPmd(selected)
-                  ? "Abrir evidencia del PMD oficial"
-                  : selected.actionLabel}
-                <span aria-hidden="true">→</span>
-              </button>
+                Ver evidencias en SISMAP
+              </a>
+              <p className="checked-date">
+                Verificado: {selected.checkedAt || "fecha no disponible"}
+              </p>
             </>
           ) : (
             <div className="empty-detail">
-              <span className="empty-icon" aria-hidden="true">
-                ↖
-              </span>
-              <h2>Seleccione un municipio</h2>
+              <span aria-hidden="true">⌖</span>
+              <h2>Elija un municipio</h2>
               <p>
-                Verá el estado del PMD, las evidencias OMPP y CDM y la acción
-                recomendada.
+                Use los selectores o haga clic en el mapa para ver sus cuatro
+                estados y el documento disponible.
               </p>
-              <div className="current-rule">
-                <strong>Regla del mapa</strong>
-                <p>
-                  “PMD oficial” significa SISMAP 2.02 al 100% o evidencia 8-12.
-                  La vigencia del período se registra por separado y no elimina
-                  la condición oficial del documento.
-                </p>
-              </div>
             </div>
           )}
         </aside>
       </section>
 
-      <section className="directory">
-        <div className="directory-heading">
-          <div>
-            <span className="eyebrow">Directorio</span>
-            <h2>{filtered.length} municipios</h2>
-          </div>
-          <p>También incluye municipios nuevos aún no representados en el GeoJSON.</p>
-        </div>
-        <div className="municipality-list">
-          {filtered.map((item) => (
-            <button
-              key={item.id}
-              className={selected?.id === item.id ? "active" : ""}
-              onClick={() => setSelected(item)}
-            >
-              <span
-                className="list-status"
-                style={{ background: statusFor(item).color }}
-                aria-hidden="true"
-              />
-              <span>
-                <strong>{item.municipio}</strong>
-                <small>
-                  {item.provincia} · {statusFor(item).shortLabel}
-                </small>
-              </span>
-              <i aria-hidden="true">→</i>
-            </button>
-          ))}
-        </div>
-      </section>
-
       <footer>
-        <div>
-          <strong>Portal de Planificación Municipal</strong>
-          <p>
-            El estado documental no sustituye la revisión de la OMPP, la
-            validación del CDM ni la aprobación del Concejo de Regidores.
-          </p>
-        </div>
-        <div>
-          <a
-            href="https://github.com/mnakagaw/dashboard-municipal"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Fuente cartográfica: dashboard-municipal ↗
-          </a>
-          <span>Estado de datos: 27 de julio de 2026</span>
-        </div>
+        <p>
+          La condición de PMD oficial y la vigencia del período se revisan por
+          separado. Los borradores Word se incorporarán de forma progresiva.
+        </p>
+        <span>Fuente de estado: SISMAP Municipal</span>
       </footer>
-
-      {wizard && (
-        <div
-          className="modal-backdrop"
-          role="presentation"
-          onMouseDown={() => setWizard(null)}
-        >
-          <section
-            className="workspace-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="workspace-title"
-            onMouseDown={(event) => event.stopPropagation()}
-          >
-            <button
-              className="modal-close"
-              onClick={() => setWizard(null)}
-              aria-label="Cerrar"
-            >
-              ×
-            </button>
-            <header>
-              <span>Paquete Mínimo · espacio de trabajo</span>
-              <h2 id="workspace-title">{wizard.municipio}</h2>
-              <p>
-                {wizard.actionLabel} · Provincia {wizard.provincia}
-              </p>
-            </header>
-
-            <div className="workspace-grid">
-              <div className="input-column">
-                <span className="column-label">01 · Inputs para la IA</span>
-                <h3>Fuentes de partida</h3>
-                <p>
-                  Se reutilizan para preparar el borrador, nunca para afirmar
-                  que un dato antiguo sigue vigente sin verificación.
-                </p>
-                <div className="source-stack">
-                  <SourceCard
-                    label="Datos territoriales"
-                    title="Dashboard municipal"
-                    note="Indicadores estadísticos y comparación nacional."
-                    href="https://github.com/mnakagaw/dashboard-municipal"
-                  />
-                  <SourceCard
-                    label="Contexto general"
-                    title="Wikipedia"
-                    note="Punto de partida; requiere contraste con fuentes oficiales."
-                    href={`https://es.wikipedia.org/w/index.php?search=${encodeURIComponent(
-                      `${wizard.municipio} República Dominicana`,
-                    )}`}
-                  />
-                  {wizard.pmd.documentCount > 0 ? (
-                    <SourceCard
-                      label={
-                        getPmdState(wizard) === "historical"
-                          ? "Antecedente"
-                          : "Expediente disponible"
-                      }
-                      title={
-                        getPmdState(wizard) === "historical"
-                          ? "PMD anterior"
-                          : "Documentación PMD"
-                      }
-                      note={`${wizard.pmd.period || "Período por confirmar"} · ${
-                        wizard.pmd.documentCount
-                      } PDF`}
-                      href={wizard.pmd.pdfUrl || undefined}
-                    />
-                  ) : (
-                    <SourceCard
-                      label="Antecedente"
-                      title="PMD anterior no localizado"
-                      note="Permite cargar un documento nuevo con sus metadatos."
-                    />
-                  )}
-                </div>
-                <div className="source-rule">
-                  <strong>Trazabilidad obligatoria</strong>
-                  <span>Documento · página · año · URL · fecha base · confianza</span>
-                </div>
-              </div>
-
-              <div className="draft-column">
-                <span className="column-label">02 · Borrador asistido</span>
-                <h3>Paquete Mínimo</h3>
-                <div className="draft-steps">
-                  <article>
-                    <b>1</b>
-                    <div>
-                      <strong>Información General</strong>
-                      <p>AI narrativo con fuentes y campos por verificar.</p>
-                    </div>
-                    <span>OMPP + Coord. CDM</span>
-                  </article>
-                  <article>
-                    <b>2</b>
-                    <div>
-                      <strong>Diagnóstico Municipal</strong>
-                      <p>Datos actuales, brechas y comparación territorial.</p>
-                    </div>
-                    <span>OMPP + Coord. CDM</span>
-                  </article>
-                  <article>
-                    <b>3</b>
-                    <div>
-                      <strong>FODA y problemas principales</strong>
-                      <p>Propuestas separadas de hechos verificados.</p>
-                    </div>
-                    <span>OMPP + Coord. CDM</span>
-                  </article>
-                  <article className="human-step">
-                    <b>4</b>
-                    <div>
-                      <strong>Visión, proyectos y demandas</strong>
-                      <p>Construcción participativa; la IA no inventa acuerdos.</p>
-                    </div>
-                    <span>Elaboración CDM</span>
-                  </article>
-                </div>
-                <div className="validation-gate">
-                  <span aria-hidden="true">✓</span>
-                  <div>
-                    <strong>Revisión y validación por CDM</strong>
-                    <p>
-                      Ninguna reunión, participación o aprobación se registra
-                      como realizada sin evidencia humana.
-                    </p>
-                  </div>
-                </div>
-                <button className="primary-action" onClick={() => setWizard(null)}>
-                  Preparar fuentes del municipio
-                  <span aria-hidden="true">→</span>
-                </button>
-              </div>
-            </div>
-          </section>
-        </div>
-      )}
     </main>
   );
 }
