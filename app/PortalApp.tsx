@@ -226,10 +226,18 @@ function geometryToPath(geometry: GeoGeometry) {
 
 function documentInfo(item: Municipality) {
   if (item.pmd.hasOfficialEvidence) {
+    if (!item.pmd.officialUrl) {
+      return {
+        label: "Ver evidencias en SISMAP",
+        note: "PMD completo no identificado en los archivos disponibles",
+        url: item.sismapUrl,
+        tone: "official",
+      };
+    }
     return {
       label: "Abrir PMD oficial",
       note: item.pmd.period || "Período por confirmar",
-      url: item.pmd.officialUrl || item.pmd.pdfUrl || item.sismapUrl,
+      url: item.pmd.officialUrl,
       tone: "official",
     };
   }
@@ -681,7 +689,9 @@ export function PortalApp() {
           </div>
 
           <div className="map-footer">
-            <span>Cartografía disponible para 158 municipios</span>
+            <span>
+              Cartografía IGN/ONE disponible para {mappedIds.size} municipios
+            </span>
             {unmappedCount > 0 && (
               <span>{unmappedCount} municipios nuevos disponibles en el selector</span>
             )}

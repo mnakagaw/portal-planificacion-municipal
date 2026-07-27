@@ -80,3 +80,46 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /onClick=\{\(\) => item && chooseMunicipality\(item\)\}/);
   assert.match(source, /import\.meta\.env\.BASE_URL.*data\/adm2\.geojson/);
 });
+
+test("uses PMD documents instead of administrative evidence links", async () => {
+  const rawData = await readFile(
+    new URL("../app/data/municipios.json", import.meta.url),
+    "utf8",
+  );
+  const data = JSON.parse(rawData);
+  const administrativeLink =
+    /resoluc|aprobac|publicac|portal|pagina-web|captura|certific/i;
+  const permittedCombinedDocument = /resolucion-y-plan-municipal/i;
+
+  const incorrect = data
+    .filter((item) => item.pmd.hasOfficialEvidence && item.pmd.officialUrl)
+    .filter(
+      (item) =>
+        administrativeLink.test(item.pmd.officialUrl) &&
+        !permittedCombinedDocument.test(item.pmd.officialUrl),
+    )
+    .map((item) => item.municipio);
+
+  assert.deepEqual(incorrect, []);
+
+  const mao = data.find((item) => item.municipio === "Mao");
+  assert.match(mao.pmd.officialUrl, /Plan-Municipal-de-Desarrollo-2024-2028-Mao/);
+  assert.doesNotMatch(mao.pmd.officialUrl, /Resoluc/i);
+});
+
+test("maps all 162 municipalities, including the four former districts", async () => {
+  const rawGeojson = await readFile(
+    new URL("../public/data/adm2.geojson", import.meta.url),
+    "utf8",
+  );
+  const geojson = JSON.parse(rawGeojson);
+  const mappedNames = new Set(
+    geojson.features.map((feature) => feature.properties.municipio),
+  );
+
+  assert.equal(geojson.features.length, 162);
+  for (const name of ["Villa Central", "Tireo", "La Caleta", "La Victoria"]) {
+    assert.equal(mappedNames.has(name), true, `${name} is missing from the map`);
+  }
+  assert.ok(rawGeojson.length < 2_000_000, "map GeoJSON should remain lightweight");
+});

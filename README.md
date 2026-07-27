@@ -41,6 +41,15 @@ El despliegue solamente acepta como destino la carpeta
 - Cartografía municipal: `public/data/adm2.geojson`
 - Fuente principal de estado: SISMAP Municipal
 
+La cartografía base se complementa con las geometrías de Villa Central, Tireo,
+La Caleta y La Victoria procedentes de la capa DPA Distritos Municipales del
+IGN/ONE. Para reconstruir y aligerar el archivo:
+
+```bash
+pnpm geo:merge-former-dm
+pnpm geo:optimize
+```
+
 La condición de PMD oficial aplica cuando SISMAP 2.02 alcanza 100 % o existe
 evidencia 8-12 confirmada. Un PMD oficial implica también borrador, CDM y OMPP
 para la visualización agregada.
