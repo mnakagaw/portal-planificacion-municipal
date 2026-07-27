@@ -4,7 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import municipalitiesData from "./data/municipios.json";
 
 type Level = "complete" | "progress" | "warning" | "none" | "unknown";
-type MapLayer = "pmdOfficial" | "pmdDraft" | "cdm" | "ompp";
+type MapLayer = "all" | "pmdOfficial" | "pmdDraft" | "cdm" | "ompp";
+type StatusLayer = Exclude<MapLayer, "all">;
 
 type Municipality = {
   id: number;
@@ -94,6 +95,13 @@ const layerMeta: Record<
     description: string;
   }
 > = {
+  all: {
+    label: "Todos los estados",
+    shortLabel: "Todos",
+    color: "#31453f",
+    softColor: "#edf2f0",
+    description: "Color principal según el avance confirmado de cada municipio.",
+  },
   pmdOfficial: {
     label: "PMD oficial",
     shortLabel: "PMD Oficial",
@@ -164,17 +172,32 @@ function territoryKey(municipality: string, province: string) {
 
 function hasLayerStatus(item: Municipality, layer: MapLayer) {
   switch (layer) {
+    case "all":
+      return true;
     case "pmdOfficial":
       return item.pmd.hasOfficialEvidence;
     case "pmdDraft":
       return (
-        !item.pmd.hasOfficialEvidence && (item.pmd.has7_12 || item.pmd.hasDraft)
+        item.pmd.hasOfficialEvidence || item.pmd.has7_12 || item.pmd.hasDraft
       );
     case "cdm":
-      return item.cdm.level === "complete";
+      return item.pmd.hasOfficialEvidence || item.cdm.level === "complete";
     case "ompp":
-      return item.ompp.level === "complete";
+      return item.pmd.hasOfficialEvidence || item.ompp.level === "complete";
   }
+}
+
+function overviewLayer(item: Municipality): StatusLayer | null {
+  if (item.pmd.hasOfficialEvidence) return "pmdOfficial";
+  if (item.pmd.has7_12 || item.pmd.hasDraft) return "pmdDraft";
+  if (item.cdm.level === "complete") return "cdm";
+  if (item.ompp.level === "complete") return "ompp";
+  return null;
+}
+
+function overviewLabel(item: Municipality) {
+  const layer = overviewLayer(item);
+  return layer ? layerMeta[layer].label : "Sin estado confirmado";
 }
 
 function projectPoint([longitude, latitude]: number[]) {
@@ -231,10 +254,15 @@ function StatusItem({
   layer,
 }: {
   item: Municipality;
-  layer: MapLayer;
+  layer: StatusLayer;
 }) {
   const active = hasLayerStatus(item, layer);
   const meta = layerMeta[layer];
+  const inheritedFromOfficial =
+    item.pmd.hasOfficialEvidence &&
+    ((layer === "pmdDraft" && !item.pmd.has7_12 && !item.pmd.hasDraft) ||
+      (layer === "cdm" && item.cdm.level !== "complete") ||
+      (layer === "ompp" && item.ompp.level !== "complete"));
   return (
     <div
       className={`municipal-status ${active ? "is-active" : ""}`}
@@ -252,11 +280,15 @@ function StatusItem({
         <strong>{meta.shortLabel}</strong>
         <small>
           {active
-            ? layer === "cdm"
-              ? item.cdm.label
-              : layer === "ompp"
-                ? item.ompp.label
-                : "Disponible"
+            ? inheritedFromOfficial
+              ? "Incluido en PMD oficial"
+              : layer === "cdm"
+                ? item.cdm.label
+                : layer === "ompp"
+                  ? item.ompp.label
+                  : layer === "pmdOfficial"
+                    ? "Oficial"
+                    : "Disponible"
             : "No confirmado"}
         </small>
       </span>
@@ -269,7 +301,7 @@ export function PortalApp() {
   const [province, setProvince] = useState("Todas");
   const [selected, setSelected] = useState<Municipality | null>(null);
   const [hovered, setHovered] = useState<Municipality | null>(null);
-  const [activeLayer, setActiveLayer] = useState<MapLayer>("pmdOfficial");
+  const [activeLayer, setActiveLayer] = useState<MapLayer>("all");
   const [mapShapes, setMapShapes] = useState<MapShape[]>([]);
   const [mapError, setMapError] = useState(false);
 
@@ -417,7 +449,9 @@ export function PortalApp() {
           return (
             <button
               key={layer}
-              className={activeLayer === layer ? "is-selected" : ""}
+                className={`${activeLayer === layer ? "is-selected" : ""} ${
+                  layer === "all" ? "layer-all" : ""
+                }`}
               onClick={() => setActiveLayer(layer)}
               style={
                 {
@@ -506,8 +540,14 @@ export function PortalApp() {
           <div className="map-header">
             <div>
               <span
-                className="map-layer-dot"
-                style={{ background: activeMeta.color }}
+                className={`map-layer-dot ${
+                  activeLayer === "all" ? "layer-all-dot" : ""
+                }`}
+                style={
+                  activeLayer === "all"
+                    ? undefined
+                    : { background: activeMeta.color }
+                }
                 aria-hidden="true"
               />
               <span>
@@ -538,11 +578,16 @@ export function PortalApp() {
                     const included = item ? filteredIds.has(item.id) : false;
                     const active = item ? hasLayerStatus(item, activeLayer) : false;
                     const isSelected = item?.id === selected?.id;
+                    const overview = item ? overviewLayer(item) : null;
                     const fill = !included
                       ? "#eef1f0"
-                      : active
-                        ? activeMeta.color
-                        : "#d9dfdd";
+                      : activeLayer === "all"
+                        ? overview
+                          ? layerMeta[overview].color
+                          : "#d9dfdd"
+                        : active
+                          ? activeMeta.color
+                          : "#d9dfdd";
                     return (
                       <path
                         key={shape.adm2Code}
@@ -562,16 +607,24 @@ export function PortalApp() {
                         tabIndex={item ? 0 : -1}
                         aria-label={
                           item
-                            ? `${item.municipio}, ${hasLayerStatus(item, activeLayer) ? activeMeta.label : "no confirmado"}`
+                            ? `${item.municipio}, ${
+                                activeLayer === "all"
+                                  ? overviewLabel(item)
+                                  : hasLayerStatus(item, activeLayer)
+                                    ? activeMeta.label
+                                    : "no confirmado"
+                              }`
                             : shape.name
                         }
                       >
                         <title>
                           {item
                             ? `${item.municipio} · ${
-                                hasLayerStatus(item, activeLayer)
-                                  ? activeMeta.label
-                                  : "No confirmado"
+                                activeLayer === "all"
+                                  ? overviewLabel(item)
+                                  : hasLayerStatus(item, activeLayer)
+                                    ? activeMeta.label
+                                    : "No confirmado"
                               }`
                             : shape.name}
                         </title>
@@ -587,22 +640,43 @@ export function PortalApp() {
                 <small>{displayMunicipality.provincia}</small>
                 <strong>{displayMunicipality.municipio}</strong>
                 <span>
-                  {hasLayerStatus(displayMunicipality, activeLayer)
-                    ? activeMeta.label
-                    : "No confirmado"}
+                  {activeLayer === "all"
+                    ? overviewLabel(displayMunicipality)
+                    : hasLayerStatus(displayMunicipality, activeLayer)
+                      ? activeMeta.label
+                      : "No confirmado"}
                 </span>
               </div>
             )}
 
             <div className="map-legend">
-              <span>
-                <i style={{ background: activeMeta.color }} />
-                Sí
-              </span>
-              <span>
-                <i className="legend-no" />
-                No confirmado
-              </span>
+              {activeLayer === "all" ? (
+                <>
+                  {(Object.keys(layerMeta) as MapLayer[])
+                    .filter((layer): layer is StatusLayer => layer !== "all")
+                    .map((layer) => (
+                      <span key={layer}>
+                        <i style={{ background: layerMeta[layer].color }} />
+                        {layerMeta[layer].shortLabel}
+                      </span>
+                    ))}
+                  <span>
+                    <i className="legend-no" />
+                    Sin confirmar
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>
+                    <i style={{ background: activeMeta.color }} />
+                    Sí
+                  </span>
+                  <span>
+                    <i className="legend-no" />
+                    No confirmado
+                  </span>
+                </>
+              )}
             </div>
           </div>
 
@@ -624,9 +698,11 @@ export function PortalApp() {
               </div>
 
               <div className="status-grid">
-                {(Object.keys(layerMeta) as MapLayer[]).map((layer) => (
-                  <StatusItem key={layer} item={selected} layer={layer} />
-                ))}
+                {(Object.keys(layerMeta) as MapLayer[])
+                  .filter((layer): layer is StatusLayer => layer !== "all")
+                  .map((layer) => (
+                    <StatusItem key={layer} item={selected} layer={layer} />
+                  ))}
               </div>
 
               <section className="document-card">

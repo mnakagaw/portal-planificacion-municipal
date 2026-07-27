@@ -137,7 +137,7 @@ select,
 .layer-switcher {
   display: grid;
   gap: 9px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   margin-bottom: 12px;
 }
 
@@ -173,6 +173,16 @@ select,
   border-radius: 50%;
   height: 11px;
   width: 11px;
+}
+
+.layer-switcher button.layer-all .layer-dot,
+.layer-all-dot {
+  background: conic-gradient(
+    #12805c 0 25%,
+    #2968c8 25% 50%,
+    #7452b8 50% 75%,
+    #c66b24 75% 100%
+  );
 }
 
 .layer-switcher button > span:last-child {
@@ -653,6 +663,10 @@ footer p {
 
   .layer-switcher {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .layer-switcher button:first-child {
+    grid-column: 1 / -1;
   }
 
   .selection-bar {

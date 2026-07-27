@@ -34,6 +34,7 @@ test("server-renders the municipal portal", async () => {
   assert.match(html, />Región</);
   assert.match(html, />Provincia</);
   assert.match(html, />Municipio</);
+  assert.match(html, />Todos</);
   assert.match(html, /PMD Oficial/);
   assert.match(html, /PMD Borrador/);
   assert.match(html, />CDM</);
@@ -53,14 +54,27 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.equal(
     data.filter(
       (item) =>
-        !item.pmd.hasOfficialEvidence &&
-        (item.pmd.has7_12 || item.pmd.hasDraft),
+        item.pmd.hasOfficialEvidence ||
+        item.pmd.has7_12 ||
+        item.pmd.hasDraft,
     ).length,
-    16,
+    58,
   );
-  assert.equal(data.filter((item) => item.cdm.level === "complete").length, 71);
-  assert.equal(data.filter((item) => item.ompp.level === "complete").length, 83);
+  assert.equal(
+    data.filter(
+      (item) => item.pmd.hasOfficialEvidence || item.cdm.level === "complete",
+    ).length,
+    79,
+  );
+  assert.equal(
+    data.filter(
+      (item) => item.pmd.hasOfficialEvidence || item.ompp.level === "complete",
+    ).length,
+    94,
+  );
 
+  assert.match(source, /useState<MapLayer>\("all"\)/);
+  assert.match(source, /function overviewLayer/);
   assert.match(source, /setRegion\(item\.region\)/);
   assert.match(source, /setProvince\(item\.provincia\)/);
   assert.match(source, /onClick=\{\(\) => item && chooseMunicipality\(item\)\}/);
