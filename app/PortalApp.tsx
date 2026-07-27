@@ -697,6 +697,34 @@ export function PortalApp() {
                 <p>{selected.provincia}</p>
               </div>
 
+              <div
+                className={`sismap-score ${
+                  selected.pmd.score === 100 ? "is-complete" : ""
+                }`}
+                aria-label={
+                  selected.pmd.score === null
+                    ? "Puntuación del PMD en SISMAP no disponible"
+                    : `Puntuación del PMD en SISMAP: ${selected.pmd.score}%`
+                }
+                style={
+                  {
+                    "--sismap-score": `${selected.pmd.score ?? 0}%`,
+                  } as React.CSSProperties
+                }
+              >
+                <span>
+                  <small>Puntuación PMD en SISMAP</small>
+                  <strong>
+                    {selected.pmd.score === null
+                      ? "No disponible"
+                      : `${selected.pmd.score}%`}
+                  </strong>
+                </span>
+                <span className="sismap-score-track" aria-hidden="true">
+                  <i />
+                </span>
+              </div>
+
               <div className="status-grid">
                 {(Object.keys(layerMeta) as MapLayer[])
                   .filter((layer): layer is StatusLayer => layer !== "all")

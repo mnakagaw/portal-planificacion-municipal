@@ -444,10 +444,63 @@ select,
   margin: 0;
 }
 
+.sismap-score {
+  background: #f4f7f6;
+  border: 1px solid #e1e8e5;
+  border-radius: 10px;
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+  padding: 11px 12px;
+}
+
+.sismap-score > span:first-child {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sismap-score small {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.sismap-score strong {
+  color: #40524d;
+  font-size: 16px;
+  letter-spacing: -0.03em;
+}
+
+.sismap-score.is-complete strong {
+  color: #347c6c;
+}
+
+.sismap-score-track {
+  background: #dfe6e3;
+  border-radius: 999px;
+  display: block;
+  height: 4px;
+  overflow: hidden;
+}
+
+.sismap-score-track i {
+  background: #6e837c;
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  width: var(--sismap-score);
+}
+
+.sismap-score.is-complete .sismap-score-track i {
+  background: #347c6c;
+}
+
 .status-grid {
   display: grid;
   gap: 7px;
-  margin: 22px 0;
+  margin: 12px 0 22px;
 }
 
 .municipal-status {
