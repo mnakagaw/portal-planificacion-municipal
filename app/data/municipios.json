@@ -1,0 +1,6320 @@
+[
+  {
+    "id": 1,
+    "municipio": "Santo Domingo de Guzmán",
+    "provincia": "Distrito Nacional",
+    "region": "Ozama",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20797",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 33
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 95,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639024414874758240-2.02_08-12_Plan-Municipal-de-Desarrollo-2024-2028-ADN-2025.pdf",
+      "pdfTitle": "2.02_08-12_Plan Municipal de Desarrollo 2024-2028 ADN 2025.pdf",
+      "documentCount": 2,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": true,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 2,
+    "municipio": "Azua",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21200",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 12
+    },
+    "pmd": {
+      "label": "PMD histórico / vencido",
+      "level": "warning",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "2016–2020",
+      "pdfUrl": "https://ayuntamientoazua.gob.do/transparencia/wp-content/uploads/2017/12/Plan-municipal-de-desarrollo-2016-2020.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": false
+    },
+    "action": "actualizar",
+    "actionLabel": "Actualizar PMD anterior",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 3,
+    "municipio": "Estebanía",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/329",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 21
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 4,
+    "municipio": "Guayabal",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/328",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 20
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 5,
+    "municipio": "Las Charcas",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/321",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 6,
+    "municipio": "Las Yayas de Viajama",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/322",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "31-12-2020",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 7,
+    "municipio": "Padre Las Casas",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20812",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 10,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 8,
+    "municipio": "Peralta",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/324",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 17
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 9,
+    "municipio": "Pueblo Viejo",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/326",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 10,
+    "municipio": "Sabana Yegua",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/325",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-07-2026",
+      "validity": "Vencido",
+      "evidenceCount": 22
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 11,
+    "municipio": "Tábara Arriba",
+    "provincia": "Azua",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/327",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 60,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 8
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 12,
+    "municipio": "Neiba",
+    "provincia": "Bahoruco",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20830",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 16
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 13,
+    "municipio": "Galván",
+    "provincia": "Bahoruco",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/331",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-01-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 14,
+    "municipio": "Los Ríos",
+    "provincia": "Bahoruco",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/334",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 17
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638900022817444793-2.02_7-12_Borrador-o-libro-sin-aprobar-por-el-concejo-de-regidores,-ayuntamiento-Los-Rios.pdf",
+      "pdfTitle": "",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 15,
+    "municipio": "Tamayo",
+    "provincia": "Bahoruco",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20834",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-05-2026",
+      "validity": "Vencido",
+      "evidenceCount": 4
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 16,
+    "municipio": "Villa Jaragua",
+    "provincia": "Bahoruco",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/333",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "PMD histórico / vencido",
+      "level": "warning",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "2016–2020",
+      "pdfUrl": "https://ayuntamientovillajaragua.gob.do/transparencia/wp-content/uploads/2018/03/PMD-VILLA-JARAGUA-FINAL-2016-2020.pdf",
+      "pdfTitle": "",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": false
+    },
+    "action": "actualizar",
+    "actionLabel": "Actualizar PMD anterior",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 17,
+    "municipio": "Barahona",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20844",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 22
+    },
+    "pmd": {
+      "label": "PMD histórico / vencido",
+      "level": "warning",
+      "score": 100,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "2020–2024",
+      "pdfUrl": "https://ayuntamientobarahona.gob.do/wp-content/uploads/2023/06/plan-de-desarrollo-municipal-de-barahona-2020-2024-res-06-11-2021-2-1-1.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": false
+    },
+    "action": "actualizar",
+    "actionLabel": "Actualizar PMD anterior",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 18,
+    "municipio": "Cabral",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20848",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 6
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 10,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 19,
+    "municipio": "El Peñón",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/340",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-01-2026",
+      "validity": "Vencido",
+      "evidenceCount": 15
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 20,
+    "municipio": "Enriquillo",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20849",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 70,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 10
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 21,
+    "municipio": "Fundación",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20860",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 21,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 22,
+    "municipio": "Jaquimeyes",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20864",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-07-2026",
+      "validity": "Vencido",
+      "evidenceCount": 20
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 23,
+    "municipio": "La Ciénaga",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20858",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 24,
+    "municipio": "Las Salinas",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/343",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-10-2025",
+      "validity": "Vencido",
+      "evidenceCount": 2
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 25,
+    "municipio": "Paraíso",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20851",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 80,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 16
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 26,
+    "municipio": "Polo",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/344",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 7
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639071056067334007-2.02_8-12_Documento-PMD_Polo2026.pdf",
+      "pdfTitle": "2.02_8-12_Documento PMD_Polo2026.pdf",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 27,
+    "municipio": "Vicente Noble",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20853",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 5
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 28,
+    "municipio": "Villa Central",
+    "provincia": "Barahona",
+    "region": "Enriquillo",
+    "sismapUrl": "",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "No disponible en SISMAP",
+      "level": "unknown",
+      "score": null,
+      "expiry": "",
+      "validity": "",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": null,
+      "expiry": "",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "No disponible"
+  },
+  {
+    "id": 29,
+    "municipio": "Dajabón",
+    "provincia": "Dajabón",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20866",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 70,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "PMD histórico / vencido",
+      "level": "warning",
+      "score": 50,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2012–2016",
+      "pdfUrl": "https://ayuntamientodajabon.gob.do/transparencia/wp-content/uploads/2018/04/PLAN-MUNICIPAL-DE-DESARROLLO-PMD-Dajabon-2012-2016.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": false
+    },
+    "action": "actualizar",
+    "actionLabel": "Actualizar PMD anterior",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 30,
+    "municipio": "El Pino",
+    "provincia": "Dajabón",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/350",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 66,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://ayuntamientoelpino.gob.do/transparencia/wp-content/uploads/2021/04/PMD-de-El-Pino-PDF.pdf",
+      "pdfTitle": "",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 31,
+    "municipio": "Loma de Cabrera",
+    "provincia": "Dajabón",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/347",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 18
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638780836339940926-2.02_07-12_-Borrador-PMD-Loma-de-Cabrera-2025.pdf",
+      "pdfTitle": "2.02_07-12_ Borrador PMD Loma de Cabrera 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 32,
+    "municipio": "Partido",
+    "provincia": "Dajabón",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/348",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 6
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 33,
+    "municipio": "Restauración",
+    "provincia": "Dajabón",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/349",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 17
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638773790866162047-2.02_07-12_-Borrador-PMD-2024-2028--Restauracin-2025.pdf",
+      "pdfTitle": "2.02_07-12_ Borrador PMD 2024-2028  Restauración 2025.pdf",
+      "documentCount": 2,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 34,
+    "municipio": "San Francisco de Macorís",
+    "provincia": "Duarte",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20875",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-06-2026",
+      "validity": "Vencido",
+      "evidenceCount": 18
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-06-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639058801659761367-2.02_8-12_PMD-de-San-Francisco-de-Macors-5Febrero2026.pdf",
+      "pdfTitle": "2.02_8-12_PMD de San Francisco de Macorís 5Febrero2026.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 35,
+    "municipio": "Arenoso",
+    "provincia": "Duarte",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21201",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 60,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 12
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 36,
+    "municipio": "Castillo",
+    "provincia": "Duarte",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20883",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 5
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://ayuntamientocastillo.gob.do/transparencia/wp-content/uploads/2018/09/PLAN-MUNICIPAL-DE-DESARROLLO.pdf",
+      "pdfTitle": "Plan Municipal de Desarrollo",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 37,
+    "municipio": "Eugenio María de Hostos",
+    "provincia": "Duarte",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/357",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 38,
+    "municipio": "Las Guáranas",
+    "provincia": "Duarte",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/356",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 60,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 9
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-12-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 39,
+    "municipio": "Pimentel",
+    "provincia": "Duarte",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/354",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 2
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 40,
+    "municipio": "Villa Riva",
+    "provincia": "Duarte",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/355",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 2
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 41,
+    "municipio": "Comendador",
+    "provincia": "Elías Piña",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20893",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 60,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 9
+    },
+    "pmd": {
+      "label": "PMD actual disponible",
+      "level": "complete",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "2025–2029",
+      "pdfUrl": "https://ayuntamientocomendador.gob.do/transparencia/wp-content/uploads/2026/01/PDM-Comendador-2025-2029.pdf",
+      "pdfTitle": "",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 42,
+    "municipio": "Bánica",
+    "provincia": "Elías Piña",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/359",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 24
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638846274907194088-2.02_08-12_PLAN-MUNICIPAL-DE-DESARROLLO-2025-2028-Banica--2025.pdf",
+      "pdfTitle": "2.02_08-12_PLAN MUNICIPAL DE DESARROLLO 2025-2028 Banica- 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 43,
+    "municipio": "El Llano",
+    "provincia": "Elías Piña",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/360",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 44,
+    "municipio": "Hondo Valle",
+    "provincia": "Elías Piña",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/361",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 2
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 45,
+    "municipio": "Juan Santiago",
+    "provincia": "Elías Piña",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/363",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 50,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 7
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 46,
+    "municipio": "Pedro Santana",
+    "provincia": "Elías Piña",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/362",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 80,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 15
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638754875131984109-2.02_07-12-PLAN-DE-DESARROLLO-MUNICIPAL-Pedro-Santana-2025.pdf",
+      "pdfTitle": "2.02_07-12 PLAN DE DESARROLLO MUNICIPAL Pedro Santana 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 47,
+    "municipio": "El Seibo",
+    "provincia": "El Seibo",
+    "region": "Yuma",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20906",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 40,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 8
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 20,
+      "expiry": "23-03-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 48,
+    "municipio": "Miches",
+    "provincia": "El Seibo",
+    "region": "Yuma",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/365",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Reglamento elaborado",
+      "level": "complete",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 18
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638905092386032944-2.02_7-12_Borrador-del-Libro-PMD,-del-Ayto.-Miches-2025-2028..pdf",
+      "pdfTitle": "2.02_7-12_Borrador del Libro PMD, del Ayto. Miches 2025-2028..pdf",
+      "documentCount": 2,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 49,
+    "municipio": "Moca",
+    "provincia": "Espaillat",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20913",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 28
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638693345716560798-2.02_07-12_-Plan_Municipal_de_Desarrollo_2024_2028_Moca.pdf",
+      "pdfTitle": "2.02_07-12_ Plan_Municipal_de_Desarrollo_2024_2028_Moca.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 50,
+    "municipio": "Cayetano Germosén",
+    "provincia": "Espaillat",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/367",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Reglamento elaborado",
+      "level": "complete",
+      "score": 93,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 19
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639183282874539754-2.02_7-12_-Borrador,-libro-sin-aprobar-por-el-Concejo-de-Regidores-(PMD)-CG-2026.pdf",
+      "pdfTitle": "2.02_7-12_ Borrador, libro sin aprobar por el Concejo de Regidores (PMD) CG 2026.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 51,
+    "municipio": "Gaspar Hernández",
+    "provincia": "Espaillat",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/368",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 9
+    },
+    "pmd": {
+      "label": "PMD actual disponible",
+      "level": "complete",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://ayuntamientogasparhernandez.gob.do/transparencia/wp-content/uploads/2024/12/PMD-GASPAR-HERNANDEZ-2024-2028.pdf",
+      "pdfTitle": "",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 52,
+    "municipio": "Jamao al Norte",
+    "provincia": "Espaillat",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/369",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-09-2026",
+      "validity": "",
+      "evidenceCount": 31
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 85,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2011–2016",
+      "pdfUrl": "https://ayuntamientojamaoalnorte.gob.do/transparencia/wp-content/uploads/2019/08/636848749692841490-PDM-2011-2016-Jamao-al-Norte.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 53,
+    "municipio": "San Víctor",
+    "provincia": "Espaillat",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21263",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 23
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 70,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 54,
+    "municipio": "Hato Mayor del Rey",
+    "provincia": "Hato Mayor",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21153",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 3
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 55,
+    "municipio": "Sabana de la Mar",
+    "provincia": "Hato Mayor",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21157",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://ayuntamientosabanadelamar.gob.do/transparencia/wp-content/uploads/2018/06/PMD-SABANA-DE-LA-MAR.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 56,
+    "municipio": "El Valle",
+    "provincia": "Hato Mayor",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/462",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 57,
+    "municipio": "Salcedo",
+    "provincia": "Hermanas Mirabal",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21021",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 58,
+    "municipio": "Tenares",
+    "provincia": "Hermanas Mirabal",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21023",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 18
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638790116780258296-2.02_8-12_Plan-Municipal-de-Desarrollo-(PMD)-2025-2028-de-Tenares-31Marzo2025.pdf",
+      "pdfTitle": "2.02_8-12_Plan Municipal de Desarrollo (PMD) 2025-2028 de Tenares 31Marzo2025.pdf",
+      "documentCount": 2,
+      "hasDraft": true,
+      "hasFormalBody": true,
+      "hasHistorical": true,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 59,
+    "municipio": "Villa Tapia",
+    "provincia": "Hermanas Mirabal",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21025",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 16
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 70,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://ayuntamientovillatapia.gob.do/transparencia/wp-content/uploads/2022/02/PMD-LISTO-VT-01.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 60,
+    "municipio": "Jimaní",
+    "provincia": "Independencia",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20928",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 70,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 10
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 61,
+    "municipio": "Cristóbal",
+    "provincia": "Independencia",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/374",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 62,
+    "municipio": "Duvergé",
+    "provincia": "Independencia",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20931",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 63,
+    "municipio": "La Descubierta",
+    "provincia": "Independencia",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20933",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-09-2026",
+      "validity": "",
+      "evidenceCount": 19
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-09-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 64,
+    "municipio": "Mella",
+    "provincia": "Independencia",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/375",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-07-2026",
+      "validity": "Vencido",
+      "evidenceCount": 32
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638747800133386329-2.02_07-12_-Libro-PMD-2024-2028-Mella-2025.pdf",
+      "pdfTitle": "2.02_07-12_ Libro PMD 2024-2028 Mella 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 65,
+    "municipio": "Postrer Río",
+    "provincia": "Independencia",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/373",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 80,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 15
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 60,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639071923491858562-2.02_7-12_Borrador-PMD_Postrer-Rio2026.pdf",
+      "pdfTitle": "2.02_7-12_Borrador PMD_Postrer Rio2026.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 66,
+    "municipio": "Higüey",
+    "provincia": "La Altagracia",
+    "region": "Yuma",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20940",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 11
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 70,
+      "expiry": "05-09-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638852533783635143-2.02_7-12_Borrador-Libro-sin-Aprobar-por-el-Consejo-de-Regidores-PMD-Ayto.-Higuey..pdf",
+      "pdfTitle": "2.02_7-12_Borrador Libro sin Aprobar por el Consejo de Regidores PMD Ayto. Higuey..pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 67,
+    "municipio": "San Rafael del Yuma",
+    "provincia": "La Altagracia",
+    "region": "Yuma",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/377",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 16
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638816314794139387-2.02_7-12_Borrador-del-PMD-Resolutado-por-el-CR-del-Ayto,-San-Rafael-del-Yuma-2025-2028.pdf",
+      "pdfTitle": "2.02_7-12_Borrador del PMD Resolutado por el CR del Ayto, San Rafael del Yuma 2025-2028.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 68,
+    "municipio": "La Romana",
+    "provincia": "La Romana",
+    "region": "Yuma",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20947",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 3
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 69,
+    "municipio": "Guaymate",
+    "provincia": "La Romana",
+    "region": "Yuma",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/379",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 70,
+    "municipio": "Villa Hermosa",
+    "provincia": "La Romana",
+    "region": "Yuma",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/380",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 85,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 40,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638997518855875082-202_7-12_Libro-del-PMD-sin-Aprobar-por-el-CR,-Ayto.-Villa-Hermosa-2024-2028..pdf",
+      "pdfTitle": "202_7-12_Libro del PMD sin Aprobar por el CR, Ayto. Villa Hermosa 2024-2028..pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 71,
+    "municipio": "Concepción de La Vega",
+    "provincia": "La Vega",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20952",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 3
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 18
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-06-2026",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639111686804518006-2.02_8-12_Plan-Municipal-Desarollo-(PMD-2025-2028)-de-La-Vega-7Abril2026.pdf",
+      "pdfTitle": "2.02_8-12_Plan Municipal Desarollo (PMD 2025-2028) de La Vega 7Abril2026.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 72,
+    "municipio": "Constanza",
+    "provincia": "La Vega",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/382",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 5
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 30,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638920706027134332-2.02_7-12_Borrador-del-PMD-de-Constanza-29Agosto2025.pdf",
+      "pdfTitle": "2.02_7-12_Borrador del PMD de Constanza 29Agosto2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 73,
+    "municipio": "Jarabacoa",
+    "provincia": "La Vega",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20958",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 17
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "2023–2033",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638744380907717644-2.02_7-12_Borrador-o-Libro-sin-Aprobar-del-PMD-2023-2033-de-Jarabacoa-6Febrero2025.pdf",
+      "pdfTitle": "2.02_7-12_Borrador o Libro sin Aprobar del PMD 2023-2033 de Jarabacoa 6Febrero2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 74,
+    "municipio": "Jima Abajo",
+    "provincia": "La Vega",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/384",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 50,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 9
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 40,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638962069107769432-2.02_7-12_Borrador-y-Plan-Municipal-de-Desarrollo-de-Jima-Abajo-16Octubre2025.pdf",
+      "pdfTitle": "2.02_7-12_Borrador y Plan Municipal de Desarrollo de Jima Abajo 16Octubre2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 75,
+    "municipio": "Tireo",
+    "provincia": "La Vega",
+    "region": "Cibao Sur",
+    "sismapUrl": "",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "No disponible en SISMAP",
+      "level": "unknown",
+      "score": null,
+      "expiry": "",
+      "validity": "",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": null,
+      "expiry": "",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "No disponible"
+  },
+  {
+    "id": 76,
+    "municipio": "Nagua",
+    "provincia": "María Trinidad Sánchez",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/385",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 50,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 70,
+      "expiry": "24-12-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 77,
+    "municipio": "Cabrera",
+    "provincia": "María Trinidad Sánchez",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/386",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-09-2026",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-09-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 78,
+    "municipio": "El Factor",
+    "provincia": "María Trinidad Sánchez",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/387",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 14
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 79,
+    "municipio": "Río San Juan",
+    "provincia": "María Trinidad Sánchez",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/388",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 50,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "evidenceCount": 5
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 80,
+    "municipio": "Bonao",
+    "provincia": "Monseñor Nouel",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21132",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638974306827194374-2.02_7-12_BORRADOR-del-Plan-Municipal-de-Desarrollo-Bonao-2025---2028-30Octubre2025.pdf",
+      "pdfTitle": "2.02_7-12_BORRADOR del Plan Municipal de Desarrollo Bonao 2025 - 2028 30Octubre2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 81,
+    "municipio": "Maimón",
+    "provincia": "Monseñor Nouel",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21138",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Reglamento elaborado",
+      "level": "complete",
+      "score": 90,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "evidenceCount": 12
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 70,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639069215096543711-2.02_7-12_Borrador-del-PMD-de-Maimon-2024-2028-17Febrero2026.pdf",
+      "pdfTitle": "2.02_7-12_Borrador del PMD de Maimon-2024-2028 17Febrero2026.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 82,
+    "municipio": "Piedra Blanca",
+    "provincia": "Monseñor Nouel",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/454",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 2
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-04-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 83,
+    "municipio": "Monte Cristi",
+    "provincia": "Monte Cristi",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20973",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2028",
+      "validity": "",
+      "evidenceCount": 7
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://ayuntamientomontecristi.gob.do/transparencia/wp-content/uploads/2021/07/PDM-Monte-Cristi.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 84,
+    "municipio": "Castañuelas",
+    "provincia": "Monte Cristi",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20974",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 8
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-10-2025",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://ayuntamientocastanuelas.gob.do/transparencia/wp-content/uploads/2020/01/20200116_PMD-CASTANUELAS.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 85,
+    "municipio": "Guayubín",
+    "provincia": "Monte Cristi",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20976",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2026",
+      "validity": "Vencido",
+      "evidenceCount": 2
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638791123711909647-2.02_07-12_-PLAN-MUNICIPAL-DE-DESARROLLO-2024-2028--GUAYUBN-2025.pdf",
+      "pdfTitle": "2.02_07-12_ PLAN MUNICIPAL DE DESARROLLO 2024-2028  GUAYUBÍN 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 86,
+    "municipio": "Las Matas de Santa Cruz",
+    "provincia": "Monte Cristi",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/392",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 87,
+    "municipio": "Pepillo Salcedo",
+    "provincia": "Monte Cristi",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/393",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 6
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 88,
+    "municipio": "Villa Vásquez",
+    "provincia": "Monte Cristi",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/394",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-07-2028",
+      "validity": "",
+      "evidenceCount": 5
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 89,
+    "municipio": "Monte Plata",
+    "provincia": "Monte Plata",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21142",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 50,
+      "expiry": "31-10-2028",
+      "validity": "",
+      "evidenceCount": 4
+    },
+    "pmd": {
+      "label": "PMD actual disponible",
+      "level": "complete",
+      "score": 20,
+      "expiry": "31-10-2028",
+      "validity": "",
+      "period": "2026–2030",
+      "pdfUrl": "https://ayuntamientomonteplata.gob.do/transparencia/wp-content/uploads/2026/06/Plan-de-desarrollo-municipal-2026-2030.pdf",
+      "pdfTitle": "",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 90,
+    "municipio": "Bayaguana",
+    "provincia": "Monte Plata",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21146",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 91,
+    "municipio": "Peralvillo",
+    "provincia": "Monte Plata",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/459",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 60,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 12
+    },
+    "pmd": {
+      "label": "PMD histórico / vencido",
+      "level": "warning",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "2021–2025",
+      "pdfUrl": "https://ayuntamientoperalvillo.gob.do/transparencia/wp-content/uploads/2023/02/Plan-Municipal-de-Desarrollo-y-Ordenamiento-Territorial-PMD-OT-Peralvillo-2021-2025-1_compressed.pdf",
+      "pdfTitle": "",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": false
+    },
+    "action": "actualizar",
+    "actionLabel": "Actualizar PMD anterior",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 92,
+    "municipio": "Sabana Grande de Boyá",
+    "provincia": "Monte Plata",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/457",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 85,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2026–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639153183928667200-2.02_7-12_Borrador-del-Libro-sin-Aprobar-por-el-Concejo-de-Regidores-(PMD)-Ayto.-SGB-2026.-2028..pdf",
+      "pdfTitle": "2.02_7-12_Borrador del Libro sin Aprobar por el Concejo de Regidores (PMD) Ayto. SGB 2026.-2028..pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 93,
+    "municipio": "Yamasá",
+    "provincia": "Monte Plata",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21150",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 14
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638929361618900397-2.02_7-12_Borrador-Libro-PMD-No-Aprobado-por-el-CR-Ayto.-Yamas-2025-228..pdf",
+      "pdfTitle": "2.02_7-12_Borrador Libro PMD No Aprobado por el CR Ayto. Yamasá 2025-228..pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 94,
+    "municipio": "Pedernales",
+    "provincia": "Pedernales",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20983",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-07-2026",
+      "validity": "Vencido",
+      "evidenceCount": 21
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 95,
+    "municipio": "Oviedo",
+    "provincia": "Pedernales",
+    "region": "Enriquillo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/396",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-10-2025",
+      "validity": "Vencido",
+      "evidenceCount": 4
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 96,
+    "municipio": "Baní",
+    "provincia": "Peravia",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/20987",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 37
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638829921906785151-2.02_7-12_PMD-2024-2028-BORRADOR---BANI-2025..pdf",
+      "pdfTitle": "2.02_7-12_PMD 2024-2028 BORRADOR - BANI 2025..pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 97,
+    "municipio": "Matanzas",
+    "provincia": "Peravia",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21262",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 98,
+    "municipio": "Nizao",
+    "provincia": "Peravia",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/398",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 99,
+    "municipio": "San Felipe de Puerto Plata",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21000",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 100,
+    "municipio": "Altamira",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21202",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 28
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://ayuntamientoaltamira.gob.do/wp-content/uploads/2025/03/Plan-Municipal-de-Desarrollo-Altamira-2025-2028.pdf",
+      "pdfTitle": "2.02_7-12_Plan Municipal de Desarrollo Altamira 2025 - 2028.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 101,
+    "municipio": "Guananico",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/401",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 2
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 102,
+    "municipio": "Imbert",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21006",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 25
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 103,
+    "municipio": "Los Hidalgos",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/403",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 10
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 104,
+    "municipio": "Luperón",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/404",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 28
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 105,
+    "municipio": "Sosúa",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/405",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 80,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 12
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638876666922806673-2.02_08-12_Plan-Municipal-de-Desarrollo-(PMD)-Sosua-2025.pdf",
+      "pdfTitle": "2.02_08-12_Plan Municipal de Desarrollo (PMD) Sosua 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 106,
+    "municipio": "Villa Isabela",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/406",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-10-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 107,
+    "municipio": "Villa Montellano",
+    "provincia": "Puerto Plata",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/407",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 15
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 60,
+      "expiry": "05-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 108,
+    "municipio": "Santa Bárbara de Samaná",
+    "provincia": "Samaná",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21026",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 50,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 12
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 109,
+    "municipio": "Las Terrenas",
+    "provincia": "Samaná",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/413",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 6
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638792077172502099-2.02_8-12_PMD-de-Las-Terrenas-1Abril2025.pdf",
+      "pdfTitle": "2.02_8-12_PMD de Las Terrenas 1Abril2025.pdf",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 110,
+    "municipio": "Sánchez",
+    "provincia": "Samaná",
+    "region": "Cibao Nordeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/412",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-07-2026",
+      "validity": "Vencido",
+      "evidenceCount": 16
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 111,
+    "municipio": "San Cristóbal",
+    "provincia": "San Cristóbal",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21032",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 29
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638777649897261598-2.02_7-12_Borrador-PMD-2024-2028-sin-aprobar,-S.C.-2025.pdf",
+      "pdfTitle": "2.02_7-12_Borrador PMD 2024-2028 sin aprobar, S.C. 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 112,
+    "municipio": "Bajos de Haina",
+    "provincia": "San Cristóbal",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/416",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 2
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 113,
+    "municipio": "Cambita Garabitos",
+    "provincia": "San Cristóbal",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/417",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 114,
+    "municipio": "Los Cacaos",
+    "provincia": "San Cristóbal",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/421",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 115,
+    "municipio": "Sabana Grande de Palenque",
+    "provincia": "San Cristóbal",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21147",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 6
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 116,
+    "municipio": "San Gregorio de Nigua",
+    "provincia": "San Cristóbal",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/420",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 18
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638823924459627084-2.02_7-12_BORRADOR--PMD-NIGUA-2025.pdf",
+      "pdfTitle": "2.02_7-12_BORRADOR  PMD NIGUA 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 117,
+    "municipio": "Villa Altagracia",
+    "provincia": "San Cristóbal",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/418",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 15
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 60,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 118,
+    "municipio": "Yaguate",
+    "provincia": "San Cristóbal",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/419",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 4
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 119,
+    "municipio": "San José de Ocoa",
+    "provincia": "San José de Ocoa",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21160",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 60,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 120,
+    "municipio": "Rancho Arriba",
+    "provincia": "San José de Ocoa",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/465",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "2022–2026",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638223532196676009-2.02_8-12_Plan-de-Desarrollo-Municiapal-2022-2026-Ayto.-Rancho-Arriba-(2).pdf",
+      "pdfTitle": "2.02_8-12_Plan de Desarrollo Municiapal 2022-2026 Ayto. Rancho Arriba (2).pdf",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 121,
+    "municipio": "Sabana Larga",
+    "provincia": "San José de Ocoa",
+    "region": "Valdesia",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/464",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 10
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://ayuntamientosabanalarga.gob.do/transparencia/wp-content/uploads/2021/12/PLAN-MUNICIPAL-DE-DESARROLLO-SABANA-LARGA.pdf",
+      "pdfTitle": "PLAN MUNICIPAL DE DESARROLLO SABANA LARGA",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 122,
+    "municipio": "San Juan de la Maguana",
+    "provincia": "San Juan",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21046",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 26
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2020–2024",
+      "pdfUrl": "https://ayuntamientosanjuan.gob.do/transparencia/wp-content/uploads/2024/08/Plan-Municipal-de-Desarrollo-PMD-de-San-Juan-de-la-Maguana-2020-2024.pdf",
+      "pdfTitle": "",
+      "documentCount": 2,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 123,
+    "municipio": "Bohechío",
+    "provincia": "San Juan",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/423",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 17
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 124,
+    "municipio": "El Cercado",
+    "provincia": "San Juan",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/424",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 50,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 9
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 125,
+    "municipio": "Juan de Herrera",
+    "provincia": "San Juan",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/425",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 126,
+    "municipio": "Las Matas de Farfán",
+    "provincia": "San Juan",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21066",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-07-2028",
+      "validity": "",
+      "evidenceCount": 3
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 127,
+    "municipio": "Vallejuelo",
+    "provincia": "San Juan",
+    "region": "El Valle",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/427",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 16
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 100,
+      "expiry": "01-07-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 128,
+    "municipio": "San Pedro de Macorís",
+    "provincia": "San Pedro de Macorís",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21071",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 28
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638756699036436087-2.02_7-12_-Plan-de-Desarrollo-Municipal-del-Ayto.-San-Pedro-de-Macors-2025-2028.pdf",
+      "pdfTitle": "2.02_7-12_ Plan de Desarrollo Municipal del Ayto. San Pedro de Macorís 2025-2028.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 129,
+    "municipio": "Consuelo",
+    "provincia": "San Pedro de Macorís",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/431",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 130,
+    "municipio": "Guayacanes",
+    "provincia": "San Pedro de Macorís",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/433",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 3
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 131,
+    "municipio": "Quisqueya",
+    "provincia": "San Pedro de Macorís",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/432",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 85,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 10
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 132,
+    "municipio": "Ramón Santana",
+    "provincia": "San Pedro de Macorís",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/430",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 80,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 10
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 80,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://ayuntamientoramonsantana.gob.do/transparencia/wp-content/uploads/2025/09/PMD-Ramon-Santana-2024-2028.pdf",
+      "pdfTitle": "",
+      "documentCount": 3,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 133,
+    "municipio": "San José de los Llanos",
+    "provincia": "San Pedro de Macorís",
+    "region": "Higuamo",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/429",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-01-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 134,
+    "municipio": "Cotuí",
+    "provincia": "Sánchez Ramírez",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21079",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-06-2026",
+      "validity": "Vencido",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-06-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639148738523511091-2.02_7-12_Borrador-o-Libro-Sin-Aprobar-por-el-Concejo-de-Regidores-(PMD)-de-Cotu-20Mayo2026.pdf",
+      "pdfTitle": "2.02_7-12_Borrador o Libro Sin Aprobar por el Concejo de Regidores (PMD) de Cotuí 20Mayo2026.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 135,
+    "municipio": "Cevicos",
+    "provincia": "Sánchez Ramírez",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/435",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "24-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 14
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 136,
+    "municipio": "Fantino",
+    "provincia": "Sánchez Ramírez",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/436",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 5
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 137,
+    "municipio": "La Mata",
+    "provincia": "Sánchez Ramírez",
+    "region": "Cibao Sur",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/437",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-12-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-06-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 138,
+    "municipio": "Santiago de los Caballeros",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21091",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 3
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2027",
+      "validity": "",
+      "evidenceCount": 26
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638991393795055906-2.02_08-12_PMD-2024-2028-Santiago-de-los-Caballeros-2025.pdf",
+      "pdfTitle": "2.02_08-12_PMD 2024-2028 Santiago de los Caballeros 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 139,
+    "municipio": "Baitoa",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21264",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 18
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 140,
+    "municipio": "Jánico",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21099",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2024",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 141,
+    "municipio": "Licey al Medio",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/441",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 22
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638688365780896332-2.02_08-12_Plan-Municipal-de-Desarrollo-Licey-al-Medio-2024-2028.pdf",
+      "pdfTitle": "2.02_08-12_Plan Municipal de Desarrollo Licey al Medio 2024-2028.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 142,
+    "municipio": "Puñal",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/445",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 60,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 9
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 143,
+    "municipio": "Sabana Iglesia",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21203",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 4
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 30,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 144,
+    "municipio": "San José de las Matas",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21104",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "evidenceCount": 6
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "24-10-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 145,
+    "municipio": "Tamboril",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21108",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 21
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 80,
+      "expiry": "05-10-2027",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 146,
+    "municipio": "Villa Bisonó / Navarrete",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21199",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 14
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 50,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639160083766535180-2.02_07-12_PLAN-MUNICIPAL-DE-DESARROLLO-BISONO-2026-.pdf",
+      "pdfTitle": "2.02_07-12_PLAN MUNICIPAL DE DESARROLLO BISONO 2026 .pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 147,
+    "municipio": "Villa González",
+    "provincia": "Santiago",
+    "region": "Cibao Norte",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21110",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 25
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638802344531165916-2.02_07-12_Plan-Municipal-de-Desarrollo-(PMD)-Villa-Gonzalez-2025.pdf",
+      "pdfTitle": "2.02_07-12_Plan Municipal de Desarrollo (PMD) Villa Gonzalez 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 148,
+    "municipio": "San Ignacio de Sabaneta",
+    "provincia": "Santiago Rodríguez",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21116",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 149,
+    "municipio": "Monción",
+    "provincia": "Santiago Rodríguez",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21118",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 150,
+    "municipio": "Villa Los Almácigos",
+    "provincia": "Santiago Rodríguez",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/447",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-07-2026",
+      "validity": "Vencido",
+      "evidenceCount": 16
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-07-2028",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 151,
+    "municipio": "Santo Domingo Este",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21167",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-05-2026",
+      "validity": "Vencido",
+      "evidenceCount": 24
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "2015–2025",
+      "pdfUrl": "https://ayuntamientosde.gob.do/transparencia/wp-content/uploads/2018/01/Plan-Municipal-de-Desarrollo-SDE-2015-2025.pdf",
+      "pdfTitle": "",
+      "documentCount": 3,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 152,
+    "municipio": "Santo Domingo Norte",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21170",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 13
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639047665888524154-2.02_8-12_Resolucion-Y-Plan-Municipal-de-Desarrollo-2024-2028_SDN-aprobado-por-el-Consejo.pdf",
+      "pdfTitle": "2.02_8-12_Resolucion Y Plan Municipal de Desarrollo 2024-2028_SDN aprobado por el Consejo.pdf",
+      "documentCount": 2,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 153,
+    "municipio": "Santo Domingo Oeste",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21169",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "En proceso",
+      "level": "progress",
+      "score": 50,
+      "expiry": "05-07-2026",
+      "validity": "Vencido",
+      "evidenceCount": 10
+    },
+    "pmd": {
+      "label": "En elaboración",
+      "level": "progress",
+      "score": 20,
+      "expiry": "05-07-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 154,
+    "municipio": "Boca Chica",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21172",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 17
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 40,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639056162461276785-2.02_7-12_Borrador-Plan-Municipal-de-Desarrollo-Boca-Chica_2026.pdf",
+      "pdfTitle": "2.02_7-12_Borrador Plan Municipal de Desarrollo Boca Chica_2026.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 155,
+    "municipio": "Los Alcarrizos",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21176",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Institucionalizado",
+      "level": "complete",
+      "score": 100,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 28
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 100,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "2025–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638883415188306513-2.02_7-12_BORRADOR-PMD-ALCARRIZOS-2025-2028..pdf",
+      "pdfTitle": "2.02_7-12_BORRADOR PMD ALCARRIZOS 2025-2028..pdf",
+      "documentCount": 4,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": true,
+      "hasCurrent": true
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 156,
+    "municipio": "Pedro Brand",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21179",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "Vencido",
+      "evidenceCount": 1
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-04-2026",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  },
+  {
+    "id": 157,
+    "municipio": "San Antonio de Guerra",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21174",
+    "ompp": {
+      "label": "Establecida + técnico",
+      "level": "complete",
+      "evidenceCount": 2
+    },
+    "cdm": {
+      "label": "Reglamento elaborado",
+      "level": "complete",
+      "score": 95,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 23
+    },
+    "pmd": {
+      "label": "Borrador disponible",
+      "level": "progress",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "Período por confirmar",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639135758257510290-2.02_7-12_Borrador-PMD-San-Antonio-de-Gerra-Borrador_2026.pdf",
+      "pdfTitle": "2.02_7-12_Borrador PMD San Antonio de Gerra Borrador_2026.pdf",
+      "documentCount": 1,
+      "hasDraft": true,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "continuar",
+    "actionLabel": "Continuar elaboración",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 158,
+    "municipio": "La Caleta",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "No disponible en SISMAP",
+      "level": "unknown",
+      "score": null,
+      "expiry": "",
+      "validity": "",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": null,
+      "expiry": "",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "No disponible"
+  },
+  {
+    "id": 159,
+    "municipio": "La Victoria",
+    "provincia": "Santo Domingo",
+    "region": "Ozama",
+    "sismapUrl": "",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "No disponible en SISMAP",
+      "level": "unknown",
+      "score": null,
+      "expiry": "",
+      "validity": "",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": null,
+      "expiry": "",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "No disponible"
+  },
+  {
+    "id": 160,
+    "municipio": "Mao",
+    "provincia": "Valverde",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/21119",
+    "ompp": {
+      "label": "Responsable designado",
+      "level": "progress",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Constituido",
+      "level": "complete",
+      "score": 88,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 15
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/638974284001181368-2.02_08-12_Plan-Municipal-de-Desarrollo-2024-2028-Mao-2025.pdf",
+      "pdfTitle": "2.02_08-12_Plan Municipal de Desarrollo 2024-2028 Mao 2025.pdf",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 161,
+    "municipio": "Esperanza",
+    "provincia": "Valverde",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/450",
+    "ompp": {
+      "label": "OMPP establecida",
+      "level": "complete",
+      "evidenceCount": 1
+    },
+    "cdm": {
+      "label": "Reglamento elaborado",
+      "level": "complete",
+      "score": 90,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "evidenceCount": 15
+    },
+    "pmd": {
+      "label": "Aprobado / publicado",
+      "level": "complete",
+      "score": 40,
+      "expiry": "05-10-2026",
+      "validity": "",
+      "period": "2024–2028",
+      "pdfUrl": "https://www.sismap.gob.do/Municipal/uploads/evidencias/639063102210794923-2.02_08-12_PLAN-MUNICIPAL-DE-DESARROLLO-2024-2028--ESPERANZA-2026.pdf",
+      "pdfTitle": "2.02_08-12_PLAN MUNICIPAL DE DESARROLLO 2024-2028  ESPERANZA-2026.pdf",
+      "documentCount": 1,
+      "hasDraft": false,
+      "hasFormalBody": true,
+      "hasHistorical": false,
+      "hasCurrent": true
+    },
+    "action": "ver",
+    "actionLabel": "Ver PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "Verificada con PDF"
+  },
+  {
+    "id": 162,
+    "municipio": "Laguna Salada",
+    "provincia": "Valverde",
+    "region": "Cibao Noroeste",
+    "sismapUrl": "https://www.sismap.gob.do/Municipal/OrganismoEvidenciasMunicipales/id/451",
+    "ompp": {
+      "label": "No confirmada",
+      "level": "unknown",
+      "evidenceCount": 0
+    },
+    "cdm": {
+      "label": "Sin iniciar",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "Vencido",
+      "evidenceCount": 0
+    },
+    "pmd": {
+      "label": "Sin PMD confirmado",
+      "level": "none",
+      "score": 0,
+      "expiry": "05-07-2025",
+      "validity": "",
+      "period": "",
+      "pdfUrl": "",
+      "pdfTitle": "",
+      "documentCount": 0,
+      "hasDraft": false,
+      "hasFormalBody": false,
+      "hasHistorical": false,
+      "hasCurrent": false
+    },
+    "action": "elaborar",
+    "actionLabel": "Elaborar Borrador del PMD",
+    "checkedAt": "2026-07-27",
+    "dataQuality": "SISMAP verificado"
+  }
+]
