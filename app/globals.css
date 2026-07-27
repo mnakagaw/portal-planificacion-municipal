@@ -178,10 +178,10 @@ select,
 .layer-switcher button.layer-all .layer-dot,
 .layer-all-dot {
   background: conic-gradient(
-    #12805c 0 25%,
-    #2968c8 25% 50%,
-    #7452b8 50% 75%,
-    #c66b24 75% 100%
+    #347c6c 0 25%,
+    #5878a3 25% 50%,
+    #806d91 50% 75%,
+    #b48150 75% 100%
   );
 }
 
@@ -424,7 +424,7 @@ select,
 }
 
 .detail-heading > span {
-  color: #12805c;
+  color: #347c6c;
   font-size: 9px;
   font-weight: 750;
   letter-spacing: 0.08em;
@@ -535,11 +535,11 @@ select,
 }
 
 .document-action.action-official {
-  background: #12805c;
+  background: #347c6c;
 }
 
 .document-action.action-draft {
-  background: #2968c8;
+  background: #5878a3;
 }
 
 .document-action:disabled {
@@ -550,7 +550,7 @@ select,
 }
 
 .sismap-link {
-  color: #315e51;
+  color: #347c6c;
   display: inline-block;
   font-size: 9px;
   margin-top: 16px;
@@ -577,9 +577,9 @@ select,
 
 .empty-detail > span {
   align-items: center;
-  background: #e8f2ee;
+  background: #e9f2ef;
   border-radius: 50%;
-  color: #12805c;
+  color: #347c6c;
   display: flex;
   font-size: 23px;
   height: 48px;
