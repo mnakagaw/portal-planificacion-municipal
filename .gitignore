@@ -44,3 +44,5 @@ next-env.d.ts
 /work/
 /tmp/
 /site-package*.tar.gz
+__pycache__/
+*.pyc

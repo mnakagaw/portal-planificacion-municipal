@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 async function render() {
@@ -122,4 +122,42 @@ test("maps all 162 municipalities, including the four former districts", async (
     assert.equal(mappedNames.has(name), true, `${name} is missing from the map`);
   }
   assert.ok(rawGeojson.length < 2_000_000, "map GeoJSON should remain lightweight");
+});
+
+test("publishes one traceable Word draft for each of the 104 target municipalities", async () => {
+  const [rawData, rawManifest] = await Promise.all([
+    readFile(new URL("../app/data/municipios.json", import.meta.url), "utf8"),
+    readFile(
+      new URL("../public/data/generated-pmd-drafts.json", import.meta.url),
+      "utf8",
+    ),
+  ]);
+  const data = JSON.parse(rawData);
+  const manifest = JSON.parse(rawManifest);
+  const generated = data.filter((item) => item.pmd.generatedDraftUrl);
+
+  assert.equal(generated.length, 104);
+  assert.equal(manifest.generated_count, 104);
+  assert.equal(manifest.municipalities.length, 104);
+  assert.equal(
+    generated.filter(
+      (item) =>
+        item.pmd.hasOfficialEvidence ||
+        item.pmd.has7_12 ||
+        item.pmd.hasDraft,
+    ).length,
+    0,
+  );
+
+  await Promise.all(
+    generated.map(async (item) => {
+      assert.match(
+        item.pmd.generatedDraftUrl,
+        /^downloads\/pmd-borradores\/.+\.docx$/,
+      );
+      const fileUrl = new URL(`../public/${item.pmd.generatedDraftUrl}`, import.meta.url);
+      const details = await stat(fileUrl);
+      assert.ok(details.size > 30_000, `${item.municipio} draft is unexpectedly small`);
+    }),
+  );
 });

@@ -40,6 +40,9 @@ type Municipality = {
     hasOfficialEvidence: boolean;
     officialUrl: string;
     officialReason: string;
+    generatedDraftUrl?: string;
+    generatedDraftPeriod?: string;
+    generatedDraftGeneratedAt?: string;
   };
   checkedAt: string;
 };
@@ -232,6 +235,7 @@ function documentInfo(item: Municipality) {
         note: "PMD completo no identificado en los archivos disponibles",
         url: item.sismapUrl,
         tone: "official",
+        download: false,
       };
     }
     return {
@@ -239,6 +243,7 @@ function documentInfo(item: Municipality) {
       note: item.pmd.period || "Período por confirmar",
       url: item.pmd.officialUrl,
       tone: "official",
+      download: false,
     };
   }
   if (item.pmd.has7_12 || item.pmd.hasDraft) {
@@ -247,6 +252,16 @@ function documentInfo(item: Municipality) {
       note: "Documento de trabajo para revisión",
       url: item.pmd.pdfUrl || item.sismapUrl,
       tone: "draft",
+      download: false,
+    };
+  }
+  if (item.pmd.generatedDraftUrl) {
+    return {
+      label: "Descargar borrador Word",
+      note: `Borrador técnico ${item.pmd.generatedDraftPeriod || "2025-2028"} · editable`,
+      url: item.pmd.generatedDraftUrl,
+      tone: "draft",
+      download: true,
     };
   }
   return {
@@ -254,6 +269,7 @@ function documentInfo(item: Municipality) {
     note: "Se publicará aquí cuando esté listo",
     url: "",
     tone: "pending",
+    download: false,
   };
 }
 
@@ -750,12 +766,15 @@ export function PortalApp() {
                 {selectedDocument?.url ? (
                   <a
                     href={selectedDocument.url}
-                    target="_blank"
-                    rel="noreferrer"
+                    target={selectedDocument.download ? undefined : "_blank"}
+                    rel={selectedDocument.download ? undefined : "noreferrer"}
+                    download={selectedDocument.download || undefined}
                     className={`document-action action-${selectedDocument.tone}`}
                   >
                     {selectedDocument.label}
-                    <span aria-hidden="true">↗</span>
+                    <span aria-hidden="true">
+                      {selectedDocument.download ? "↓" : "↗"}
+                    </span>
                   </a>
                 ) : (
                   <button className="document-action" disabled>
@@ -792,7 +811,8 @@ export function PortalApp() {
       <footer>
         <p>
           La condición de PMD oficial y la vigencia del período se revisan por
-          separado. Los borradores Word se incorporarán de forma progresiva.
+          separado. Los municipios sin documento oficial o borrador SISMAP
+          disponen de un borrador técnico Word para revisión local.
         </p>
         <span>Fuente de estado: SISMAP Municipal</span>
       </footer>
