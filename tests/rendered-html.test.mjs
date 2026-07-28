@@ -96,6 +96,9 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /type="checkbox"/);
   assert.match(source, /viewBox=\{mapViewBox\}/);
   assert.match(source, /function boundsToViewBox/);
+  assert.match(source, /https:\/\/es\.wikipedia\.org\/w\/api\.php/);
+  assert.match(source, /href=\{wikipediaUrl\}/);
+  assert.match(source, /Ver municipio en Wikipedia/);
 });
 
 test("keeps the map palette aligned with the color specification", async () => {

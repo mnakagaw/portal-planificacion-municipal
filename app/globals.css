@@ -722,16 +722,27 @@ select,
   justify-content: center;
 }
 
-.sismap-link {
-  color: #286a50;
-  display: inline-block;
-  font-size: 9px;
+.external-links {
+  display: grid;
+  gap: 8px;
   margin-top: 16px;
+}
+
+.external-link {
+  align-items: center;
+  color: #286a50;
+  display: flex;
+  font-size: 9px;
+  justify-content: space-between;
   text-decoration: none;
 }
 
-.sismap-link:hover {
+.external-link:hover {
   text-decoration: underline;
+}
+
+.wikipedia-link {
+  font-weight: 700;
 }
 
 .checked-date {

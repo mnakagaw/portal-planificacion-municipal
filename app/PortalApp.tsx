@@ -84,6 +84,8 @@ type MapBounds = {
   maxY: number;
 };
 
+type WikipediaOpenSearchResponse = [string, string[], string[], string[]];
+
 const municipalities = municipalitiesData as Municipality[];
 
 const regionOrder = [
@@ -166,6 +168,15 @@ const municipalityAliases: Record<string, string> = {
   santodomingodeguzman: "distritonacional",
   santiagodeloscaballeros: "santiago",
   villabisononavarrete: "bisono",
+};
+
+const wikipediaSearchAliases: Record<string, string> = {
+  azuadecompostela: "Azua",
+  concepciondelavega: "La Vega",
+  sanfelipedepuertoplata: "Puerto Plata",
+  santabarbaradesamana: "Samaná",
+  santodomingodeguzman: "Santo Domingo",
+  villabisononavarrete: "Villa Bisonó",
 };
 
 function cleanName(value: string) {
@@ -502,6 +513,8 @@ export function PortalApp() {
   const [activeLayer, setActiveLayer] = useState<MapLayer>("all");
   const [mapShapes, setMapShapes] = useState<MapShape[]>([]);
   const [mapError, setMapError] = useState(false);
+  const [wikipediaUrl, setWikipediaUrl] = useState("");
+  const wikipediaCache = useRef(new Map<number, string>());
 
   const municipalityLookup = useMemo(
     () =>
@@ -543,6 +556,61 @@ export function PortalApp() {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    setWikipediaUrl("");
+
+    if (!selected) return () => undefined;
+
+    const cachedUrl = wikipediaCache.current.get(selected.id);
+    if (cachedUrl) {
+      setWikipediaUrl(cachedUrl);
+      return () => undefined;
+    }
+
+    const articleName =
+      wikipediaSearchAliases[cleanName(selected.municipio)] ??
+      selected.municipio;
+    const queries = [`${articleName} República Dominicana`, articleName];
+
+    const findDirectUrl = async () => {
+      for (const query of queries) {
+        const params = new URLSearchParams({
+          action: "opensearch",
+          search: query,
+          limit: "5",
+          namespace: "0",
+          format: "json",
+          origin: "*",
+        });
+        const response = await fetch(
+          `https://es.wikipedia.org/w/api.php?${params}`,
+        );
+        if (!response.ok) continue;
+        const result = (await response.json()) as WikipediaOpenSearchResponse;
+        const directUrl = result[3].find((url) =>
+          url.startsWith("https://es.wikipedia.org/wiki/"),
+        );
+        if (directUrl) return directUrl;
+      }
+      return "";
+    };
+
+    findDirectUrl()
+      .then((directUrl) => {
+        if (!active) return;
+        if (directUrl) wikipediaCache.current.set(selected.id, directUrl);
+        setWikipediaUrl(directUrl);
+      })
+      .catch(() => {
+        if (active) setWikipediaUrl("");
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [selected]);
 
   const regions = useMemo(
     () =>
@@ -1012,14 +1080,28 @@ export function PortalApp() {
                 )}
               </section>
 
-              <a
-                className="sismap-link"
-                href={selected.sismapUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Ver evidencias en SISMAP
-              </a>
+              <div className="external-links">
+                {wikipediaUrl && (
+                  <a
+                    className="external-link wikipedia-link"
+                    href={wikipediaUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Ver municipio en Wikipedia
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+                <a
+                  className="external-link sismap-link"
+                  href={selected.sismapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ver evidencias en SISMAP
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
               <p className="checked-date">
                 Verificado: {selected.checkedAt || "fecha no disponible"}
               </p>
