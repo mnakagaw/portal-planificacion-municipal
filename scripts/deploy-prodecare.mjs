@@ -42,7 +42,9 @@ try {
     throw new Error(`La carpeta FTP resuelta no coincide: ${resolvedRemoteRoot}`);
   }
 
-  await client.clearWorkingDir();
+  if (process.env.FTP_PRESERVE_EXISTING !== "true") {
+    await client.clearWorkingDir();
+  }
   await client.uploadFromDir(buildDirectory);
   console.log(`Publicado en ${resolvedRemoteRoot}`);
 } finally {
