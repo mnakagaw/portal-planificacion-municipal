@@ -85,10 +85,14 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /function matchesLayer/);
   assert.match(source, /function overviewLayer/);
   assert.match(source, /Fuente SISMAP 2\.02/);
-  assert.match(source, /setRegion\(item\.region\)/);
+  assert.match(source, /setSelectedRegions\(\[item\.region\]\)/);
   assert.match(source, /setProvince\(item\.provincia\)/);
   assert.match(source, /onClick=\{\(\) => item && chooseMunicipality\(item\)\}/);
   assert.match(source, /import\.meta\.env\.BASE_URL.*data\/adm2\.geojson/);
+  assert.match(source, /function RegionMultiSelect/);
+  assert.match(source, /type="checkbox"/);
+  assert.match(source, /viewBox=\{mapViewBox\}/);
+  assert.match(source, /function boundsToViewBox/);
 });
 
 test("keeps the map palette aligned with the color specification", async () => {

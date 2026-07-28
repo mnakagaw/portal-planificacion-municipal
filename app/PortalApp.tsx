@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import municipalitiesData from "./data/municipios.json";
 
 type Level = "complete" | "progress" | "warning" | "none" | "unknown";
@@ -74,6 +74,14 @@ type MapShape = {
   municipalityKey: string;
   name: string;
   path: string;
+  bounds: MapBounds;
+};
+
+type MapBounds = {
+  minX: number;
+  minY: number;
+  maxX: number;
+  maxY: number;
 };
 
 const municipalities = municipalitiesData as Municipality[];
@@ -257,6 +265,57 @@ function geometryToPath(geometry: GeoGeometry) {
   return polygons.flatMap((polygon) => polygon.map(ringToPath)).join(" ");
 }
 
+function geometryBounds(geometry: GeoGeometry): MapBounds {
+  const polygons =
+    geometry.type === "Polygon"
+      ? [geometry.coordinates as number[][][]]
+      : (geometry.coordinates as number[][][][]);
+  const bounds: MapBounds = {
+    minX: Number.POSITIVE_INFINITY,
+    minY: Number.POSITIVE_INFINITY,
+    maxX: Number.NEGATIVE_INFINITY,
+    maxY: Number.NEGATIVE_INFINITY,
+  };
+
+  for (const polygon of polygons) {
+    for (const ring of polygon) {
+      for (const point of ring) {
+        const [x, y] = projectPoint(point);
+        bounds.minX = Math.min(bounds.minX, x);
+        bounds.minY = Math.min(bounds.minY, y);
+        bounds.maxX = Math.max(bounds.maxX, x);
+        bounds.maxY = Math.max(bounds.maxY, y);
+      }
+    }
+  }
+
+  return bounds;
+}
+
+function boundsToViewBox(bounds: MapBounds) {
+  const mapRatio = 1000 / 670;
+  const horizontalPadding = Math.max((bounds.maxX - bounds.minX) * 0.08, 18);
+  const verticalPadding = Math.max((bounds.maxY - bounds.minY) * 0.08, 18);
+  let minX = bounds.minX - horizontalPadding;
+  let minY = bounds.minY - verticalPadding;
+  let width = bounds.maxX - bounds.minX + horizontalPadding * 2;
+  let height = bounds.maxY - bounds.minY + verticalPadding * 2;
+
+  if (width / height < mapRatio) {
+    const expandedWidth = height * mapRatio;
+    minX -= (expandedWidth - width) / 2;
+    width = expandedWidth;
+  } else {
+    const expandedHeight = width / mapRatio;
+    minY -= (expandedHeight - height) / 2;
+    height = expandedHeight;
+  }
+
+  return [minX, minY, width, height]
+    .map((value) => value.toFixed(2))
+    .join(" ");
+}
+
 function documentInfo(item: Municipality) {
   if (item.pmd.hasOfficialEvidence) {
     if (!item.pmd.officialUrl) {
@@ -355,8 +414,88 @@ function StatusItem({
   );
 }
 
+function RegionMultiSelect({
+  regions,
+  selectedRegions,
+  onChange,
+}: {
+  regions: string[];
+  selectedRegions: string[];
+  onChange: (regions: string[]) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  const label =
+    selectedRegions.length === 0
+      ? "Todas las regiones"
+      : selectedRegions.length === 1
+        ? selectedRegions[0]
+        : `${selectedRegions.length} regiones seleccionadas`;
+
+  const toggleRegion = (region: string, checked: boolean) => {
+    const next = checked
+      ? [...selectedRegions, region]
+      : selectedRegions.filter((item) => item !== region);
+    onChange(regions.filter((item) => next.includes(item)));
+  };
+
+  return (
+    <div className="region-multiselect" ref={rootRef}>
+      <button
+        type="button"
+        className="region-multiselect-button"
+        aria-expanded={open}
+        aria-haspopup="true"
+        onClick={() => setOpen((current) => !current)}
+      >
+        <span>{label}</span>
+        <span aria-hidden="true">⌄</span>
+      </button>
+      {open && (
+        <div className="region-multiselect-menu" role="group" aria-label="Regiones">
+          <label className="region-option region-option-all">
+            <input
+              type="checkbox"
+              checked={selectedRegions.length === 0}
+              onChange={() => onChange([])}
+            />
+            <span>Todas las regiones</span>
+          </label>
+          {regions.map((region) => (
+            <label className="region-option" key={region}>
+              <input
+                type="checkbox"
+                checked={selectedRegions.includes(region)}
+                onChange={(event) => toggleRegion(region, event.target.checked)}
+              />
+              <span>{region}</span>
+            </label>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function PortalApp() {
-  const [region, setRegion] = useState("Todas");
+  const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
   const [province, setProvince] = useState("Todas");
   const [selected, setSelected] = useState<Municipality | null>(null);
   const [hovered, setHovered] = useState<Municipality | null>(null);
@@ -393,6 +532,7 @@ export function PortalApp() {
             ),
             name: feature.properties.municipio,
             path: geometryToPath(feature.geometry),
+            bounds: geometryBounds(feature.geometry),
           })),
         );
       })
@@ -405,35 +545,36 @@ export function PortalApp() {
   }, []);
 
   const regions = useMemo(
-    () => [
-      "Todas",
-      ...regionOrder.filter((name) =>
+    () =>
+      regionOrder.filter((name) =>
         municipalities.some((item) => item.region === name),
       ),
-    ],
     [],
   );
 
   const provinces = useMemo(() => {
     const items =
-      region === "Todas"
+      selectedRegions.length === 0
         ? municipalities
-        : municipalities.filter((item) => item.region === region);
+        : municipalities.filter((item) => selectedRegions.includes(item.region));
     return [
       "Todas",
       ...Array.from(new Set(items.map((item) => item.provincia))).sort((a, b) =>
         a.localeCompare(b, "es"),
       ),
     ];
-  }, [region]);
+  }, [selectedRegions]);
 
   const municipalityOptions = useMemo(
     () =>
       municipalities
-        .filter((item) => region === "Todas" || item.region === region)
+        .filter(
+          (item) =>
+            selectedRegions.length === 0 || selectedRegions.includes(item.region),
+        )
         .filter((item) => province === "Todas" || item.provincia === province)
         .sort((a, b) => a.municipio.localeCompare(b.municipio, "es")),
-    [province, region],
+    [province, selectedRegions],
   );
 
   const filteredIds = useMemo(
@@ -455,6 +596,52 @@ export function PortalApp() {
     (item) => !mappedIds.has(item.id),
   ).length;
 
+  const mapViewBox = useMemo(() => {
+    let viewportRegions = selected ? [selected.region] : selectedRegions;
+
+    if (!selected && province !== "Todas") {
+      viewportRegions = Array.from(
+        new Set(
+          municipalities
+            .filter((item) => item.provincia === province)
+            .map((item) => item.region),
+        ),
+      );
+    }
+
+    if (viewportRegions.length === 0) return "0 0 1000 670";
+
+    const regionSet = new Set(viewportRegions);
+    const targetShapes = mapShapes.filter((shape) => {
+      const item = municipalityLookup.get(shape.municipalityKey);
+      return item ? regionSet.has(item.region) : false;
+    });
+    if (targetShapes.length === 0) return "0 0 1000 670";
+
+    const bounds = targetShapes.reduce<MapBounds>(
+      (combined, shape) => ({
+        minX: Math.min(combined.minX, shape.bounds.minX),
+        minY: Math.min(combined.minY, shape.bounds.minY),
+        maxX: Math.max(combined.maxX, shape.bounds.maxX),
+        maxY: Math.max(combined.maxY, shape.bounds.maxY),
+      }),
+      {
+        minX: Number.POSITIVE_INFINITY,
+        minY: Number.POSITIVE_INFINITY,
+        maxX: Number.NEGATIVE_INFINITY,
+        maxY: Number.NEGATIVE_INFINITY,
+      },
+    );
+
+    return boundsToViewBox(bounds);
+  }, [
+    mapShapes,
+    municipalityLookup,
+    province,
+    selected,
+    selectedRegions,
+  ]);
+
   const layerCounts = useMemo(
     () =>
       Object.fromEntries(
@@ -471,7 +658,7 @@ export function PortalApp() {
   const selectedDocument = selected ? documentInfo(selected) : null;
 
   const chooseMunicipality = (item: Municipality) => {
-    setRegion(item.region);
+    setSelectedRegions([item.region]);
     setProvince(item.provincia);
     setSelected(item);
   };
@@ -536,23 +723,18 @@ export function PortalApp() {
       </section>
 
       <section className="selection-bar" aria-label="Selección territorial">
-        <label>
+        <div className="selection-control">
           <span>Región</span>
-          <select
-            value={region}
-            onChange={(event) => {
-              setRegion(event.target.value);
+          <RegionMultiSelect
+            regions={regions}
+            selectedRegions={selectedRegions}
+            onChange={(regions) => {
+              setSelectedRegions(regions);
               setProvince("Todas");
               setSelected(null);
             }}
-          >
-            {regions.map((item) => (
-              <option key={item} value={item}>
-                {item}
-              </option>
-            ))}
-          </select>
-        </label>
+          />
+        </div>
 
         <span className="selection-arrow" aria-hidden="true">
           →
@@ -633,7 +815,7 @@ export function PortalApp() {
             ) : (
               <svg
                 className="dominican-map"
-                viewBox="0 0 1000 670"
+                viewBox={mapViewBox}
                 role="img"
                 aria-label="Mapa de municipios de la República Dominicana"
               >
