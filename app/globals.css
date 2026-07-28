@@ -740,6 +740,12 @@ select,
   text-decoration: underline;
 }
 
+.municipal-site-link {
+  color: #31453f;
+  font-size: 9px;
+  font-weight: 600;
+}
+
 .sismap-link {
   font-size: 10px;
   font-weight: 700;

@@ -43,13 +43,26 @@ test("server-renders the municipal portal", async () => {
 });
 
 test("keeps the four status definitions aligned with the source data", async () => {
-  const [source, rawData] = await Promise.all([
+  const [source, rawData, rawLinks] = await Promise.all([
     readFile(new URL("../app/PortalApp.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/data/municipios.json", import.meta.url), "utf8"),
+    readFile(
+      new URL("../app/data/municipal-links.json", import.meta.url),
+      "utf8",
+    ),
   ]);
   const data = JSON.parse(rawData);
+  const links = JSON.parse(rawLinks);
 
   assert.equal(data.length, 162);
+  assert.equal(links.length, 162);
+  assert.equal(new Set(links.map((item) => item.id)).size, 162);
+  assert.equal(
+    links.filter(
+      (item) => item.officialWebsiteUrl && item.wikipediaUrl,
+    ).length,
+    162,
+  );
   assert.equal(data.filter((item) => item.pmd.hasOfficialEvidence).length, 42);
   assert.equal(
     data.filter(
@@ -96,9 +109,15 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /type="checkbox"/);
   assert.match(source, /viewBox=\{mapViewBox\}/);
   assert.match(source, /function boundsToViewBox/);
-  assert.match(source, /https:\/\/es\.wikipedia\.org\/w\/api\.php/);
-  assert.match(source, /href=\{wikipediaUrl\}/);
+  assert.match(source, /import municipalLinksData/);
+  assert.match(source, /href=\{selectedLinks\.officialWebsiteUrl\}/);
+  assert.match(source, /Sitio web oficial del municipio/);
+  assert.match(source, /href=\{selectedLinks\.wikipediaUrl\}/);
   assert.match(source, /Ver municipio en Wikipedia/);
+  assert.match(
+    source,
+    /className="external-links"[\s\S]*?Sitio web oficial del municipio[\s\S]*?Ver evidencias en SISMAP[\s\S]*?Ver municipio en Wikipedia/,
+  );
 });
 
 test("keeps the map palette aligned with the color specification", async () => {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import municipalLinksData from "./data/municipal-links.json";
 import municipalitiesData from "./data/municipios.json";
 
 type Level = "complete" | "progress" | "warning" | "none" | "unknown";
@@ -50,6 +51,12 @@ type Municipality = {
   checkedAt: string;
 };
 
+type MunicipalLink = {
+  id: number;
+  officialWebsiteUrl: string;
+  wikipediaUrl: string;
+};
+
 type GeoGeometry = {
   type: "Polygon" | "MultiPolygon";
   coordinates: number[][][] | number[][][][];
@@ -84,9 +91,11 @@ type MapBounds = {
   maxY: number;
 };
 
-type WikipediaOpenSearchResponse = [string, string[], string[], string[]];
-
 const municipalities = municipalitiesData as Municipality[];
+const municipalLinks = municipalLinksData as MunicipalLink[];
+const municipalLinksLookup = new Map(
+  municipalLinks.map((item) => [item.id, item]),
+);
 
 const regionOrder = [
   "Cibao Noroeste",
@@ -168,15 +177,6 @@ const municipalityAliases: Record<string, string> = {
   santodomingodeguzman: "distritonacional",
   santiagodeloscaballeros: "santiago",
   villabisononavarrete: "bisono",
-};
-
-const wikipediaSearchAliases: Record<string, string> = {
-  azuadecompostela: "Azua",
-  concepciondelavega: "La Vega",
-  sanfelipedepuertoplata: "Puerto Plata",
-  santabarbaradesamana: "Samaná",
-  santodomingodeguzman: "Santo Domingo",
-  villabisononavarrete: "Villa Bisonó",
 };
 
 function cleanName(value: string) {
@@ -513,12 +513,6 @@ export function PortalApp() {
   const [activeLayer, setActiveLayer] = useState<MapLayer>("all");
   const [mapShapes, setMapShapes] = useState<MapShape[]>([]);
   const [mapError, setMapError] = useState(false);
-  const [wikipediaResult, setWikipediaResult] = useState<{
-    municipalityId: number;
-    url: string;
-  } | null>(null);
-  const wikipediaCache = useRef(new Map<number, string>());
-
   const municipalityLookup = useMemo(
     () =>
       new Map(
@@ -559,69 +553,6 @@ export function PortalApp() {
       active = false;
     };
   }, []);
-
-  useEffect(() => {
-    let active = true;
-
-    if (!selected) return () => undefined;
-
-    const selectedId = selected.id;
-    const cachedUrl = wikipediaCache.current.get(selected.id);
-    if (cachedUrl) {
-      Promise.resolve(cachedUrl).then((url) => {
-        if (active) {
-          setWikipediaResult({ municipalityId: selectedId, url });
-        }
-      });
-      return () => {
-        active = false;
-      };
-    }
-
-    const articleName =
-      wikipediaSearchAliases[cleanName(selected.municipio)] ??
-      selected.municipio;
-    const queries = [`${articleName} República Dominicana`, articleName];
-
-    const findDirectUrl = async () => {
-      for (const query of queries) {
-        const params = new URLSearchParams({
-          action: "opensearch",
-          search: query,
-          limit: "5",
-          namespace: "0",
-          format: "json",
-          origin: "*",
-        });
-        const response = await fetch(
-          `https://es.wikipedia.org/w/api.php?${params}`,
-        );
-        if (!response.ok) continue;
-        const result = (await response.json()) as WikipediaOpenSearchResponse;
-        const directUrl = result[3].find((url) =>
-          url.startsWith("https://es.wikipedia.org/wiki/"),
-        );
-        if (directUrl) return directUrl;
-      }
-      return "";
-    };
-
-    findDirectUrl()
-      .then((directUrl) => {
-        if (!active) return;
-        if (directUrl) wikipediaCache.current.set(selectedId, directUrl);
-        setWikipediaResult({ municipalityId: selectedId, url: directUrl });
-      })
-      .catch(() => {
-        if (active) {
-          setWikipediaResult({ municipalityId: selectedId, url: "" });
-        }
-      });
-
-    return () => {
-      active = false;
-    };
-  }, [selected]);
 
   const regions = useMemo(
     () =>
@@ -735,11 +666,9 @@ export function PortalApp() {
   const displayMunicipality = hovered ?? selected;
   const activeMeta = layerMeta[activeLayer];
   const selectedDocument = selected ? documentInfo(selected) : null;
-  const wikipediaUrl = selected
-    ? wikipediaResult?.municipalityId === selected.id
-      ? wikipediaResult.url
-      : ""
-    : "";
+  const selectedLinks = selected
+    ? municipalLinksLookup.get(selected.id)
+    : undefined;
 
   const chooseMunicipality = (item: Municipality) => {
     setSelectedRegions([item.region]);
@@ -1097,6 +1026,17 @@ export function PortalApp() {
               </section>
 
               <div className="external-links">
+                {selectedLinks?.officialWebsiteUrl && (
+                  <a
+                    className="external-link municipal-site-link"
+                    href={selectedLinks.officialWebsiteUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Sitio web oficial del municipio
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
                 <a
                   className="external-link sismap-link"
                   href={selected.sismapUrl}
@@ -1106,10 +1046,10 @@ export function PortalApp() {
                   Ver evidencias en SISMAP
                   <span aria-hidden="true">↗</span>
                 </a>
-                {wikipediaUrl && (
+                {selectedLinks?.wikipediaUrl && (
                   <a
                     className="external-link wikipedia-link"
-                    href={wikipediaUrl}
+                    href={selectedLinks.wikipediaUrl}
                     target="_blank"
                     rel="noreferrer"
                   >

@@ -1,0 +1,812 @@
+[
+  {
+    "id": 1,
+    "officialWebsiteUrl": "https://adn.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Santo_Domingo"
+  },
+  {
+    "id": 2,
+    "officialWebsiteUrl": "https://ayuntamientoazua.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Azua"
+  },
+  {
+    "id": 3,
+    "officialWebsiteUrl": "https://ayuntamientoestebania.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Esteban%C3%ADa"
+  },
+  {
+    "id": 4,
+    "officialWebsiteUrl": "https://ayuntamientoguayabal.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Guayabal_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 5,
+    "officialWebsiteUrl": "https://ayuntamientolascharcas.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Las_Charcas"
+  },
+  {
+    "id": 6,
+    "officialWebsiteUrl": "https://ayuntamientolasyayas.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Las_Yayas_de_Viajama"
+  },
+  {
+    "id": 7,
+    "officialWebsiteUrl": "https://ayuntamientopadrelascasas.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Padre_Las_Casas_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 8,
+    "officialWebsiteUrl": "https://ayuntamientoperalta.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Peralta_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 9,
+    "officialWebsiteUrl": "https://ayuntamientopuebloviejo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Pueblo_Viejo_(Azua)"
+  },
+  {
+    "id": 10,
+    "officialWebsiteUrl": "https://ayuntamientosabanayegua.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Sabana_Yegua"
+  },
+  {
+    "id": 11,
+    "officialWebsiteUrl": "https://ayuntamientotabaraarriba.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/T%C3%A1bara_Arriba"
+  },
+  {
+    "id": 12,
+    "officialWebsiteUrl": "https://ayuntamientoneiba.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Neiba"
+  },
+  {
+    "id": 13,
+    "officialWebsiteUrl": "https://ayuntamientogalvan.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Galv%C3%A1n_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 14,
+    "officialWebsiteUrl": "https://ayuntamientolosrios.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Los_R%C3%ADos_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 15,
+    "officialWebsiteUrl": "https://ayuntamientotamayo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Tamayo_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 16,
+    "officialWebsiteUrl": "https://ayuntamientovillajaragua.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Jaragua"
+  },
+  {
+    "id": 17,
+    "officialWebsiteUrl": "https://ayuntamientobarahona.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Barahona_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 18,
+    "officialWebsiteUrl": "https://ayuntamientocabral.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Cabral_(Barahona)"
+  },
+  {
+    "id": 19,
+    "officialWebsiteUrl": "https://ayuntamientoelpenon.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/El_Pe%C3%B1%C3%B3n_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 20,
+    "officialWebsiteUrl": "https://ayuntamientoenriquillo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Enriquillo_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 21,
+    "officialWebsiteUrl": "https://ayuntamientofundacion.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Fundaci%C3%B3n_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 22,
+    "officialWebsiteUrl": "https://ayuntamientojaquimeyes.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Jaquimeyes"
+  },
+  {
+    "id": 23,
+    "officialWebsiteUrl": "https://ayuntamientolacienaga.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/La_Ci%C3%A9naga_(Barahona)"
+  },
+  {
+    "id": 24,
+    "officialWebsiteUrl": "https://ayuntamientolassalinas.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Las_Salinas_(Barahona)"
+  },
+  {
+    "id": 25,
+    "officialWebsiteUrl": "https://ayuntamientoparaiso.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Para%C3%ADso_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 26,
+    "officialWebsiteUrl": "https://ayuntamientopolo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Polo_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 27,
+    "officialWebsiteUrl": "https://ayuntamientovicentenoble.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Vicente_Noble_(municipio)"
+  },
+  {
+    "id": 28,
+    "officialWebsiteUrl": "https://distritomunicipalvillacentral.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Central"
+  },
+  {
+    "id": 29,
+    "officialWebsiteUrl": "https://ayuntamientodajabon.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Dajab%C3%B3n"
+  },
+  {
+    "id": 30,
+    "officialWebsiteUrl": "https://ayuntamientoelpino.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/El_Pino_(Dajab%C3%B3n)"
+  },
+  {
+    "id": 31,
+    "officialWebsiteUrl": "https://ayuntamientolomadecabrera.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Loma_de_Cabrera"
+  },
+  {
+    "id": 32,
+    "officialWebsiteUrl": "https://ayuntamientopartido.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Partido_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 33,
+    "officialWebsiteUrl": "https://ayuntamientorestauracion.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Restauraci%C3%B3n_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 34,
+    "officialWebsiteUrl": "https://ayuntamientosfm.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Francisco_de_Macor%C3%ADs"
+  },
+  {
+    "id": 35,
+    "officialWebsiteUrl": "https://ayuntamientoarenoso.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Arenoso_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 36,
+    "officialWebsiteUrl": "https://ayuntamientocastillo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Castillo_(Duarte)"
+  },
+  {
+    "id": 37,
+    "officialWebsiteUrl": "https://ayuntamientohostos.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Eugenio_Mar%C3%ADa_de_Hostos_(municipio)"
+  },
+  {
+    "id": 38,
+    "officialWebsiteUrl": "https://ayuntamientolasguaranas.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Las_Gu%C3%A1ranas"
+  },
+  {
+    "id": 39,
+    "officialWebsiteUrl": "https://ayuntamientopimentel.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Pimentel_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 40,
+    "officialWebsiteUrl": "https://ayuntamientovillariva.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Riva"
+  },
+  {
+    "id": 41,
+    "officialWebsiteUrl": "https://ayuntamientocomendador.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Comendador_(municipio)"
+  },
+  {
+    "id": 42,
+    "officialWebsiteUrl": "https://ayuntamientobanica.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/B%C3%A1nica"
+  },
+  {
+    "id": 43,
+    "officialWebsiteUrl": "https://www.ayuntamientoelllano.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/El_Llano_(El%C3%ADas_Pi%C3%B1a)"
+  },
+  {
+    "id": 44,
+    "officialWebsiteUrl": "https://ayuntamientohondovalle.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Hondo_Valle"
+  },
+  {
+    "id": 45,
+    "officialWebsiteUrl": "https://ayuntamientojuansantiago.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Juan_Santiago_(El%C3%ADas_Pi%C3%B1a)"
+  },
+  {
+    "id": 46,
+    "officialWebsiteUrl": "https://ayuntamientopedrosantana.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Pedro_Santana_(municipio)"
+  },
+  {
+    "id": 47,
+    "officialWebsiteUrl": "https://ayuntamientoelseibo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/El_Seibo"
+  },
+  {
+    "id": 48,
+    "officialWebsiteUrl": "https://ayuntamientomiches.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Miches"
+  },
+  {
+    "id": 49,
+    "officialWebsiteUrl": "https://ayuntamientomoca.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Moca_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 50,
+    "officialWebsiteUrl": "https://ayuntamientocayetanogermosen.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Cayetano_Germos%C3%A9n"
+  },
+  {
+    "id": 51,
+    "officialWebsiteUrl": "https://ayuntamientogasparhernandez.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Gaspar_Hern%C3%A1ndez"
+  },
+  {
+    "id": 52,
+    "officialWebsiteUrl": "https://ayuntamientojamaoalnorte.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Jamao_Al_Norte"
+  },
+  {
+    "id": 53,
+    "officialWebsiteUrl": "https://ayuntamientosanvictor.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_V%C3%ADctor_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 54,
+    "officialWebsiteUrl": "https://ayuntamientohatomayor.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Hato_Mayor"
+  },
+  {
+    "id": 55,
+    "officialWebsiteUrl": "https://ayuntamientosabanadelamar.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Sabana_de_la_Mar"
+  },
+  {
+    "id": 56,
+    "officialWebsiteUrl": "https://ayuntamientoelvalle.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/El_Valle_(Hato_Mayor)"
+  },
+  {
+    "id": 57,
+    "officialWebsiteUrl": "https://ayuntamientosalcedo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Salcedo_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 58,
+    "officialWebsiteUrl": "https://ayuntamientotenares.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Tenares"
+  },
+  {
+    "id": 59,
+    "officialWebsiteUrl": "https://ayuntamientovillatapia.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Tapia"
+  },
+  {
+    "id": 60,
+    "officialWebsiteUrl": "https://ayuntamientojimani.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Jiman%C3%AD"
+  },
+  {
+    "id": 61,
+    "officialWebsiteUrl": "https://ayuntamientocristobal.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Crist%C3%B3bal_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 62,
+    "officialWebsiteUrl": "https://ayuntamientoduverge.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Duverg%C3%A9"
+  },
+  {
+    "id": 63,
+    "officialWebsiteUrl": "https://ayuntamientoladescubierta.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/La_Descubierta"
+  },
+  {
+    "id": 64,
+    "officialWebsiteUrl": "https://ayuntamientomella.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Mella_(Independencia)"
+  },
+  {
+    "id": 65,
+    "officialWebsiteUrl": "https://ayuntamientopostrerrio.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Postrer_R%C3%ADo"
+  },
+  {
+    "id": 66,
+    "officialWebsiteUrl": "https://ayuntamientohiguey.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Hig%C3%BCey"
+  },
+  {
+    "id": 67,
+    "officialWebsiteUrl": "https://ayuntamientoyuma.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Rafael_del_Yuma"
+  },
+  {
+    "id": 68,
+    "officialWebsiteUrl": "https://alcaldialaromana.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/La_Romana_(municipio)"
+  },
+  {
+    "id": 69,
+    "officialWebsiteUrl": "https://ayuntamientoguaymate.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Guaymate"
+  },
+  {
+    "id": 70,
+    "officialWebsiteUrl": "https://ayuntamientovillahermosa.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Hermosa_(La_Romana)"
+  },
+  {
+    "id": 71,
+    "officialWebsiteUrl": "https://ayuntamientolavega.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/La_Vega_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 72,
+    "officialWebsiteUrl": "https://ayuntamientoconstanza.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Constanza_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 73,
+    "officialWebsiteUrl": "https://ayuntamientojarabacoa.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Jarabacoa"
+  },
+  {
+    "id": 74,
+    "officialWebsiteUrl": "https://ayuntamientojimaabajo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Jima_Abajo"
+  },
+  {
+    "id": 75,
+    "officialWebsiteUrl": "https://juntadistritaldetireo.gob.do/",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/Tireo"
+  },
+  {
+    "id": 76,
+    "officialWebsiteUrl": "https://ayuntamientonagua.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Nagua"
+  },
+  {
+    "id": 77,
+    "officialWebsiteUrl": "https://ayuntamientocabrera.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Cabrera_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 78,
+    "officialWebsiteUrl": "https://ayuntamientoelfactor.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/El_Factor"
+  },
+  {
+    "id": 79,
+    "officialWebsiteUrl": "https://ayuntamientoriosanjuan.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/R%C3%ADo_San_Juan_(municipio)"
+  },
+  {
+    "id": 80,
+    "officialWebsiteUrl": "https://ayuntamientobonao.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Bonao"
+  },
+  {
+    "id": 81,
+    "officialWebsiteUrl": "https://ayuntamientomaimon.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Maim%C3%B3n"
+  },
+  {
+    "id": 82,
+    "officialWebsiteUrl": "https://ayuntamientopiedrablanca.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Piedra_Blanca_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 83,
+    "officialWebsiteUrl": "https://ayuntamientomontecristi.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Monte_Cristi_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 84,
+    "officialWebsiteUrl": "https://ayuntamientocastanuelas.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Casta%C3%B1uelas_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 85,
+    "officialWebsiteUrl": "https://ayuntamientoguayubin.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Guayub%C3%ADn"
+  },
+  {
+    "id": 86,
+    "officialWebsiteUrl": "https://ayuntamientolasmatasdesantacruz.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Las_Matas_de_Santa_Cruz"
+  },
+  {
+    "id": 87,
+    "officialWebsiteUrl": "https://ayuntamientopepillosalcedo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Pepillo_Salcedo"
+  },
+  {
+    "id": 88,
+    "officialWebsiteUrl": "https://ayuntamientovillavasquez.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_V%C3%A1squez"
+  },
+  {
+    "id": 89,
+    "officialWebsiteUrl": "https://ayuntamientomonteplata.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Monte_Plata"
+  },
+  {
+    "id": 90,
+    "officialWebsiteUrl": "https://ayuntamientobayaguana.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Bayaguana"
+  },
+  {
+    "id": 91,
+    "officialWebsiteUrl": "https://ayuntamientoperalvillo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Peralvillo"
+  },
+  {
+    "id": 92,
+    "officialWebsiteUrl": "https://ayuntamientosgb.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Sabana_Grande_de_Boy%C3%A1"
+  },
+  {
+    "id": 93,
+    "officialWebsiteUrl": "https://ayuntamientoyamasa.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Yamas%C3%A1"
+  },
+  {
+    "id": 94,
+    "officialWebsiteUrl": "https://ayuntamientopedernales.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Pedernales_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 95,
+    "officialWebsiteUrl": "https://ayuntamientooviedo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Oviedo_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 96,
+    "officialWebsiteUrl": "https://ayuntamientobani.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Ban%C3%AD"
+  },
+  {
+    "id": 97,
+    "officialWebsiteUrl": "https://ayuntamientomatanzas.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Matanzas_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 98,
+    "officialWebsiteUrl": "https://ayuntamientonizao.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Nizao"
+  },
+  {
+    "id": 99,
+    "officialWebsiteUrl": "https://ayuntamientopuertoplata.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Puerto_Plata"
+  },
+  {
+    "id": 100,
+    "officialWebsiteUrl": "https://ayuntamientoaltamira.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Altamira_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 101,
+    "officialWebsiteUrl": "https://ayuntamientoguananico.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Guananico"
+  },
+  {
+    "id": 102,
+    "officialWebsiteUrl": "https://ayuntamientoimbert.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Imbert_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 103,
+    "officialWebsiteUrl": "https://ayuntamientoloshidalgos.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Los_Hidalgos"
+  },
+  {
+    "id": 104,
+    "officialWebsiteUrl": "https://ayuntamientoluperon.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Luper%C3%B3n_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 105,
+    "officialWebsiteUrl": "https://ayuntamientososua.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Sos%C3%BAa"
+  },
+  {
+    "id": 106,
+    "officialWebsiteUrl": "https://ayuntamientovillaisabela.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Isabela_(Puerto_Plata)"
+  },
+  {
+    "id": 107,
+    "officialWebsiteUrl": "https://ayuntamientomontellano.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Montellano"
+  },
+  {
+    "id": 108,
+    "officialWebsiteUrl": "https://ayuntamientosamana.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Saman%C3%A1"
+  },
+  {
+    "id": 109,
+    "officialWebsiteUrl": "https://ayuntamientolasterrenas.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Las_Terrenas"
+  },
+  {
+    "id": 110,
+    "officialWebsiteUrl": "https://ayuntamientosanchez.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/S%C3%A1nchez_(municipio)"
+  },
+  {
+    "id": 111,
+    "officialWebsiteUrl": "https://ayuntamientosancristobal.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Crist%C3%B3bal_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 112,
+    "officialWebsiteUrl": "https://ayuntamientohaina.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Bajos_de_Haina"
+  },
+  {
+    "id": 113,
+    "officialWebsiteUrl": "https://ayuntamientocambita.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Cambita_Garabitos"
+  },
+  {
+    "id": 114,
+    "officialWebsiteUrl": "https://ayuntamientoloscacaos.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Los_Cacaos"
+  },
+  {
+    "id": 115,
+    "officialWebsiteUrl": "https://ayuntamientopalenque.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Sabana_Grande_de_Palenque"
+  },
+  {
+    "id": 116,
+    "officialWebsiteUrl": "https://ayuntamientonigua.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Gregorio_de_Nigua"
+  },
+  {
+    "id": 117,
+    "officialWebsiteUrl": "https://ayuntamientovillaaltagracia.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Altagracia"
+  },
+  {
+    "id": 118,
+    "officialWebsiteUrl": "https://ayuntamientoyaguate.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Yaguate"
+  },
+  {
+    "id": 119,
+    "officialWebsiteUrl": "https://ayuntamientoocoa.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Jos%C3%A9_de_Ocoa"
+  },
+  {
+    "id": 120,
+    "officialWebsiteUrl": "https://ayuntamientoranchoarriba.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Rancho_Arriba"
+  },
+  {
+    "id": 121,
+    "officialWebsiteUrl": "https://ayuntamientosabanalarga.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Sabana_Larga"
+  },
+  {
+    "id": 122,
+    "officialWebsiteUrl": "https://ayuntamientosanjuan.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Juan_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 123,
+    "officialWebsiteUrl": "https://ayuntamientobohechio.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Bohech%C3%ADo_(municipio)"
+  },
+  {
+    "id": 124,
+    "officialWebsiteUrl": "https://ayuntamientoelcercado.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/El_Cercado"
+  },
+  {
+    "id": 125,
+    "officialWebsiteUrl": "https://ayuntamientojuandeherrera.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Juan_de_Herrera_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 126,
+    "officialWebsiteUrl": "https://ayuntamientolasmatasdefarfan.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Las_Matas_de_Farf%C3%A1n"
+  },
+  {
+    "id": 127,
+    "officialWebsiteUrl": "https://ayuntamientovallejuelo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Vallejuelo_(San_Juan)"
+  },
+  {
+    "id": 128,
+    "officialWebsiteUrl": "https://ayuntamientosanpedro.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Pedro_de_Macor%C3%ADs"
+  },
+  {
+    "id": 129,
+    "officialWebsiteUrl": "https://ayuntamientoconsuelo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Consuelo_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 130,
+    "officialWebsiteUrl": "https://ayuntamientoguayacanes.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Guayacanes_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 131,
+    "officialWebsiteUrl": "https://ayuntamientoquisqueya.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Quisqueya_(municipio)"
+  },
+  {
+    "id": 132,
+    "officialWebsiteUrl": "https://ayuntamientoramonsantana.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Ram%C3%B3n_Santana_(municipio)"
+  },
+  {
+    "id": 133,
+    "officialWebsiteUrl": "https://ayuntamientolosllanos.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Los_Llanos_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 134,
+    "officialWebsiteUrl": "https://ayuntamientocotui.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Cotu%C3%AD"
+  },
+  {
+    "id": 135,
+    "officialWebsiteUrl": "https://ayuntamientocevicos.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Cevicos"
+  },
+  {
+    "id": 136,
+    "officialWebsiteUrl": "https://ayuntamientofantino.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Fantino_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 137,
+    "officialWebsiteUrl": "https://ayuntamientovillalamata.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/La_Mata_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 138,
+    "officialWebsiteUrl": "https://ayuntamientosantiago.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Santiago_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 139,
+    "officialWebsiteUrl": "https://ayuntamientobaitoa.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Baitoa"
+  },
+  {
+    "id": 140,
+    "officialWebsiteUrl": "https://ayuntamientojanico.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/J%C3%A1nico"
+  },
+  {
+    "id": 141,
+    "officialWebsiteUrl": "https://ayuntamientoliceyalmedio.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Licey_al_Medio"
+  },
+  {
+    "id": 142,
+    "officialWebsiteUrl": "https://ayuntamientopunal.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Pu%C3%B1al_(municipio)"
+  },
+  {
+    "id": 143,
+    "officialWebsiteUrl": "https://ayuntamientosabanaiglesia.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Sabana_Iglesia"
+  },
+  {
+    "id": 144,
+    "officialWebsiteUrl": "https://alcaldiasajoma.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Jos%C3%A9_de_las_Matas"
+  },
+  {
+    "id": 145,
+    "officialWebsiteUrl": "https://ayuntamientotamboril.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Tamboril_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 146,
+    "officialWebsiteUrl": "https://ayuntamientovillabisono.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Bison%C3%B3"
+  },
+  {
+    "id": 147,
+    "officialWebsiteUrl": "https://ayuntamientovillagonzalez.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Gonz%C3%A1lez"
+  },
+  {
+    "id": 148,
+    "officialWebsiteUrl": "https://ayuntamientosabaneta.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Ignacio_de_Sabaneta"
+  },
+  {
+    "id": 149,
+    "officialWebsiteUrl": "https://ayuntamientomoncion.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Monci%C3%B3n"
+  },
+  {
+    "id": 150,
+    "officialWebsiteUrl": "https://ayuntamientolosalmacigos.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Villa_Los_Alm%C3%A1cigos"
+  },
+  {
+    "id": 151,
+    "officialWebsiteUrl": "https://ayuntamientosde.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Santo_Domingo_Este"
+  },
+  {
+    "id": 152,
+    "officialWebsiteUrl": "https://alcaldiasdn.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Santo_Domingo_Norte"
+  },
+  {
+    "id": 153,
+    "officialWebsiteUrl": "https://ayuntamientosdo.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Santo_Domingo_Oeste"
+  },
+  {
+    "id": 154,
+    "officialWebsiteUrl": "https://ayuntamientobocachica.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Boca_Chica"
+  },
+  {
+    "id": 155,
+    "officialWebsiteUrl": "https://ayuntamientolosalcarrizos.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Los_Alcarrizos"
+  },
+  {
+    "id": 156,
+    "officialWebsiteUrl": "https://ayuntamientopedrobrand.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Pedro_Brand"
+  },
+  {
+    "id": 157,
+    "officialWebsiteUrl": "https://ayuntamientodeguerra.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/San_Antonio_de_Guerra"
+  },
+  {
+    "id": 158,
+    "officialWebsiteUrl": "https://distritomunicipallacaleta.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/La_Caleta_(Boca_Chica)"
+  },
+  {
+    "id": 159,
+    "officialWebsiteUrl": "https://juntalavictoria.gob.do/",
+    "wikipediaUrl": "https://en.wikipedia.org/wiki/La_Victoria%2C_Dominican_Republic"
+  },
+  {
+    "id": 160,
+    "officialWebsiteUrl": "https://ayuntamientomao.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Mao_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 161,
+    "officialWebsiteUrl": "https://ayuntamientoesperanza.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Esperanza_(Rep%C3%BAblica_Dominicana)"
+  },
+  {
+    "id": 162,
+    "officialWebsiteUrl": "https://ayuntamientolagunasalada.gob.do/",
+    "wikipediaUrl": "https://es.wikipedia.org/wiki/Laguna_Salada"
+  }
+]
