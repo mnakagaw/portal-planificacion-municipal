@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Generate substantive, source-traceable PMD draft DOCX files.
+"""Generate source-traceable PMD documents for final municipal review.
 
-This is the second-generation builder for the Paquete Mínimo. It turns the
+This is the third-generation builder for the Paquete Mínimo. It turns the
 territorial dashboard into a five-page visual diagnostic and adds municipal
 narrative based only on:
 
@@ -10,7 +10,8 @@ narrative based only on:
 * Spanish Wikipedia as an explicitly secondary source.
 
 Información General and Diagnóstico are written as near-final technical text.
-FODA, vision and projects remain proposals for OMPP/CDM validation. The script
+Strengths and weaknesses are derived only from the diagnosis. Vision and the
+action plan are left to the CDM, with one clearly marked example row. The script
 does not invent meetings, participation, approvals, budgets, beneficiaries,
 authorities or execution status.
 """
@@ -62,10 +63,21 @@ spec.loader.exec_module(base)
 
 PERIOD = "2025-2028"
 TODAY = date(2026, 7, 28)
-USER_AGENT = "DDPT-PMD-Draft-Builder/2.0 (municipal planning research)"
+USER_AGENT = "DDPT-PMD-Builder/3.0 (municipal planning research)"
 
 WIKIPEDIA_TITLE_OVERRIDES = {
     base.territory_key("Salcedo", "Hermanas Mirabal"): "Salcedo (República Dominicana)",
+}
+
+# These municipalities were created from former municipal districts after the
+# statistical and PMD sources used by the portal were produced. Documents from
+# the predecessor district are territorial antecedents, not historical PMDs of
+# the new municipality.
+NEW_MUNICIPALITIES = {
+    base.territory_key("Villa Central", "Barahona"),
+    base.territory_key("Tireo", "La Vega"),
+    base.territory_key("La Caleta", "Santo Domingo"),
+    base.territory_key("La Victoria", "Santo Domingo"),
 }
 
 COLORS = {
@@ -120,6 +132,7 @@ SERVICE_LABELS = {
     },
     "alumbrado": {
         "energia_electrica_del_tendido_publico": "Red pública",
+        "energia_eletrica_del_tendido_publico": "Red pública",
         "lampara_de_gas_propano": "Lámpara de gas",
         "lampara_de_gas_kerosene": "Lámpara de kerosene",
         "energia_electrica_de_planta_propia": "Planta propia",
@@ -352,12 +365,20 @@ def service_share(living: dict[str, Any] | None, service: str, category: str) ->
     if not living:
         return None
     item = living.get("servicios", {}).get(service, {})
-    return pct(item.get("categorias", {}).get(category), item.get("total"))
+    categories = item.get("categorias", {})
+    value = categories.get(category)
+    if value is None and category == "energia_electrica_del_tendido_publico":
+        value = categories.get("energia_eletrica_del_tendido_publico")
+    return pct(value, item.get("total"))
 
 
 def national_service_share(national: dict[str, Any], service: str, category: str) -> float | None:
     item = national.get(service, {})
-    return pct(item.get("categorias", {}).get(category), item.get("total"))
+    categories = item.get("categorias", {})
+    value = categories.get(category)
+    if value is None and category == "energia_electrica_del_tendido_publico":
+        value = categories.get("energia_eletrica_del_tendido_publico")
+    return pct(value, item.get("total"))
 
 
 def group_index(rows: list[dict[str, Any]], field: str = "adm2_code") -> dict[str, list[dict[str, Any]]]:
@@ -529,6 +550,7 @@ def generate_dashboard_pages(
     national: dict[str, Any],
     geojson: dict[str, Any],
     asset_dir: Path,
+    reuse_existing_rest: bool = False,
 ) -> list[Path]:
     asset_dir.mkdir(parents=True, exist_ok=True)
     name = municipality["municipio"]
@@ -546,6 +568,49 @@ def generate_dashboard_pages(
     economy = data.get("economy") or {}
     tic = data.get("tic") or {}
     health = data.get("health") or {}
+
+    if not basic:
+        gap_pages = [
+            ("Diagnóstico municipal · Población y hogares", "Censo 2010 y 2022"),
+            ("Diagnóstico municipal · Condición de vida y servicios básicos", "Hogares · Censo 2022"),
+            ("Diagnóstico municipal · Educación", "Censo 2022 y Anuario 2024"),
+            ("Diagnóstico municipal · Economía y empleo", "DEE 2024"),
+            ("Diagnóstico municipal · Salud y comparación", "Registros disponibles"),
+        ]
+        for index, (title, source_label) in enumerate(gap_pages):
+            fig = new_dashboard_page(title, name, source_label)
+            content = add_card(
+                fig,
+                (0.10, 0.25, 0.80, 0.55),
+                "Ficha municipal separada aún no disponible",
+                accent="#7B8794",
+                face="#F7F9F8",
+            )
+            fig.text(
+                content[0] + 0.03,
+                content[1] + content[3] * 0.58,
+                "El Dashboard no dispone de datos estadísticos\n"
+                "correspondientes exactamente al nuevo ámbito municipal.",
+                fontsize=15,
+                weight="bold",
+                color="#203740",
+                va="center",
+            )
+            fig.text(
+                content[0] + 0.03,
+                content[1] + content[3] * 0.34,
+                "No se trasladan cifras del municipio de origen ni promedios\n"
+                "provinciales como si fueran datos propios.",
+                fontsize=10,
+                color="#5E7076",
+                va="center",
+            )
+            finish_dashboard_page(
+                fig,
+                pages[index],
+                "Fuente: verificación de cobertura del Dashboard de Diagnóstico Territorial, 2026.",
+            )
+        return pages
 
     # Page 1: demography and households
     fig = new_dashboard_page("Diagnóstico municipal · Población y hogares", name, "Censo 2022")
@@ -586,21 +651,20 @@ def generate_dashboard_pages(
             ("Viviendas desocupadas", fmt_number(basic.get("viviendas_desocupadas"))),
         ],
     )
-    size_rect = add_card(fig, (0.505, 0.12, 0.44, 0.35), "Tamaño de los hogares", accent="#2F6CC6")
-    ax = fig.add_axes(size_rect, zorder=2)
-    if household_size:
-        labels = [str(row.get("miembros", "")) for row in household_size]
-        values = [float(row.get("hogares", 0) or 0) for row in household_size]
-        ax.bar(labels, values, color="#3B82F6")
-        ax.grid(axis="y", color="#DCE3E5", linewidth=0.5)
-        ax.tick_params(axis="both", labelsize=6)
-        ax.set_ylabel("Hogares", fontsize=6)
-        for side in ax.spines.values():
-            side.set_visible(False)
-    else:
-        ax.text(0.5, 0.5, "Datos no disponibles", ha="center", va="center", color="#75868B")
-        ax.axis("off")
-    finish_dashboard_page(fig, pages[0], "Fuente: X Censo Nacional de Población y Vivienda 2022, ONE.")
+    pyramid_2010_rect = add_card(
+        fig,
+        (0.505, 0.12, 0.44, 0.35),
+        "Pirámide de población 2010",
+        accent="#7B8794",
+    )
+    draw_pyramid(fig.add_axes(pyramid_2010_rect, zorder=2), pyramid2010, "")
+    finish_dashboard_page(
+        fig,
+        pages[0],
+        "Fuente: IX y X Censos Nacionales de Población y Vivienda 2010 y 2022, ONE.",
+    )
+    if reuse_existing_rest and all(path.exists() for path in pages[1:]):
+        return pages
 
     # Page 2: living conditions
     fig = new_dashboard_page("Diagnóstico municipal · Condición de vida y servicios básicos", name, "Hogares · Censo 2022")
@@ -707,9 +771,9 @@ def generate_dashboard_pages(
     econ_cards = [
         ("Establecimientos", fmt_number(dee.get("total_establishments"))),
         ("Empleo estimado", fmt_number(dee.get("total_employees"), 1)),
-        ("Promedio por establecimiento", fmt_number(dee.get("avg_employees_per_establishment"), 1)),
+        ("Empleo medio", fmt_number(dee.get("avg_employees_per_establishment"), 1)),
         (
-            "Establecimientos / 1,000 hab.",
+            "Estab. / 1,000 hab.",
             fmt_number(
                 (float(dee.get("total_establishments")) * 1000 / float(basic.get("poblacion_total")))
                 if dee.get("total_establishments") is not None and basic.get("poblacion_total")
@@ -1079,7 +1143,7 @@ def configure_document(doc: Document, municipality: str, province: str, code: st
     for cell in header_table.row_cells(0):
         set_cell_margins(cell, top=0, start=0, bottom=0, end=0)
     left = header_table.cell(0, 0).paragraphs[0]
-    add_run(left, "PLAN MUNICIPAL DE DESARROLLO · BORRADOR TÉCNICO", bold=True, color=COLORS["teal"], size=7.5)
+    add_run(left, "PLAN MUNICIPAL DE DESARROLLO", bold=True, color=COLORS["teal"], size=7.5)
     right = header_table.cell(0, 1).paragraphs[0]
     right.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     add_run(right, f"{municipality} · {code or 'código por confirmar'}", color=COLORS["muted"], size=7.5)
@@ -1088,8 +1152,6 @@ def configure_document(doc: Document, municipality: str, province: str, code: st
     paragraph = footer.paragraphs[0]
     paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
     add_run(paragraph, f"{municipality}, {province} · PMD {PERIOD} · ", color=COLORS["muted"], size=7.5)
-    add_run(paragraph, "Borrador no aprobado", bold=True, color=COLORS["warn"], size=7.5)
-    add_run(paragraph, " · ", color=COLORS["muted"], size=7.5)
     field = OxmlElement("w:fldSimple")
     field.set(qn("w:instr"), "PAGE")
     paragraph._p.append(field)
@@ -1133,6 +1195,7 @@ def write_general_information(
     data: dict[str, Any],
     wikipedia: dict[str, Any],
     historical: list[dict[str, Any]],
+    territorial_antecedents: list[dict[str, Any]],
     historical_context: dict[str, Any],
     area_km2: float | None,
 ) -> None:
@@ -1146,12 +1209,60 @@ def write_general_information(
     density = float(population) / float(area_km2) if population and area_km2 else None
 
     doc.add_heading("1. Información general", level=1)
+    doc.add_heading("1.1 Equipo de elaboración y participación del CDM", level=2)
     paragraph(
         doc,
-        f"{name} forma parte de la provincia {province} y se integra en la región de planificación {region}. "
-        f"El código geográfico utilizado en este borrador es {code or 'pendiente de confirmación'}. "
-        "Esta identificación territorial sirve como clave de enlace entre el Portal de Planificación Municipal, "
-        "el Dashboard de Diagnóstico Territorial y los documentos de planificación archivados. [GEO-01]",
+        "La elaboración y gestión del PMD se organiza por responsabilidades institucionales. "
+        "Esta forma de presentación mantiene claras las funciones durante todo el período del plan, "
+        "aun cuando cambien las personas que ocupan los cargos. La representación comunitaria y "
+        "sectorial se canaliza mediante el Consejo de Desarrollo Municipal (CDM), conforme a la Ley núm. 176-07.",
+    )
+    add_data_table(
+        doc,
+        ["Instancia", "Responsabilidad en el PMD"],
+        [
+            ["Alcaldía", "Conducir políticamente el proceso, articular instituciones y presentar la programación anual vinculada al plan."],
+            ["Concejo de Regidores", "Conocer, deliberar, aprobar y fiscalizar los instrumentos, presupuestos y ordenanzas que correspondan."],
+            ["Oficina Municipal de Planificación y Programación (OMPP)", "Coordinar el diagnóstico, la formulación, la programación, los indicadores y los informes de avance."],
+            ["Consejo de Desarrollo Municipal (CDM)", "Participar en la elaboración, discusión y seguimiento del plan; canalizar prioridades territoriales y sectoriales."],
+            ["Áreas técnicas municipales", "Aportar información y ejecutar acciones dentro de sus competencias."],
+            ["Representación social y económica", "Aportar conocimiento local, contrastar prioridades y acompañar el seguimiento mediante el CDM."],
+        ],
+        [2900, 6460],
+    )
+    add_source_note(
+        doc,
+        "Ley núm. 176-07 del Distrito Nacional y los Municipios, arts. 123–125; "
+        "MEPyD, Guía para la formulación de planes de desarrollo municipales, pp. 21–22.",
+    )
+
+    doc.add_heading("1.2 Introducción y ¿qué es un PMD?", level=2)
+    paragraph(
+        doc,
+        "El Plan Municipal de Desarrollo (PMD) es el instrumento que orienta las decisiones del "
+        "ayuntamiento durante un período de cuatro años. Organiza una visión compartida del territorio, "
+        "identifica sus condiciones y necesidades, define objetivos y convierte las prioridades en "
+        "acciones que puedan relacionarse con el presupuesto, la gestión de servicios y la coordinación con el Gobierno central.",
+    )
+    paragraph(
+        doc,
+        "El PMD no sustituye el presupuesto ni los planes operativos anuales: los articula. Cuando una "
+        "necesidad corresponde a agua potable, salud, educación, carreteras u otra institución sectorial, "
+        "el plan puede incorporarla como agenda de gestión y coordinación, con resultados e indicadores verificables.",
+    )
+    add_source_note(
+        doc,
+        "MEPyD, Guía para la formulación de planes de desarrollo municipales, pp. 19–21 y 46–49; "
+        "Ley núm. 176-07, arts. 122–125.",
+    )
+
+    doc.add_heading("1.3 Identidad territorial, historia y configuración municipal", level=2)
+    paragraph(
+        doc,
+        f"{name} forma parte de la provincia {province} y de la región de planificación {region}. "
+        f"El código geográfico empleado es {code or 'pendiente de confirmación'}. "
+        "La identificación territorial enlaza el clasificador geográfico, la cartografía, el Dashboard "
+        "de Diagnóstico Territorial y las fuentes documentales. [GEO-01]",
     )
     add_data_table(
         doc,
@@ -1160,22 +1271,26 @@ def write_general_information(
             ["Municipio", name, "Portal municipal · 2026"],
             ["Provincia", province, "Portal municipal · 2026"],
             ["Región", region, "Clasificador geográfico"],
-            ["Código geográfico", code or "Por confirmar", "Clasificador DIGEPRES"],
+            ["Código geográfico", code or "Por confirmar", "Clasificador geográfico"],
             ["Superficie cartográfica", f"{fmt_number(area_km2, 1)} km²" if area_km2 else "No disponible", "GeoJSON municipal"],
             ["Densidad estimada", f"{fmt_number(density, 1)} hab./km²" if density else "No disponible", "Censo 2022 + GeoJSON"],
         ],
         [2600, 3000, 3760],
     )
 
-    doc.add_heading("1.1 Origen y formación del municipio", level=2)
     history_written = False
     if historical_context.get("history"):
         history_sentences = sentences(historical_context["history"])[:5]
         if history_sentences:
+            context_label = (
+                "El plan del antiguo distrito municipal, utilizado únicamente como antecedente territorial, "
+                if not historical and territorial_antecedents
+                else f"El PMD anterior del período {historical_context.get('history_period', 'no identificado')} "
+            )
             paragraph(
                 doc,
-                f"El PMD anterior del período {historical_context.get('history_period', 'no identificado')} "
-                "recoge los siguientes antecedentes sobre la formación del municipio. "
+                context_label
+                + "recoge los siguientes antecedentes sobre la formación del territorio. "
                 + " ".join(history_sentences)
                 + f" [PMD-ANT, págs. {historical_context.get('history_pages')}]",
             )
@@ -1212,15 +1327,14 @@ def write_general_information(
             "identificar un texto verificable. La OMPP debe completar este apartado con la norma de creación, "
             "el archivo municipal o una publicación histórica institucional.",
         )
-    add_callout(
+    add_source_note(
         doc,
-        "Revisión final requerida",
-        "Confirmar nombres propios, fechas, cambios de categoría territorial y norma de creación. "
-        "Wikipedia se usa solo como fuente secundaria; cuando existe PMD anterior, sus páginas se indican expresamente.",
-        warning=True,
+        "Wikipedia se utiliza como apoyo secundario para historia y geografía. Los documentos anteriores "
+        "se citan con período y páginas; para municipios nuevos, un plan del antiguo distrito no se presenta "
+        "como PMD histórico del municipio actual.",
     )
 
-    doc.add_heading("1.2 Perfil demográfico y del poblamiento", level=2)
+    doc.add_heading("1.4 Perfil municipal en cifras", level=2)
     if population:
         male = basic.get("poblacion_hombres")
         female = basic.get("poblacion_mujeres")
@@ -1261,7 +1375,7 @@ def write_general_information(
             "una línea base oficial que corresponda exactamente al nuevo ámbito municipal.",
         )
 
-    doc.add_heading("1.3 Antecedentes de planificación", level=2)
+    doc.add_heading("1.5 Antecedentes de planificación", level=2)
     if historical:
         add_data_table(
             doc,
@@ -1287,10 +1401,83 @@ def write_general_information(
     else:
         paragraph(
             doc,
-            "No se localizó un PMD anterior en el inventario descargado. Esta ausencia en el repositorio "
-            "no demuestra que el documento no exista; la OMPP debe verificar archivo institucional, portal de transparencia "
-            "y documentación del Concejo de Regidores.",
+            "No se localizó un PMD anterior del municipio actual en el inventario descargado. "
+            "Esta ausencia en el repositorio no demuestra que el documento no exista.",
         )
+    if territorial_antecedents:
+        add_data_table(
+            doc,
+            ["Antecedente territorial", "Período", "Alcance correcto", "Uso en este documento"],
+            [
+                [
+                    f"Plan del antiguo Distrito Municipal de {name}",
+                    f"{row.get('period_start')}-{row.get('period_end')}",
+                    "Documento anterior a la creación del municipio",
+                    "Historia y configuración territorial; no se cuenta como PMD del municipio actual",
+                ]
+                for row in sorted(
+                    territorial_antecedents,
+                    key=lambda item: item.get("period_end") or 0,
+                    reverse=True,
+                )
+            ],
+            [2800, 1200, 2500, 2860],
+        )
+
+    add_page_break(doc)
+    doc.add_heading("1.6 Marco jurídico", level=2)
+    paragraph(
+        doc,
+        "El PMD se formula dentro del sistema jurídico dominicano de planificación y gestión territorial. "
+        "Su aplicación exige coherencia entre el plan, el presupuesto municipal, los instrumentos de "
+        "ordenamiento, las competencias sectoriales y los mecanismos de participación y control social.",
+    )
+    add_data_table(
+        doc,
+        ["Norma", "Aplicación al Plan Municipal de Desarrollo"],
+        [
+            ["Constitución de la República Dominicana", "Reconoce la autonomía municipal y la planificación del desarrollo económico y social."],
+            ["Ley núm. 176-07 del Distrito Nacional y los Municipios", "Define finalidad, elaboración, participación del CDM, coordinación de la OMPP, aprobación, vigencia y seguimiento del PMD."],
+            ["Ley núm. 498-06 de Planificación e Inversión Pública", "Articula planificación, programación institucional e inversión pública."],
+            ["Ley núm. 1-12 de la Estrategia Nacional de Desarrollo 2030", "Aporta objetivos nacionales de largo plazo para las políticas territoriales."],
+            ["Ley núm. 368-22 de Ordenamiento Territorial, Uso de Suelo y Asentamientos Humanos", "Vincula los instrumentos municipales con el marco nacional de ordenamiento territorial."],
+            ["Ley núm. 64-00 de Medio Ambiente y Recursos Naturales", "Sustenta la protección ambiental y la gestión de recursos naturales."],
+            ["Ley núm. 147-02 sobre Gestión de Riesgos", "Integra prevención, reducción de riesgos y preparación ante emergencias."],
+            ["Ley núm. 225-20 de Gestión Integral y Coprocesamiento de Residuos Sólidos", "Orienta prevención, recolección, aprovechamiento y disposición final de residuos."],
+        ],
+        [3100, 6260],
+    )
+    paragraph(
+        doc,
+        "Conforme a los artículos 122 a 125 de la Ley núm. 176-07, la OMPP coordina la "
+        "formulación y evaluación del PMD y el CDM participa en su elaboración, discusión y seguimiento.",
+    )
+    add_source_note(
+        doc,
+        "Ley núm. 176-07, arts. 122–125; leyes núm. 498-06, 1-12, 368-22, 64-00, 147-02 y 225-20.",
+    )
+
+    add_page_break(doc)
+    doc.add_heading("1.7 Metodología", level=2)
+    paragraph(
+        doc,
+        "La elaboración sigue la Guía para la formulación de planes de desarrollo municipales "
+        "publicada por el Ministerio de Economía, Planificación y Desarrollo (MEPyD). "
+        "La guía organiza el proceso en cuatro etapas enlazadas:",
+    )
+    methodology = [
+        "Organización del proceso. Se conforma el equipo, se acuerdan responsabilidades entre Alcaldía, Concejo de Regidores, OMPP, áreas técnicas y CDM, y se prepara el plan de trabajo.",
+        "Diagnóstico municipal. Se reúnen y analizan datos estadísticos, cartografía, documentos municipales y conocimiento local. La evidencia permite describir fortalezas y debilidades para revisión del CDM.",
+        "Formulación estratégica. Con la participación del CDM se acuerdan visión, objetivos, resultados, líneas de acción, proyectos e indicadores.",
+        "Gestión de los instrumentos. El PMD aprobado se vincula con programación, presupuesto, ejecución, seguimiento, evaluación y rendición de cuentas.",
+    ]
+    for item in methodology:
+        doc.add_paragraph(item, style="List Number")
+    add_source_note(
+        doc,
+        "MEPyD, ¿Cómo elaborar un plan municipal de desarrollo? Guía para la formulación "
+        "de planes de desarrollo municipales, pp. 19–49; Ley núm. 176-07, arts. 123–125.",
+    )
 
 
 def write_diagnostic_narrative(
@@ -1535,12 +1722,21 @@ def write_diagnostic_narrative(
 
     doc.add_heading("2.6 Contexto territorial, ambiental y continuidad", level=2)
     if historical_context.get("history"):
-        paragraph(
-            doc,
-            "El PMD anterior aporta antecedentes históricos y territoriales útiles para comprender la formación del municipio. "
-            "Sin embargo, sus descripciones de infraestructura, ambiente, economía o gestión corresponden a otro período. "
-            "Antes de reutilizarlas, la OMPP debe clasificarlas como vigentes, modificadas o superadas y registrar la evidencia actual. [PMD-ANT]",
-        )
+        if historical_context.get("document_scope") == "predecessor_district":
+            paragraph(
+                doc,
+                "El plan del antiguo distrito municipal aporta antecedentes históricos y territoriales del ámbito "
+                "anterior a la creación del municipio. No se presenta como PMD histórico del municipio actual. "
+                "Sus descripciones corresponden a otro período y delimitación, por lo que cualquier reutilización "
+                "debe comprobarse con información del nuevo ámbito. [ANT-DM]",
+            )
+        else:
+            paragraph(
+                doc,
+                "El PMD anterior aporta antecedentes históricos y territoriales útiles para comprender la formación del municipio. "
+                "Sin embargo, sus descripciones de infraestructura, ambiente, economía o gestión corresponden a otro período. "
+                "Antes de reutilizarlas, la OMPP debe clasificarlas como vigentes, modificadas o superadas y registrar la evidencia actual. [PMD-ANT]",
+            )
     else:
         paragraph(
             doc,
@@ -1551,21 +1747,14 @@ def write_diagnostic_narrative(
     return findings
 
 
-def build_foda(data: dict[str, Any], national: dict[str, Any], findings: list[dict[str, str]]) -> dict[str, list[str]]:
+def build_strengths_weaknesses(
+    data: dict[str, Any],
+    national: dict[str, Any],
+) -> tuple[list[str], list[str]]:
     living = data.get("living") or {}
     tic = data.get("tic") or {}
-    economy = data.get("economy") or {}
-    education = data.get("education") or {}
     strengths: list[str] = []
     weaknesses: list[str] = []
-    opportunities = [
-        "Uso de la línea base del Dashboard para seguimiento anual y priorización territorial.",
-        "Coordinación con instituciones sectoriales cuando la competencia no sea exclusivamente municipal.",
-    ]
-    threats = [
-        "Decisiones basadas en promedios municipales que oculten diferencias entre barrios, secciones y parajes.",
-        "Desactualización de diagnósticos anteriores si no se verifican en campo y con registros administrativos.",
-    ]
 
     metrics = [
         (
@@ -1578,43 +1767,60 @@ def build_foda(data: dict[str, Any], national: dict[str, Any], findings: list[di
             service_share(living, "eliminacion_basura", "la_recoge_el_ayuntamiento"),
             national_service_share(national.get("living") or {}, "eliminacion_basura", "la_recoge_el_ayuntamiento"),
         ),
+        (
+            "Hogares con inodoro",
+            service_share(living, "servicios_sanitarios", "inodoro"),
+            national_service_share(national.get("living") or {}, "servicios_sanitarios", "inodoro"),
+        ),
+        (
+            "Electricidad de la red pública",
+            service_share(living, "alumbrado", "energia_electrica_del_tendido_publico"),
+            national_service_share(
+                national.get("living") or {},
+                "alumbrado",
+                "energia_electrica_del_tendido_publico",
+            ),
+        ),
     ]
     for label, local, country in metrics:
         if local is None or country is None:
             continue
-        text = f"{label}: {fmt_pct(local)} (país: {fmt_pct(country)})."
-        (strengths if local >= country else weaknesses).append(text)
+        delta = float(local) - float(country)
+        text = (
+            f"{label}: {fmt_pct(local)}; promedio nacional: {fmt_pct(country)} "
+            f"({delta:+.1f} puntos porcentuales)."
+        )
+        if delta >= 2:
+            strengths.append(text)
+        elif delta <= -2:
+            weaknesses.append(text)
 
     internet = ((tic.get("internet") or {}).get("rate_used"))
     national_internet = (((national.get("tic") or {}).get("internet") or {}).get("rate_used"))
     if internet is not None and national_internet is not None:
-        text = f"Uso de internet: {fmt_pct(float(internet) * 100)} (país: {fmt_pct(float(national_internet) * 100)})."
-        (strengths if internet >= national_internet else weaknesses).append(text)
-
-    dee = economy.get("dee_2024") or {}
-    if dee.get("total_establishments"):
-        strengths.append(
-            f"Base económica formal observable: {fmt_number(dee.get('total_establishments'))} establecimientos en el DEE 2024."
+        local_pct = float(internet) * 100
+        country_pct = float(national_internet) * 100
+        delta = local_pct - country_pct
+        text = (
+            f"Uso de internet: {fmt_pct(local_pct)}; promedio nacional: "
+            f"{fmt_pct(country_pct)} ({delta:+.1f} puntos porcentuales)."
         )
-    dropout = (((education.get("anuario") or {}).get("eficiencia") or {}).get("secundario") or {}).get("abandono")
-    if dropout is not None and float(dropout) >= 3:
-        weaknesses.append(f"Abandono secundario del distrito asociado: {fmt_pct(dropout)}.")
-    for finding in findings:
-        if len(weaknesses) >= 5:
-            break
-        candidate = finding.get("finding", "")
-        if candidate and candidate not in weaknesses:
-            weaknesses.append(candidate)
+        if delta >= 2:
+            strengths.append(text)
+        elif delta <= -2:
+            weaknesses.append(text)
+
     if not strengths:
-        strengths.append("Activos y capacidades locales pendientes de validación por la OMPP y el CDM.")
+        strengths.append(
+            "Las fuentes comparables disponibles no permiten clasificar una fortaleza cuantitativa "
+            "con una diferencia mínima de 2 puntos porcentuales frente al promedio nacional."
+        )
     if not weaknesses:
-        weaknesses.append("Brechas internas pendientes de localizar y verificar.")
-    return {
-        "Fortalezas": strengths[:5],
-        "Debilidades": weaknesses[:5],
-        "Oportunidades": opportunities,
-        "Amenazas": threats,
-    }
+        weaknesses.append(
+            "Las fuentes comparables disponibles no permiten clasificar una debilidad cuantitativa "
+            "con una diferencia mínima de 2 puntos porcentuales frente al promedio nacional."
+        )
+    return strengths[:6], weaknesses[:6]
 
 
 def project_proposals(findings: list[dict[str, str]]) -> list[list[str]]:
@@ -1674,7 +1880,7 @@ def add_dashboard_images(doc: Document, paths: list[Path], name: str) -> None:
         doc,
         ["Lámina", "Contenido", "Lectura esperada"],
         [
-            ["1", "Población, mapa, estructura por edad, hogares y viviendas", "Escala y composición demográfica"],
+            ["1", "Población, mapa, pirámides 2010/2022, hogares y viviendas", "Cambio y composición demográfica"],
             ["2", "Agua, saneamiento, alumbrado, combustible y residuos", "Coberturas declaradas por hogares"],
             ["3", "Oferta, nivel de instrucción, infraestructura y eficiencia educativa", "Capacidades y alertas educativas"],
             ["4", "Establecimientos, empleo, tamaño empresarial y sectores CIIU", "Estructura económica formal observada"],
@@ -1710,6 +1916,7 @@ def build_document(
     national: dict[str, Any],
     wikipedia: dict[str, Any],
     historical: list[dict[str, Any]],
+    territorial_antecedents: list[dict[str, Any]],
     historical_context: dict[str, Any],
     area_km2: float | None,
     dashboard_pages: list[Path],
@@ -1721,7 +1928,7 @@ def build_document(
     doc = Document()
     configure_document(doc, name, province, code)
 
-    # Editorial cover
+    # Cover
     spacer = doc.add_paragraph()
     spacer.paragraph_format.space_before = Pt(72)
     spacer.paragraph_format.space_after = Pt(0)
@@ -1741,66 +1948,65 @@ def build_document(
     province_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     province_p.paragraph_format.space_after = Pt(30)
     add_run(province_p, f"{province} · Región {region}", color=COLORS["muted"], size=12)
-    status = doc.add_paragraph()
-    status.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    status.paragraph_format.space_after = Pt(55)
-    add_run(status, f"BORRADOR TÉCNICO {PERIOD}", bold=True, color=COLORS["blue"], size=13)
-    cover_meta = doc.add_paragraph()
-    cover_meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    add_run(
-        cover_meta,
-        "Información General y Diagnóstico precompletados para revisión final\n"
-        "FODA, Visión y Proyectos sujetos a validación de OMPP y CDM",
-        italic=True,
-        color=COLORS["muted"],
-        size=10,
-    )
+    period_p = doc.add_paragraph()
+    period_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    period_p.paragraph_format.space_after = Pt(70)
+    add_run(period_p, PERIOD, bold=True, color=COLORS["blue"], size=16)
     date_p = doc.add_paragraph()
     date_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     date_p.paragraph_format.space_before = Pt(22)
-    add_run(date_p, f"Versión técnica · {TODAY.strftime('%d-%m-%Y')}", color=COLORS["muted"], size=9)
+    add_run(date_p, f"Código geográfico {code or 'por confirmar'}", color=COLORS["muted"], size=9)
 
     add_page_break(doc)
-    doc.add_heading("Estado y alcance del borrador", level=1)
-    add_callout(
-        doc,
-        "Qué está listo para revisión final",
-        "La identificación territorial, la reseña histórica disponible, la línea base demográfica y el diagnóstico "
-        "de servicios, educación, economía, salud y conectividad se presentan ya redactados. La OMPP debe comprobar "
-        "cifras, nombres, alcance territorial y cualquier actualización posterior al año de cada fuente.",
-    )
-    add_callout(
-        doc,
-        "Qué no se considera aprobado",
-        "El documento no acredita consulta ciudadana, reuniones, acuerdos del CDM, aprobación del Concejo de Regidores, "
-        "presupuestos, beneficiarios ni compromisos institucionales. FODA, visión y cartera de proyectos son propuestas "
-        "para discusión y deben modificarse o eliminarse si no son ratificadas.",
-        warning=True,
-    )
+    doc.add_heading("Contenido", level=1)
     add_data_table(
         doc,
-        ["Campo", "Valor"],
+        ["Parte", "Contenido"],
         [
-            ["Estado", "Borrador técnico no aprobado"],
-            ["Municipio / provincia", f"{name} / {province}"],
-            ["Región", region],
-            ["Período", PERIOD],
-            ["Código geográfico", code or "Por confirmar"],
-            ["Dashboard", "Disponible" if adm2_code else "Sin ficha municipal separada"],
-            ["Revisión mínima", "OMPP: datos y redacción · CDM: prioridades y estrategia"],
+            ["1", "Información general: equipo, introducción, identidad territorial, antecedentes, marco jurídico y metodología."],
+            ["2", "Diagnóstico municipal: población, vivienda, servicios, educación, salud, economía y territorio."],
+            ["3", "Fortalezas y debilidades basadas en el diagnóstico; situaciones que el CDM deberá priorizar."],
+            ["4", "Visión Municipal: espacio de decisión del CDM con un ejemplo de formato."],
+            ["5", "Plan de acción: ejemplo de registro para convertir los acuerdos del CDM en acciones verificables."],
         ],
-        [2600, 6760],
+        [900, 8460],
     )
-    doc.add_heading("Contenido", level=2)
-    contents = [
-        "1. Información general: territorio, historia, demografía y antecedentes de planificación.",
-        "2. Diagnóstico municipal: cinco láminas del Dashboard y análisis narrativo.",
-        "3. Síntesis diagnóstica y FODA preliminar.",
-        "4. Marco estratégico y proyectos para validación.",
-        "5. Protocolo de revisión, fuentes y trazabilidad.",
-    ]
-    for item in contents:
-        doc.add_paragraph(item, style="List Number")
+    doc.add_heading("Síntesis ejecutiva", level=1)
+    basic = data.get("basic") or {}
+    urban = data.get("urban_rural") or {}
+    if basic.get("poblacion_total"):
+        population = basic.get("poblacion_total")
+        variation = basic.get("variacion_pct")
+        direction = "aumentó" if float(variation or 0) >= 0 else "disminuyó"
+        paragraph(
+            doc,
+            f"{name}, municipio de la provincia {province}, registró {fmt_number(population)} habitantes "
+            f"en 2022. Entre 2010 y 2022 su población {direction} "
+            f"{fmt_pct(abs(float(variation)) if variation is not None else None)}. "
+            f"El {fmt_pct(pct(urban.get('urbana'), urban.get('poblacion_total')))} reside en área urbana y "
+            f"el {fmt_pct(pct(urban.get('rural'), urban.get('poblacion_total')))} en área rural. "
+            "Estas proporciones determinan la escala y la distribución territorial de los servicios municipales.",
+        )
+        living = data.get("living") or {}
+        water = service_share(living, "agua_uso_domestico", "del_acueducto_dentro_de_la_vivienda")
+        waste = service_share(living, "eliminacion_basura", "la_recoge_el_ayuntamiento")
+        burn = service_share(living, "eliminacion_basura", "la_queman")
+        internet = ((data.get("tic") or {}).get("internet") or {}).get("rate_used")
+        paragraph(
+            doc,
+            f"El diagnóstico registra {fmt_pct(water)} de hogares con agua del acueducto dentro de la vivienda, "
+            f"{fmt_pct(waste)} con recogida municipal de residuos y {fmt_pct(burn)} que los quema. "
+            f"El uso de internet alcanza {fmt_pct(float(internet) * 100 if internet is not None else None)}. "
+            "Los capítulos siguientes presentan las cifras, sus fuentes y sus límites antes de la priorización del CDM.",
+        )
+    else:
+        paragraph(
+            doc,
+            f"{name} es uno de los municipios incorporados recientemente al clasificador territorial. "
+            "Las fuentes estadísticas usadas por el Dashboard todavía no ofrecen una ficha separada para su ámbito actual. "
+            "Por esa razón, la información general utiliza únicamente antecedentes directamente identificados para el territorio "
+            "y el diagnóstico no traslada cifras del municipio de origen ni promedios provinciales como sustituto.",
+        )
 
     add_page_break(doc)
     write_general_information(
@@ -1810,13 +2016,15 @@ def build_document(
         data,
         wikipedia,
         historical,
+        territorial_antecedents,
         historical_context,
         area_km2,
     )
 
+    add_page_break(doc)
     add_dashboard_images(doc, dashboard_pages, name)
     add_page_break(doc)
-    doc.add_heading("Lectura narrativa del diagnóstico", level=1)
+    doc.add_heading("2. Diagnóstico municipal: lectura e interpretación", level=1)
     paragraph(
         doc,
         "La lectura siguiente explica qué muestran los indicadores y cuáles son sus límites. "
@@ -1824,134 +2032,146 @@ def build_document(
     )
     findings = write_diagnostic_narrative(doc, municipality, data, national, historical_context)
 
-    add_page_break(doc)
-    doc.add_heading("3. Síntesis diagnóstica", level=1)
+    doc.add_heading("3. Fortalezas y debilidades basadas en el diagnóstico", level=1)
     paragraph(
         doc,
-        "La síntesis organiza las principales señales cuantitativas para facilitar la revisión técnica. "
-        "No constituye una priorización ciudadana ni sustituye la validación territorial.",
+        "La clasificación siguiente utiliza únicamente indicadores comparables del diagnóstico. "
+        "Se considera diferencia relevante una separación de al menos dos puntos porcentuales frente al promedio nacional. "
+        "El crecimiento poblacional, el número absoluto de establecimientos y otros datos sin denominador comparable "
+        "no se clasifican automáticamente como fortalezas o debilidades.",
     )
-    add_data_table(
-        doc,
-        ["Tema", "Hallazgo verificable", "Implicación para revisar", "Fuente"],
-        [
-            [row["theme"], row["finding"], row["implication"], row["source"]]
-            for row in findings
-        ]
-        or [["Línea base", "Datos municipales por completar", "Completar fuente oficial", "OMPP"]],
-        [1700, 3000, 3100, 1560],
-    )
-
-    doc.add_heading("3.1 FODA preliminar", level=2)
-    foda = build_foda(data, national, findings)
-    add_callout(
-        doc,
-        "Condición de uso",
-        "Este FODA es una lectura técnica inicial. Solo debe pasar a la versión oficial después de que la OMPP "
-        "verifique los datos y el CDM confirme fortalezas, debilidades, oportunidades y amenazas.",
-        warning=True,
-    )
+    strengths, weaknesses = build_strengths_weaknesses(data, national)
     add_data_table(
         doc,
         ["Fortalezas observadas", "Debilidades observadas"],
         [
-            [
-                "\n".join(f"• {item}" for item in foda["Fortalezas"]),
-                "\n".join(f"• {item}" for item in foda["Debilidades"]),
-            ]
+            ["\n".join(f"• {item}" for item in strengths), "\n".join(f"• {item}" for item in weaknesses)]
         ],
         [4680, 4680],
     )
+    if adm2_code:
+        add_source_note(
+            doc,
+            "ONE, X Censo Nacional de Población y Vivienda 2022; comparación con los agregados nacionales "
+            "del Dashboard. La regla de ±2 puntos porcentuales se aplica de manera uniforme.",
+        )
+    else:
+        add_source_note(
+            doc,
+            "Verificación de cobertura del Dashboard, 2026. No se efectuó una clasificación "
+            "cuantitativa sin una ficha municipal separada.",
+        )
+    doc.add_heading("3.1 Situaciones del diagnóstico para priorización", level=2)
+    paragraph(
+        doc,
+        "Los hallazgos siguientes resumen situaciones verificables. No se les asigna orden de prioridad; "
+        "el CDM debe contrastarlos con la experiencia de barrios, comunidades y sectores.",
+    )
     add_data_table(
         doc,
-        ["Oportunidades por validar", "Amenazas por validar"],
+        ["Tema", "Situación observada", "Fuente"],
+        [
+            [row["theme"], row["finding"], row["source"]]
+            for row in findings
+        ]
+        or [["Línea base municipal", "La ficha estadística separada no está disponible.", "OMPP / ONE"]],
+        [2200, 5100, 2060],
+    )
+
+    doc.add_heading("4. Visión Municipal", level=1)
+    paragraph(
+        doc,
+        "La visión municipal, los objetivos y los resultados expresan acuerdos políticos y sociales. "
+        "Deben surgir de la participación del CDM y ser aprobados mediante el procedimiento municipal correspondiente. "
+        "La fila siguiente muestra únicamente el formato de registro.",
+    )
+    doc.add_heading("4.1 Ejemplo de registro de una visión y un objetivo", level=2)
+    add_data_table(
+        doc,
+        ["Carácter", "Visión / tema", "Objetivo / resultado"],
         [
             [
-                "\n".join(f"• {item}" for item in foda["Oportunidades"]),
-                "\n".join(f"• {item}" for item in foda["Amenazas"]),
+                "EJEMPLO DE FORMATO · NO APROBADO",
+                f"“En 2028, {name} avanza como un municipio que mejora de manera equitativa "
+                "sus servicios y protege los recursos de su territorio.”",
+                "Ejemplo: mejorar un servicio priorizado por el CDM, usando un indicador del diagnóstico "
+                "para fijar la línea base y medir el resultado.",
+            ],
+        ],
+        [2260, 3740, 3360],
+    )
+    add_source_note(
+        doc,
+        "MEPyD, Guía para la formulación de planes de desarrollo municipales, formulación estratégica, pp. 33–45.",
+    )
+
+    doc.add_heading("5. Plan de acción a acordar por el CDM", level=1)
+    paragraph(
+        doc,
+        "La fila siguiente sirve únicamente para mostrar cómo convertir un acuerdo futuro del CDM "
+        "en una acción con línea base, indicador y decisiones verificables.",
+    )
+    living = data.get("living") or {}
+    waste = service_share(living, "eliminacion_basura", "la_recoge_el_ayuntamiento")
+    burn = service_share(living, "eliminacion_basura", "la_queman")
+    if waste is not None or burn is not None:
+        example_action = "Mejoramiento de la gestión integral de residuos."
+        example_baseline = (
+            f"Línea base 2022: {fmt_pct(waste)} de hogares con recogida municipal "
+            f"y {fmt_pct(burn)} que quema residuos."
+        )
+    else:
+        example_action = "Levantamiento y validación de una línea base municipal priorizada."
+        example_baseline = "Línea base pendiente: utilizar una fuente oficial específica del nuevo ámbito municipal."
+    add_data_table(
+        doc,
+        ["Carácter", "Acción", "Línea base e indicador", "Decisiones que debe tomar el CDM"],
+        [
+            [
+                "EJEMPLO DE FORMATO · NO APROBADO",
+                example_action,
+                example_baseline,
+                "Alcance territorial, resultado, meta, plazo, responsables, costo, financiamiento y coordinación institucional.",
             ]
         ],
-        [4680, 4680],
+        [1920, 2320, 2520, 2600],
+    )
+    add_source_note(
+        doc,
+        "ONE, Censo 2022 cuando existe ficha municipal; MEPyD, Guía para la formulación "
+        "de planes de desarrollo municipales, pp. 33–49.",
     )
 
     add_page_break(doc)
-    doc.add_heading("4. Marco estratégico para validación", level=1)
-    paragraph(
-        doc,
-        "La visión municipal no se completa automáticamente. Debe expresar una situación futura compartida y "
-        "ser acordada por las instancias municipales correspondientes. Se propone la siguiente estructura de trabajo:",
-    )
-    add_data_table(
-        doc,
-        ["Componente", "Base propuesta", "Decisión requerida"],
-        [
-            ["Visión municipal", "Redactar en una frase el municipio deseado al cierre del período.", "CDM: acordar texto"],
-            ["Eje 1 · Gestión y territorio", "Información, planificación, servicios y ordenamiento.", "OMPP/CDM: confirmar"],
-            ["Eje 2 · Desarrollo social", "Servicios básicos, educación, salud, inclusión y convivencia.", "OMPP/CDM: confirmar"],
-            ["Eje 3 · Economía local", "Empleo, microempresas, activos productivos y articulación sectorial.", "OMPP/CDM: confirmar"],
-            ["Eje 4 · Ambiente y resiliencia", "Riesgos, recursos naturales, residuos y adaptación.", "OMPP/CDM: completar fuentes"],
-        ],
-        [2100, 4700, 2560],
-    )
-    doc.add_heading("4.1 Ideas iniciales de proyectos", level=2)
-    paragraph(
-        doc,
-        "Las ideas siguientes derivan de brechas del diagnóstico. No incluyen costo, beneficiarios, cronograma, "
-        "aprobación ni fuente de financiamiento.",
-    )
-    add_data_table(
-        doc,
-        ["Idea", "Alcance antes de formular", "Evidencia inicial", "Estado"],
-        project_proposals(findings),
-        [2500, 3900, 1460, 1500],
-    )
-    doc.add_heading("4.2 Ficha para completar por proyecto", level=2)
-    add_data_table(
-        doc,
-        ["Campo", "Registro municipal"],
-        [
-            ["Problema y evidencia", ""],
-            ["Objetivo, resultado y meta", ""],
-            ["Competencia legal", ""],
-            ["Responsable y aliados", ""],
-            ["Indicador y línea base", ""],
-            ["Costo y financiamiento", ""],
-            ["Validación OMPP / CDM", ""],
-        ],
-        [2900, 6460],
-    )
-
-    add_page_break(doc)
-    doc.add_heading("5. Revisión, fuentes y trazabilidad", level=1)
-    doc.add_heading("5.1 Lista de control final", level=2)
-    add_data_table(
-        doc,
-        ["Control", "Responsable", "Evidencia / corrección"],
-        [
-            ["Confirmar historia, norma de creación y límites", "OMPP", ""],
-            ["Confirmar cifras, años, unidades y cobertura", "OMPP / áreas técnicas", ""],
-            ["Localizar brechas por barrio, sección o paraje", "OMPP", ""],
-            ["Revisar continuidad de PMD anteriores", "OMPP", ""],
-            ["Validar síntesis y FODA", "CDM", ""],
-            ["Acordar visión, objetivos y proyectos", "CDM / Ayuntamiento", ""],
-            ["Documentar aprobación y publicación", "Autoridad competente", ""],
-        ],
-        [3900, 2400, 3060],
-    )
-    doc.add_heading("5.2 Fuentes utilizadas", level=2)
+    doc.add_heading("Fuentes y trazabilidad", level=1)
     source_rows = [
         ["GEO-01", "Clasificador geográfico y GeoJSON municipal", "2026", "Sin paginación", "Alta"],
-        ["DASH-BASE", "X Censo Nacional de Población y Vivienda", "2022", "Dataset municipal", "Alta"],
-        ["DASH-PYR", "X Censo: edad y sexo", "2022", "Dataset municipal", "Alta"],
-        ["DASH-HOG", "X Censo: hogares y viviendas", "2022", "Dataset municipal", "Alta"],
-        ["DASH-URB", "X Censo: población urbana y rural", "2022", "Dataset municipal", "Alta"],
-        ["DASH-VIDA", "X Censo: condición de vida y servicios", "2022", "Dataset municipal", "Alta"],
-        ["DASH-EDU", "Anuario Estadístico Educativo", "2024", "Distrito asociado", "Media"],
-        ["DASH-EDU-NIVEL", "X Censo: nivel de instrucción", "2022", "Dataset municipal", "Alta"],
-        ["DASH-ECO", "Directorio de Empresas y Establecimientos", "2024", "Dataset municipal", "Media"],
-        ["DASH-SALUD", "Registro de establecimientos SNS mostrado por Dashboard", "s/f", "Dataset municipal", "Media"],
-        ["DASH-TIC", "X Censo: tecnologías de información", "2022", "Dataset municipal", "Alta"],
     ]
+    if adm2_code:
+        source_rows.extend(
+            [
+                ["DASH-BASE", "IX y X Censos Nacionales de Población y Vivienda", "2010 / 2022", "Dataset municipal", "Alta"],
+                ["DASH-PYR", "IX y X Censos: edad y sexo", "2010 / 2022", "Dataset municipal", "Alta"],
+                ["DASH-HOG", "X Censo: hogares y viviendas", "2022", "Dataset municipal", "Alta"],
+                ["DASH-URB", "X Censo: población urbana y rural", "2022", "Dataset municipal", "Alta"],
+                ["DASH-VIDA", "X Censo: condición de vida y servicios", "2022", "Dataset municipal", "Alta"],
+                ["DASH-EDU", "Anuario Estadístico Educativo", "2024", "Distrito asociado", "Media"],
+                ["DASH-EDU-NIVEL", "X Censo: nivel de instrucción", "2022", "Dataset municipal", "Alta"],
+                ["DASH-ECO", "Directorio de Empresas y Establecimientos", "2024", "Dataset municipal", "Media"],
+                ["DASH-SALUD", "Registro de establecimientos SNS mostrado por Dashboard", "s/f", "Dataset municipal", "Media"],
+                ["DASH-TIC", "X Censo: tecnologías de información", "2022", "Dataset municipal", "Alta"],
+            ]
+        )
+    else:
+        source_rows.append(
+            [
+                "DASH-GAP",
+                "Dashboard de Diagnóstico Territorial",
+                "2026",
+                "Sin ficha separada para el ámbito municipal actual",
+                "Alta",
+            ]
+        )
     if is_municipal_wikipedia(wikipedia):
         source_rows.append(
             [
@@ -1974,24 +2194,34 @@ def build_document(
                 "Alta" if str(row.get("validation_status", "")).startswith("verified") else "Media",
             ]
         )
+    for index, row in enumerate(
+        sorted(
+            territorial_antecedents,
+            key=lambda item: item.get("period_end") or 0,
+            reverse=True,
+        ),
+        1,
+    ):
+        source_rows.append(
+            [
+                f"ANT-DM-{index:02d}",
+                f"Plan del antiguo Distrito Municipal de {name} "
+                f"{row.get('period_start')}-{row.get('period_end')}",
+                f"{row.get('period_start')}-{row.get('period_end')}",
+                f"{row.get('pages') or 's/p'} páginas; antecedente territorial",
+                "Alta para el ámbito y período original",
+            ]
+        )
     add_data_table(doc, ["ID", "Documento", "Año", "Página / cobertura", "Confianza"], source_rows, [1300, 3300, 1300, 2200, 1260])
     add_source_note(
         doc,
-        "Los datasets del Dashboard no tienen paginación. Cuando se usa texto de un PMD anterior, el rango de páginas "
-        "se consigna en el párrafo correspondiente.",
+        "Los datasets del Dashboard no tienen paginación. Cuando se usa texto de un documento anterior, "
+        "el rango de páginas y su alcance territorial se consignan en el párrafo correspondiente.",
     )
-    doc.add_heading("5.3 Registro de correcciones", level=2)
-    add_data_table(
-        doc,
-        ["Sección", "Corrección", "Fuente / página", "Responsable / fecha"],
-        [["", "", "", ""] for _ in range(6)],
-        [1700, 3300, 2100, 2260],
-    )
-
-    doc.core_properties.title = f"PMD de {name} - Borrador técnico sustantivo {PERIOD}"
-    doc.core_properties.subject = "Información general y diagnóstico precompletados con trazabilidad"
-    doc.core_properties.author = "DDPT - Generación asistida para revisión municipal"
-    doc.core_properties.keywords = "PMD, municipio, diagnóstico, OMPP, CDM, trazabilidad, Dashboard"
+    doc.core_properties.title = f"Plan Municipal de Desarrollo de {name} {PERIOD}"
+    doc.core_properties.subject = "Información general y diagnóstico municipal con trazabilidad"
+    doc.core_properties.author = "DDPT"
+    doc.core_properties.keywords = "PMD, municipio, diagnóstico, OMPP, CDM, trazabilidad"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     doc.save(output_path)
 
@@ -2088,6 +2318,18 @@ def main() -> int:
     parser.add_argument("--web-copy", action="store_true", help="Copy DOCX files to the portal downloads folder")
     parser.add_argument("--skip-wikipedia-refresh", action="store_true")
     parser.add_argument("--resume", action="store_true", help="Keep an existing rich DOCX instead of rebuilding it")
+    parser.add_argument(
+        "--reuse-existing-dashboard-pages",
+        action="store_true",
+        help="Regenerate the 2010/2022 demographic page but reuse existing pages 2-5",
+    )
+    parser.add_argument("--partition-count", type=int, default=1)
+    parser.add_argument("--partition-index", type=int, default=0)
+    parser.add_argument(
+        "--partial",
+        action="store_true",
+        help="Generate one partition without replacing the complete manifest",
+    )
     args = parser.parse_args()
 
     workspace = args.workspace.resolve()
@@ -2100,6 +2342,12 @@ def main() -> int:
     wikipedia_cache_path = output_dir / "wikipedia_cache.json"
     historical_cache_path = output_dir / "historical_context_cache.json"
     inventory_path = workspace / "output" / "pmd_historico_fuentes_no_sismap" / "inventory.json"
+    source_audit_path = (
+        workspace
+        / "output"
+        / "source_link_audit_2026-07-28"
+        / "source_links_162.json"
+    )
     classifier_path = workspace / "output" / "clasificador_geografico" / "clasificador_geografico_01-10.txt"
     portal_data_path = portal_repo / "app" / "data" / "municipios.json"
     web_dir = portal_repo / "public" / "downloads" / "pmd-borradores"
@@ -2114,6 +2362,8 @@ def main() -> int:
     ]
     if len(targets) != 104:
         raise RuntimeError(f"Expected 104 target municipalities; found {len(targets)}")
+    if args.partition_count < 1 or not 0 <= args.partition_index < args.partition_count:
+        raise RuntimeError("Invalid partition settings")
     if args.municipality:
         wanted = base.clean(args.municipality)
         targets = [item for item in targets if base.clean(item["municipio"]) == wanted]
@@ -2121,6 +2371,12 @@ def main() -> int:
             raise RuntimeError(f"Target municipality not found: {args.municipality}")
     elif not args.all:
         parser.error("Choose --municipality NAME or --all")
+    elif args.partition_count > 1:
+        targets = [
+            item
+            for index, item in enumerate(targets)
+            if index % args.partition_count == args.partition_index
+        ]
 
     dashboard_index = load_json(data_dir / "municipios_index.json")
     dashboard_by_territory = {
@@ -2139,17 +2395,61 @@ def main() -> int:
 
     historical_rows = load_json(inventory_path).get("rows", [])
     historical_by_territory: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    antecedents_by_territory: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in historical_rows:
         if row.get("status") == "downloaded":
-            historical_by_territory[base.territory_key(row["municipality"], row["province"])].append(row)
+            key = base.territory_key(row["municipality"], row["province"])
+            copy = dict(row)
+            if key in NEW_MUNICIPALITIES:
+                copy["document_scope"] = "predecessor_district"
+                antecedents_by_territory[key].append(copy)
+            else:
+                copy["document_scope"] = "municipality_historical_pmd"
+                historical_by_territory[key].append(copy)
 
     classifier = base.read_classifier_codes(classifier_path)
     wikipedia_cache = load_json(wikipedia_cache_path) if wikipedia_cache_path.exists() else {}
+    source_audit = load_json(source_audit_path) if source_audit_path.exists() else {}
+    source_audit_by_territory = {
+        base.territory_key(row["municipio"], row["provincia"]): row
+        for row in source_audit.get("municipalities", [])
+    }
+    for item in targets:
+        key = base.territory_key(item["municipio"], item["provincia"])
+        audited = (source_audit_by_territory.get(key) or {}).get("wikipedia") or {}
+        if audited.get("status") == "verified_direct" and audited.get("title"):
+            previous_wiki = wikipedia_cache.get(key, {})
+            same_title = previous_wiki.get("title") == audited.get("title")
+            wikipedia_cache[key] = {
+                **(
+                    previous_wiki
+                    if same_title
+                    else {
+                        "full_extract": "",
+                        "sections": {},
+                    }
+                ),
+                "status": "verified",
+                "title": audited["title"],
+                "url": audited.get("url", ""),
+                "audit_method": audited.get("method", ""),
+                "has_history": bool(audited.get("has_history")),
+                "retrieved_at": TODAY.isoformat(),
+            }
+        elif audited.get("status") == "not_found":
+            wikipedia_cache[key] = {
+                "status": "not_found",
+                "title": "",
+                "url": "",
+                "reason": "No se verificó una página municipal directa.",
+                "retrieved_at": TODAY.isoformat(),
+            }
     if not args.skip_wikipedia_refresh:
-        base.fetch_wikipedia_exact_batches(targets, wikipedia_cache)
+        if not source_audit_by_territory:
+            base.fetch_wikipedia_exact_batches(targets, wikipedia_cache)
         sanitize_wikipedia_cache(wikipedia_cache, targets)
         fetch_full_wikipedia(wikipedia_cache, targets)
-        save_json(wikipedia_cache_path, wikipedia_cache)
+    save_json(wikipedia_cache_path, wikipedia_cache)
     historical_cache = load_json(historical_cache_path) if historical_cache_path.exists() else {}
 
     previous_manifest = load_json(manifest_path).get("municipalities", []) if manifest_path.exists() else []
@@ -2174,7 +2474,18 @@ def main() -> int:
             geographic_code = previous_by_id[item["id"]].get("geographic_code", "")
         data = build_data_bundle(adm2_code, datasets, adm2_map_2010)
         historical = historical_by_territory.get(key, [])
-        historical_context = extract_historical_context(historical, historical_cache, key)
+        territorial_antecedents = antecedents_by_territory.get(key, [])
+        historical_context = extract_historical_context(
+            historical or territorial_antecedents,
+            historical_cache,
+            key,
+        )
+        historical_context = dict(historical_context)
+        historical_context["document_scope"] = (
+            "predecessor_district"
+            if not historical and territorial_antecedents
+            else "municipality_historical_pmd"
+        )
         wikipedia = wikipedia_cache.get(key, {"status": "not_found"})
         previous = previous_by_id.get(item["id"], {})
         file_name = previous.get("file_name") or (
@@ -2191,6 +2502,7 @@ def main() -> int:
                 national,
                 geojson,
                 asset_dir,
+                reuse_existing_rest=args.reuse_existing_dashboard_pages,
             )
             area_km2 = (feature or {}).get("properties", {}).get("km2")
             build_document(
@@ -2201,6 +2513,7 @@ def main() -> int:
                 national,
                 wikipedia,
                 historical,
+                territorial_antecedents,
                 historical_context,
                 area_km2,
                 pages,
@@ -2221,9 +2534,14 @@ def main() -> int:
                 "historical_periods": [
                     f"{row.get('period_start')}-{row.get('period_end')}" for row in historical
                 ],
+                "territorial_antecedent_count": len(territorial_antecedents),
+                "territorial_antecedent_periods": [
+                    f"{row.get('period_start')}-{row.get('period_end')}"
+                    for row in territorial_antecedents
+                ],
                 "wikipedia_status": wikipedia.get("status"),
                 "wikipedia_url": wikipedia.get("url", ""),
-                "content_version": "2.0-rich-diagnostic",
+                "content_version": "3.0-cdm-ready",
                 "information_general_status": "precompleted",
                 "diagnostic_status": "precompleted" if adm2_code else "source-gap",
                 "file_name": file_name,
@@ -2231,6 +2549,20 @@ def main() -> int:
             }
         )
         print(f"[{number}/{len(targets)}] {item['municipio']} -> {output_path.name}")
+
+    if args.partial:
+        print(
+            json.dumps(
+                {
+                    "generated": len(generated_rows),
+                    "partition_index": args.partition_index,
+                    "partition_count": args.partition_count,
+                    "partial": True,
+                },
+                ensure_ascii=False,
+            )
+        )
+        return 0
 
     save_json(historical_cache_path, historical_cache)
     if args.municipality:
@@ -2242,7 +2574,7 @@ def main() -> int:
     manifest = {
         "generated_at": TODAY.isoformat(),
         "period": PERIOD,
-        "content_version": "2.0-rich-diagnostic",
+        "content_version": "3.0-cdm-ready",
         "target_rule": "No PMD official evidence and no existing 7-12/draft",
         "expected_target_count": 104,
         "generated_count": len(combined),
@@ -2262,6 +2594,8 @@ def main() -> int:
         "dashboard_available",
         "historical_pmd_count",
         "historical_periods",
+        "territorial_antecedent_count",
+        "territorial_antecedent_periods",
         "wikipedia_status",
         "wikipedia_url",
         "content_version",
@@ -2276,6 +2610,9 @@ def main() -> int:
         for row in combined:
             copy = dict(row)
             copy["historical_periods"] = "; ".join(copy.get("historical_periods", []))
+            copy["territorial_antecedent_periods"] = "; ".join(
+                copy.get("territorial_antecedent_periods", [])
+            )
             writer.writerow(copy)
     print(
         json.dumps(

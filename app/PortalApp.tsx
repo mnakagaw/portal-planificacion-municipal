@@ -513,7 +513,10 @@ export function PortalApp() {
   const [activeLayer, setActiveLayer] = useState<MapLayer>("all");
   const [mapShapes, setMapShapes] = useState<MapShape[]>([]);
   const [mapError, setMapError] = useState(false);
-  const [wikipediaUrl, setWikipediaUrl] = useState("");
+  const [wikipediaResult, setWikipediaResult] = useState<{
+    municipalityId: number;
+    url: string;
+  } | null>(null);
   const wikipediaCache = useRef(new Map<number, string>());
 
   const municipalityLookup = useMemo(
@@ -559,14 +562,20 @@ export function PortalApp() {
 
   useEffect(() => {
     let active = true;
-    setWikipediaUrl("");
 
     if (!selected) return () => undefined;
 
+    const selectedId = selected.id;
     const cachedUrl = wikipediaCache.current.get(selected.id);
     if (cachedUrl) {
-      setWikipediaUrl(cachedUrl);
-      return () => undefined;
+      Promise.resolve(cachedUrl).then((url) => {
+        if (active) {
+          setWikipediaResult({ municipalityId: selectedId, url });
+        }
+      });
+      return () => {
+        active = false;
+      };
     }
 
     const articleName =
@@ -600,11 +609,13 @@ export function PortalApp() {
     findDirectUrl()
       .then((directUrl) => {
         if (!active) return;
-        if (directUrl) wikipediaCache.current.set(selected.id, directUrl);
-        setWikipediaUrl(directUrl);
+        if (directUrl) wikipediaCache.current.set(selectedId, directUrl);
+        setWikipediaResult({ municipalityId: selectedId, url: directUrl });
       })
       .catch(() => {
-        if (active) setWikipediaUrl("");
+        if (active) {
+          setWikipediaResult({ municipalityId: selectedId, url: "" });
+        }
       });
 
     return () => {
@@ -724,6 +735,11 @@ export function PortalApp() {
   const displayMunicipality = hovered ?? selected;
   const activeMeta = layerMeta[activeLayer];
   const selectedDocument = selected ? documentInfo(selected) : null;
+  const wikipediaUrl = selected
+    ? wikipediaResult?.municipalityId === selected.id
+      ? wikipediaResult.url
+      : ""
+    : "";
 
   const chooseMunicipality = (item: Municipality) => {
     setSelectedRegions([item.region]);

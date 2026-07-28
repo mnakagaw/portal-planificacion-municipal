@@ -12,13 +12,22 @@ from docx import Document
 
 
 REQUIRED_HEADINGS = {
-    "Estado y alcance del borrador",
+    "Contenido",
+    "Síntesis ejecutiva",
     "1. Información general",
     "2. Diagnóstico municipal",
-    "Lectura narrativa del diagnóstico",
-    "3. Síntesis diagnóstica",
-    "4. Marco estratégico para validación",
-    "5. Revisión, fuentes y trazabilidad",
+    "3. Fortalezas y debilidades basadas en el diagnóstico",
+    "4. Visión Municipal",
+    "5. Plan de acción a acordar por el CDM",
+    "Fuentes y trazabilidad",
+}
+
+FORBIDDEN_TEXT = {
+    "FODA",
+    "Borrador técnico",
+    "BORRADOR TÉCNICO",
+    "3.2 Insumos técnicos para oportunidades y amenazas",
+    "6. Seguimiento y evaluación",
 }
 
 
@@ -95,13 +104,12 @@ def main() -> int:
             errors.append(
                 f"{row['file_name']} missing headings: {sorted(missing_headings)}"
             )
-        if "Borrador técnico no aprobado" not in text:
-            errors.append(f"{row['file_name']} missing draft warning")
-        if "El documento no acredita consulta ciudadana" not in text:
-            errors.append(f"{row['file_name']} missing approval/evidence disclaimer")
-        if "Información General y Diagnóstico precompletados" not in text:
-            errors.append(f"{row['file_name']} missing precompleted-content statement")
-        if row.get("content_version") != "2.0-rich-diagnostic":
+        forbidden = sorted(value for value in FORBIDDEN_TEXT if value in text)
+        if forbidden:
+            errors.append(f"{row['file_name']} contains forbidden text: {forbidden}")
+        if text.count("EJEMPLO DE FORMATO · NO APROBADO") != 2:
+            errors.append(f"{row['file_name']} must contain exactly two example rows")
+        if row.get("content_version") != "3.0-cdm-ready":
             errors.append(f"{row['file_name']} has wrong manifest content version")
         if "{{" in text or "}}" in text:
             errors.append(f"{row['file_name']} contains template tokens")
@@ -111,6 +119,13 @@ def main() -> int:
             errors.append(f"{row['file_name']} incorrectly reports missing dashboard data")
         if not row["dashboard_available"] and "no se trasladaron cifras del municipio de origen" not in text:
             errors.append(f"{row['file_name']} missing safe source-gap warning")
+        if row["municipio"] == "Villa Central":
+            if row.get("historical_pmd_count") != 0:
+                errors.append("Villa Central incorrectly counts the former district plan as a municipal PMD")
+            if row.get("territorial_antecedent_count") != 1:
+                errors.append("Villa Central predecessor-district antecedent is missing")
+            if "Plan del antiguo Distrito Municipal de Villa Central" not in text:
+                errors.append("Villa Central predecessor-district label is missing")
 
         paragraphs = len(document.paragraphs)
         tables = len(document.tables)
