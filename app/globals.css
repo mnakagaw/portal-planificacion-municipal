@@ -81,10 +81,30 @@ select,
 }
 
 .brand small,
-.app-header p {
+.header-meta {
   color: var(--muted);
   font-size: 9px;
   margin: 0;
+}
+
+.header-meta {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+
+.header-meta a {
+  color: var(--muted);
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition:
+    color 140ms ease,
+    text-decoration-color 140ms ease;
+}
+
+.header-meta a:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
 }
 
 .page-heading,
@@ -695,7 +715,7 @@ footer p {
     padding: 0 16px;
   }
 
-  .app-header p {
+  .header-meta span {
     display: none;
   }
 

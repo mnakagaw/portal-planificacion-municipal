@@ -7,6 +7,9 @@ type Level = "complete" | "progress" | "warning" | "none" | "unknown";
 type MapLayer = "all" | "pmdOfficial" | "pmdDraft" | "cdm" | "ompp";
 type StatusLayer = Exclude<MapLayer, "all">;
 
+const SISMAP_PMD_URL =
+  "https://www.sismap.gob.do/municipal/ranking/listaevidenciasorganismos/16?catchall=2.02-Plan-de-De&tipoId=17";
+
 type Municipality = {
   id: number;
   municipio: string;
@@ -173,6 +176,12 @@ function territoryKey(municipality: string, province: string) {
   return `${canonicalMunicipality(municipality)}|${canonicalProvince(province)}`;
 }
 
+function hasFormalPmd(item: Municipality) {
+  return (
+    item.pmd.hasOfficialEvidence || item.pmd.has7_12 || item.pmd.hasDraft
+  );
+}
+
 function hasLayerStatus(item: Municipality, layer: MapLayer) {
   switch (layer) {
     case "all":
@@ -184,9 +193,27 @@ function hasLayerStatus(item: Municipality, layer: MapLayer) {
         item.pmd.hasOfficialEvidence || item.pmd.has7_12 || item.pmd.hasDraft
       );
     case "cdm":
-      return item.pmd.hasOfficialEvidence || item.cdm.level === "complete";
+      return hasFormalPmd(item) || item.cdm.level === "complete";
     case "ompp":
-      return item.pmd.hasOfficialEvidence || item.ompp.level === "complete";
+      return hasFormalPmd(item) || item.ompp.level === "complete";
+  }
+}
+
+function matchesLayer(item: Municipality, layer: MapLayer) {
+  switch (layer) {
+    case "all":
+      return true;
+    case "pmdOfficial":
+      return item.pmd.hasOfficialEvidence;
+    case "pmdDraft":
+      return (
+        !item.pmd.hasOfficialEvidence &&
+        (item.pmd.has7_12 || item.pmd.hasDraft)
+      );
+    case "cdm":
+      return hasLayerStatus(item, "cdm");
+    case "ompp":
+      return hasLayerStatus(item, "ompp");
   }
 }
 
@@ -282,11 +309,14 @@ function StatusItem({
 }) {
   const active = hasLayerStatus(item, layer);
   const meta = layerMeta[layer];
-  const inheritedFromOfficial =
-    item.pmd.hasOfficialEvidence &&
-    ((layer === "pmdDraft" && !item.pmd.has7_12 && !item.pmd.hasDraft) ||
-      (layer === "cdm" && item.cdm.level !== "complete") ||
-      (layer === "ompp" && item.ompp.level !== "complete"));
+  const inheritedFromPmd =
+    (item.pmd.hasOfficialEvidence &&
+      layer === "pmdDraft" &&
+      !item.pmd.has7_12 &&
+      !item.pmd.hasDraft) ||
+    (hasFormalPmd(item) &&
+      ((layer === "cdm" && item.cdm.level !== "complete") ||
+        (layer === "ompp" && item.ompp.level !== "complete")));
   return (
     <div
       className={`municipal-status ${active ? "is-active" : ""}`}
@@ -304,8 +334,10 @@ function StatusItem({
         <strong>{meta.shortLabel}</strong>
         <small>
           {active
-            ? inheritedFromOfficial
-              ? "Incluido en PMD oficial"
+            ? inheritedFromPmd
+              ? layer === "pmdDraft"
+                ? "Incluido en PMD oficial"
+                : "Requisito del PMD · evidencia por verificar"
               : layer === "cdm"
                 ? item.cdm.label
                 : layer === "ompp"
@@ -425,7 +457,7 @@ export function PortalApp() {
       Object.fromEntries(
         (Object.keys(layerMeta) as MapLayer[]).map((layer) => [
           layer,
-          municipalities.filter((item) => hasLayerStatus(item, layer)).length,
+          municipalities.filter((item) => matchesLayer(item, layer)).length,
         ]),
       ) as Record<MapLayer, number>,
     [],
@@ -453,7 +485,12 @@ export function PortalApp() {
             <small>República Dominicana</small>
           </span>
         </div>
-        <p>Estado de 162 municipios · 27 jul 2026</p>
+        <div className="header-meta">
+          <a href={SISMAP_PMD_URL} target="_blank" rel="noreferrer">
+            Fuente SISMAP 2.02 ↗
+          </a>
+          <span>Estado de 162 municipios · 28 jul 2026</span>
+        </div>
       </header>
 
       <section className="page-heading">
@@ -600,7 +637,7 @@ export function PortalApp() {
                   {mapShapes.map((shape) => {
                     const item = municipalityLookup.get(shape.municipalityKey);
                     const included = item ? filteredIds.has(item.id) : false;
-                    const active = item ? hasLayerStatus(item, activeLayer) : false;
+                    const active = item ? matchesLayer(item, activeLayer) : false;
                     const isSelected = item?.id === selected?.id;
                     const overview = item ? overviewLayer(item) : null;
                     const fill = !included
@@ -634,7 +671,7 @@ export function PortalApp() {
                             ? `${item.municipio}, ${
                                 activeLayer === "all"
                                   ? overviewLabel(item)
-                                  : hasLayerStatus(item, activeLayer)
+                                  : matchesLayer(item, activeLayer)
                                     ? activeMeta.label
                                     : "no confirmado"
                               }`
@@ -646,7 +683,7 @@ export function PortalApp() {
                             ? `${item.municipio} · ${
                                 activeLayer === "all"
                                   ? overviewLabel(item)
-                                  : hasLayerStatus(item, activeLayer)
+                                  : matchesLayer(item, activeLayer)
                                     ? activeMeta.label
                                     : "No confirmado"
                               }`
@@ -666,7 +703,7 @@ export function PortalApp() {
                 <span>
                   {activeLayer === "all"
                     ? overviewLabel(displayMunicipality)
-                    : hasLayerStatus(displayMunicipality, activeLayer)
+                    : matchesLayer(displayMunicipality, activeLayer)
                       ? activeMeta.label
                       : "No confirmado"}
                 </span>

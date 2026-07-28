@@ -54,27 +54,36 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.equal(
     data.filter(
       (item) =>
+        !item.pmd.hasOfficialEvidence &&
+        (item.pmd.has7_12 || item.pmd.hasDraft),
+    ).length,
+    16,
+  );
+  assert.equal(
+    data.filter(
+      (item) =>
         item.pmd.hasOfficialEvidence ||
         item.pmd.has7_12 ||
-        item.pmd.hasDraft,
+        item.pmd.hasDraft ||
+        item.cdm.level === "complete",
     ).length,
-    58,
+    81,
   );
   assert.equal(
     data.filter(
-      (item) => item.pmd.hasOfficialEvidence || item.cdm.level === "complete",
+      (item) =>
+        item.pmd.hasOfficialEvidence ||
+        item.pmd.has7_12 ||
+        item.pmd.hasDraft ||
+        item.ompp.level === "complete",
     ).length,
-    79,
-  );
-  assert.equal(
-    data.filter(
-      (item) => item.pmd.hasOfficialEvidence || item.ompp.level === "complete",
-    ).length,
-    94,
+    99,
   );
 
   assert.match(source, /useState<MapLayer>\("all"\)/);
+  assert.match(source, /function matchesLayer/);
   assert.match(source, /function overviewLayer/);
+  assert.match(source, /Fuente SISMAP 2\.02/);
   assert.match(source, /setRegion\(item\.region\)/);
   assert.match(source, /setProvince\(item\.provincia\)/);
   assert.match(source, /onClick=\{\(\) => item && chooseMunicipality\(item\)\}/);

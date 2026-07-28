@@ -3983,7 +3983,7 @@
     "cdm": {
       "label": "Sin iniciar",
       "level": "none",
-      "score": 0,
+      "score": 20,
       "expiry": "05-09-2026",
       "validity": "",
       "evidenceCount": 1
@@ -3991,7 +3991,7 @@
     "pmd": {
       "label": "En elaboración",
       "level": "progress",
-      "score": 20,
+      "score": 30,
       "expiry": "05-09-2026",
       "validity": "",
       "period": "",
@@ -4016,7 +4016,7 @@
     },
     "action": "continuar",
     "actionLabel": "Continuar elaboración",
-    "checkedAt": "2026-07-27",
+    "checkedAt": "2026-07-28",
     "dataQuality": "SISMAP verificado"
   },
   {
