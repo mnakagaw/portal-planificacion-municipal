@@ -659,7 +659,7 @@ export function PortalApp() {
 
   const chooseMunicipality = (item: Municipality) => {
     setSelectedRegions([item.region]);
-    setProvince(item.provincia);
+    setProvince("Todas");
     setSelected(item);
   };
 
