@@ -98,6 +98,7 @@ const layerMeta: Record<
     shortLabel: string;
     color: string;
     softColor: string;
+    textColor: string;
     description: string;
   }
 > = {
@@ -106,34 +107,39 @@ const layerMeta: Record<
     shortLabel: "Todos",
     color: "#31453f",
     softColor: "#edf2f0",
+    textColor: "#31453f",
     description: "Color principal según el avance confirmado de cada municipio.",
   },
   pmdOfficial: {
     label: "PMD oficial",
     shortLabel: "PMD Oficial",
-    color: "#347c6c",
-    softColor: "#e9f2ef",
+    color: "#286A50",
+    softColor: "#E8F0EB",
+    textColor: "#286A50",
     description: "SISMAP 2.02 al 100% o evidencia 8-12 confirmada.",
   },
   pmdDraft: {
     label: "PMD borrador",
     shortLabel: "PMD Borrador",
-    color: "#5878a3",
-    softColor: "#ebf0f6",
+    color: "#75A67E",
+    softColor: "#EEF4EF",
+    textColor: "#486D50",
     description: "Borrador 7-12 disponible, sin condición oficial confirmada.",
   },
   cdm: {
     label: "CDM constituido",
     shortLabel: "CDM",
-    color: "#806d91",
-    softColor: "#f0edf2",
+    color: "#527E91",
+    softColor: "#ECF1F3",
+    textColor: "#456B7B",
     description: "El CDM figura como constituido o institucionalizado.",
   },
   ompp: {
     label: "OMPP establecida",
     shortLabel: "OMPP",
-    color: "#b48150",
-    softColor: "#f5efe9",
+    color: "#8FADBA",
+    softColor: "#F1F5F6",
+    textColor: "#53727E",
     description: "La OMPP figura como establecida en la evidencia revisada.",
   },
 };
@@ -515,6 +521,7 @@ export function PortalApp() {
                 {
                   "--layer-color": meta.color,
                   "--layer-soft": meta.softColor,
+                  "--layer-text": meta.textColor,
                 } as React.CSSProperties
               }
             >
@@ -638,14 +645,14 @@ export function PortalApp() {
                     const isSelected = item?.id === selected?.id;
                     const overview = item ? overviewLayer(item) : null;
                     const fill = !included
-                      ? "#eef1f0"
+                      ? "#EEF1F0"
                       : activeLayer === "all"
                         ? overview
                           ? layerMeta[overview].color
-                          : "#d9dfdd"
+                          : "#F2E5BF"
                         : active
                           ? activeMeta.color
-                          : "#d9dfdd";
+                          : "#F2E5BF";
                     return (
                       <path
                         key={shape.adm2Code}
@@ -653,10 +660,13 @@ export function PortalApp() {
                         fill={fill}
                         fillOpacity={included ? 1 : 0.58}
                         fillRule="evenodd"
-                        stroke={isSelected ? "#152f2a" : "#ffffff"}
-                        strokeWidth={isSelected ? 3.6 : 1.15}
+                        stroke={isSelected ? "#234A3D" : "rgba(255, 255, 255, 0.68)"}
+                        strokeWidth={isSelected ? 2 : 0.9}
+                        strokeLinejoin="round"
                         vectorEffect="non-scaling-stroke"
-                        className={item ? "map-shape" : "map-shape is-muted"}
+                        className={`${item ? "map-shape" : "map-shape is-muted"} ${
+                          isSelected ? "is-selected" : ""
+                        }`}
                         onMouseEnter={() => item && setHovered(item)}
                         onMouseLeave={() => setHovered(null)}
                         onFocus={() => item && setHovered(item)}
@@ -713,12 +723,15 @@ export function PortalApp() {
                   {(Object.keys(layerMeta) as MapLayer[])
                     .filter((layer): layer is StatusLayer => layer !== "all")
                     .map((layer) => (
-                      <span key={layer}>
+                      <span
+                        key={layer}
+                        className={layer === "cdm" ? "legend-group-start" : undefined}
+                      >
                         <i style={{ background: layerMeta[layer].color }} />
                         {layerMeta[layer].shortLabel}
                       </span>
                     ))}
-                  <span>
+                  <span className="legend-group-start">
                     <i className="legend-no" />
                     Sin confirmar
                   </span>

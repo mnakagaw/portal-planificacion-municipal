@@ -91,6 +91,35 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /import\.meta\.env\.BASE_URL.*data\/adm2\.geojson/);
 });
 
+test("keeps the map palette aligned with the color specification", async () => {
+  const [source, css] = await Promise.all([
+    readFile(new URL("../app/PortalApp.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+  ]);
+  const styles = `${source}\n${css}`;
+
+  for (const color of [
+    "#286A50",
+    "#75A67E",
+    "#527E91",
+    "#8FADBA",
+    "#F2E5BF",
+    "#EEF1F0",
+  ]) {
+    assert.match(styles, new RegExp(color, "i"));
+  }
+
+  for (const oldColor of ["347c6c", "5878a3", "806d91", "b48150", "d9dfdd"].map(
+    (value) => `#${value}`,
+  )) {
+    assert.doesNotMatch(styles, new RegExp(oldColor, "i"));
+  }
+
+  assert.match(source, /strokeWidth=\{isSelected \? 2 : 0\.9\}/);
+  assert.match(css, /\.map-canvas\s*\{\s*background:\s*#f6f8f6/i);
+  assert.match(css, /stroke:\s*rgba\(255,\s*255,\s*255,\s*0\.95\)/i);
+});
+
 test("uses PMD documents instead of administrative evidence links", async () => {
   const rawData = await readFile(
     new URL("../app/data/municipios.json", import.meta.url),

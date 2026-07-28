@@ -198,10 +198,10 @@ select,
 .layer-switcher button.layer-all .layer-dot,
 .layer-all-dot {
   background: conic-gradient(
-    #347c6c 0 25%,
-    #5878a3 25% 50%,
-    #806d91 50% 75%,
-    #b48150 75% 100%
+    #286a50 0 25%,
+    #75a67e 25% 50%,
+    #527e91 50% 75%,
+    #8fadba 75% 100%
   );
 }
 
@@ -218,7 +218,7 @@ select,
 }
 
 .layer-switcher strong {
-  color: var(--layer-color);
+  color: var(--layer-text);
   font-family: var(--font-geist-mono), monospace;
   font-size: 22px;
   letter-spacing: -0.05em;
@@ -322,8 +322,7 @@ select,
 }
 
 .map-canvas {
-  background:
-    radial-gradient(circle at 50% 44%, #ffffff 0, #f0f5f2 62%, #e9f0ed 100%);
+  background: #f6f8f6;
   border-bottom: 1px solid var(--line);
   border-top: 1px solid var(--line);
   min-height: 580px;
@@ -343,16 +342,28 @@ select,
 
 .map-shape {
   cursor: pointer;
+  stroke-linejoin: round;
   transition:
     fill 120ms ease,
     fill-opacity 120ms ease,
-    filter 120ms ease;
+    filter 120ms ease,
+    stroke 120ms ease,
+    stroke-width 120ms ease;
 }
 
 .map-shape:hover,
 .map-shape:focus {
   fill-opacity: 0.83;
   filter: brightness(0.92);
+  stroke: rgba(255, 255, 255, 0.95);
+  stroke-width: 1.35px;
+}
+
+.map-shape.is-selected,
+.map-shape.is-selected:hover,
+.map-shape.is-selected:focus {
+  stroke: #234a3d;
+  stroke-width: 2px;
 }
 
 .map-shape.is-muted {
@@ -405,8 +416,10 @@ select,
   border-radius: 9px;
   bottom: 14px;
   display: flex;
+  flex-wrap: wrap;
   gap: 13px;
   left: 16px;
+  max-width: calc(100% - 32px);
   padding: 9px 11px;
   position: absolute;
 }
@@ -425,8 +438,12 @@ select,
   width: 9px;
 }
 
+.map-legend .legend-group-start {
+  margin-left: 5px;
+}
+
 .map-legend .legend-no {
-  background: #d9dfdd;
+  background: #f2e5bf;
 }
 
 .map-footer {
@@ -444,7 +461,7 @@ select,
 }
 
 .detail-heading > span {
-  color: #347c6c;
+  color: #286a50;
   font-size: 9px;
   font-weight: 750;
   letter-spacing: 0.08em;
@@ -494,7 +511,7 @@ select,
 }
 
 .sismap-score.is-complete strong {
-  color: #347c6c;
+  color: #286a50;
 }
 
 .sismap-score-track {
@@ -514,7 +531,7 @@ select,
 }
 
 .sismap-score.is-complete .sismap-score-track i {
-  background: #347c6c;
+  background: #286a50;
 }
 
 .status-grid {
@@ -542,9 +559,9 @@ select,
 
 .status-symbol {
   align-items: center;
-  background: #e5eae8;
+  background: #f2e5bf;
   border-radius: 50%;
-  color: #85928d;
+  color: #75643a;
   display: flex;
   font-size: 11px;
   font-weight: 750;
@@ -608,11 +625,11 @@ select,
 }
 
 .document-action.action-official {
-  background: #347c6c;
+  background: #286a50;
 }
 
 .document-action.action-draft {
-  background: #5878a3;
+  background: #75a67e;
 }
 
 .document-action:disabled {
@@ -623,7 +640,7 @@ select,
 }
 
 .sismap-link {
-  color: #347c6c;
+  color: #286a50;
   display: inline-block;
   font-size: 9px;
   margin-top: 16px;
@@ -650,9 +667,9 @@ select,
 
 .empty-detail > span {
   align-items: center;
-  background: #e9f2ef;
+  background: #e8f0eb;
   border-radius: 50%;
-  color: #347c6c;
+  color: #286a50;
   display: flex;
   font-size: 23px;
   height: 48px;
