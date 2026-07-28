@@ -1081,6 +1081,15 @@ export function PortalApp() {
               </section>
 
               <div className="external-links">
+                <a
+                  className="external-link sismap-link"
+                  href={selected.sismapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ver evidencias en SISMAP
+                  <span aria-hidden="true">↗</span>
+                </a>
                 {wikipediaUrl && (
                   <a
                     className="external-link wikipedia-link"
@@ -1092,15 +1101,6 @@ export function PortalApp() {
                     <span aria-hidden="true">↗</span>
                   </a>
                 )}
-                <a
-                  className="external-link sismap-link"
-                  href={selected.sismapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Ver evidencias en SISMAP
-                  <span aria-hidden="true">↗</span>
-                </a>
               </div>
               <p className="checked-date">
                 Verificado: {selected.checkedAt || "fecha no disponible"}

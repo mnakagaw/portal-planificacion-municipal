@@ -732,7 +732,6 @@ select,
   align-items: center;
   color: #286a50;
   display: flex;
-  font-size: 9px;
   justify-content: space-between;
   text-decoration: none;
 }
@@ -741,8 +740,15 @@ select,
   text-decoration: underline;
 }
 
-.wikipedia-link {
+.sismap-link {
+  font-size: 10px;
   font-weight: 700;
+}
+
+.wikipedia-link {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 400;
 }
 
 .checked-date {
