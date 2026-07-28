@@ -54,10 +54,11 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.equal(
     data.filter(
       (item) =>
-        !item.pmd.hasOfficialEvidence &&
-        (item.pmd.has7_12 || item.pmd.hasDraft),
+        item.pmd.hasOfficialEvidence ||
+        item.pmd.has7_12 ||
+        item.pmd.hasDraft,
     ).length,
-    16,
+    58,
   );
   assert.equal(
     data.filter(

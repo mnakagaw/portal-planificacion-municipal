@@ -206,10 +206,7 @@ function matchesLayer(item: Municipality, layer: MapLayer) {
     case "pmdOfficial":
       return item.pmd.hasOfficialEvidence;
     case "pmdDraft":
-      return (
-        !item.pmd.hasOfficialEvidence &&
-        (item.pmd.has7_12 || item.pmd.hasDraft)
-      );
+      return hasLayerStatus(item, "pmdDraft");
     case "cdm":
       return hasLayerStatus(item, "cdm");
     case "ompp":
