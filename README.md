@@ -60,13 +60,21 @@ El portal distribuye un borrador técnico editable para los 104 municipios que
 no tienen PMD oficial ni borrador 7-12 confirmado en los datos actuales.
 
 - Período propuesto: `2025-2028`
-- Extensión de referencia: 10 páginas
+- Extensión de referencia: alrededor de 19 páginas, ajustada según las fuentes
+  disponibles
+- Contenido precompletado: Información General, historia/origen cuando existe
+  una fuente verificable, cinco láminas de diagnóstico estilo Dashboard y
+  análisis narrativo de población, hogares, servicios básicos, educación,
+  economía, salud y conectividad
 - Fuentes permitidas: Dashboard territorial, PMD históricos inventariados y
-  Wikipedia solamente para contexto geográfico básico
+  Wikipedia como fuente secundaria de contexto e historia
 - Exclusiones: prensa local, cifras sin fuente, reuniones, participación,
   aprobación, presupuesto o ejecución no documentados
 - Manifiesto público: `public/data/generated-pmd-drafts.json`
 - Archivos: `public/downloads/pmd-borradores/`
 
-Los documentos se identifican como borradores no aprobados y reservan la
-validación de FODA, visión y proyectos para la OMPP y el CDM.
+Los documentos se identifican como borradores no aprobados. Información
+General y Diagnóstico quedan preparados para revisión final; FODA, visión y
+proyectos permanecen sujetos a validación de la OMPP y el CDM. En los cuatro
+municipios nuevos todavía no cubiertos por el Dashboard no se trasladan cifras
+del municipio de origen.

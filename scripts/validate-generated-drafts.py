@@ -12,15 +12,13 @@ from docx import Document
 
 
 REQUIRED_HEADINGS = {
-    "Cómo usar este borrador",
+    "Estado y alcance del borrador",
     "1. Información general",
     "2. Diagnóstico municipal",
-    "3. Hallazgos prioritarios",
-    "4. FODA preliminar",
-    "5. Visión y líneas estratégicas",
-    "6. Ideas de proyectos",
-    "7. Revisión OMPP y CDM",
-    "Fuentes y trazabilidad",
+    "Lectura narrativa del diagnóstico",
+    "3. Síntesis diagnóstica",
+    "4. Marco estratégico para validación",
+    "5. Revisión, fuentes y trazabilidad",
 }
 
 
@@ -48,6 +46,10 @@ def main() -> int:
         "max_paragraphs": 0,
         "min_tables": None,
         "max_tables": 0,
+        "min_images": None,
+        "max_images": 0,
+        "min_words": None,
+        "max_words": 0,
         "dashboard_missing": 0,
         "historical_available": 0,
         "wikipedia_verified": 0,
@@ -95,15 +97,31 @@ def main() -> int:
             )
         if "Borrador técnico no aprobado" not in text:
             errors.append(f"{row['file_name']} missing draft warning")
-        if "No constituye un PMD aprobado" not in text:
-            errors.append(f"{row['file_name']} missing approval disclaimer")
-        if "Participación, acuerdos, aprobación y ejecución requieren evidencia municipal." not in text:
-            errors.append(f"{row['file_name']} missing evidence rule")
+        if "El documento no acredita consulta ciudadana" not in text:
+            errors.append(f"{row['file_name']} missing approval/evidence disclaimer")
+        if "Información General y Diagnóstico precompletados" not in text:
+            errors.append(f"{row['file_name']} missing precompleted-content statement")
+        if row.get("content_version") != "2.0-rich-diagnostic":
+            errors.append(f"{row['file_name']} has wrong manifest content version")
         if "{{" in text or "}}" in text:
             errors.append(f"{row['file_name']} contains template tokens")
+        if "para No disponible de los hogares" in text:
+            errors.append(f"{row['file_name']} contains an invalid missing-value sentence")
+        if row["dashboard_available"] and "No existe una serie municipal separada" in text:
+            errors.append(f"{row['file_name']} incorrectly reports missing dashboard data")
+        if not row["dashboard_available"] and "no se trasladaron cifras del municipio de origen" not in text:
+            errors.append(f"{row['file_name']} missing safe source-gap warning")
 
         paragraphs = len(document.paragraphs)
         tables = len(document.tables)
+        images = len(document.inline_shapes)
+        words = len(text.split())
+        if images < 5:
+            errors.append(f"{row['file_name']} has only {images} diagnostic images")
+        if row["dashboard_available"] and words < 1800:
+            errors.append(f"{row['file_name']} is too short for a completed diagnosis ({words} words)")
+        if not row["dashboard_available"] and words < 900:
+            errors.append(f"{row['file_name']} is too short for a source-gap draft ({words} words)")
         stats["min_paragraphs"] = (
             paragraphs
             if stats["min_paragraphs"] is None
@@ -114,6 +132,10 @@ def main() -> int:
             tables if stats["min_tables"] is None else min(stats["min_tables"], tables)
         )
         stats["max_tables"] = max(stats["max_tables"], tables)
+        stats["min_images"] = images if stats["min_images"] is None else min(stats["min_images"], images)
+        stats["max_images"] = max(stats["max_images"], images)
+        stats["min_words"] = words if stats["min_words"] is None else min(stats["min_words"], words)
+        stats["max_words"] = max(stats["max_words"], words)
         stats["dashboard_missing"] += int(not row["dashboard_available"])
         stats["historical_available"] += int(row["historical_pmd_count"] > 0)
         stats["wikipedia_verified"] += int(row["wikipedia_status"] == "verified")

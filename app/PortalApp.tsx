@@ -257,8 +257,8 @@ function documentInfo(item: Municipality) {
   }
   if (item.pmd.generatedDraftUrl) {
     return {
-      label: "Descargar borrador Word",
-      note: `Borrador técnico ${item.pmd.generatedDraftPeriod || "2025-2028"} · editable`,
+      label: "Descargar PMD borrador Word",
+      note: `Información general y diagnóstico precompletados · ${item.pmd.generatedDraftPeriod || "2025-2028"}`,
       url: item.pmd.generatedDraftUrl,
       tone: "draft",
       download: true,
