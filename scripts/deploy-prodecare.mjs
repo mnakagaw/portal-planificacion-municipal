@@ -45,7 +45,13 @@ try {
   if (process.env.FTP_PRESERVE_EXISTING !== "true") {
     await client.clearWorkingDir();
   }
-  await client.uploadFromDir(buildDirectory);
+  if (process.env.FTP_WEB_ONLY === "true") {
+    await client.uploadFrom(path.join(buildDirectory, "index.html"), "index.html");
+    await client.ensureDir(path.posix.join(normalizedRemoteRoot, "assets"));
+    await client.uploadFromDir(path.join(buildDirectory, "assets"));
+  } else {
+    await client.uploadFromDir(buildDirectory);
+  }
   console.log(`Publicado en ${resolvedRemoteRoot}`);
 } finally {
   client.close();
