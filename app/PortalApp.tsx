@@ -629,6 +629,7 @@ export function PortalApp() {
   ).length;
 
   const viewportRegions = useMemo(() => {
+    if (selectedRegions.length > 0) return selectedRegions;
     if (selected) return [selected.region];
     if (province !== "Todas") {
       return Array.from(
@@ -729,7 +730,11 @@ export function PortalApp() {
     : undefined;
 
   const chooseMunicipality = (item: Municipality) => {
-    setSelectedRegions([item.region]);
+    setSelectedRegions((currentRegions) =>
+      currentRegions.length === 0 || !currentRegions.includes(item.region)
+        ? [item.region]
+        : currentRegions,
+    );
     setProvince("Todas");
     setSelected(item);
   };

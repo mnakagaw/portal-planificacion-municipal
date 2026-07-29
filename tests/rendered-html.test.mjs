@@ -103,10 +103,13 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /const SISMAP_CDM_URL/);
   assert.match(source, /listaevidenciasorganismos\/15/);
   assert.match(source, />\s*2\.01\(CDM\) ↗\s*</);
-  assert.match(source, /setSelectedRegions\(\[item\.region\]\)/);
   assert.match(
     source,
-    /const chooseMunicipality[\s\S]*?setProvince\("Todas"\)[\s\S]*?setSelected\(item\)/,
+    /const chooseMunicipality[\s\S]*?currentRegions\.includes\(item\.region\)[\s\S]*?setProvince\("Todas"\)[\s\S]*?setSelected\(item\)/,
+  );
+  assert.match(
+    source,
+    /const viewportRegions[\s\S]*?if \(selectedRegions\.length > 0\) return selectedRegions/,
   );
   assert.match(source, /onClick=\{\(\) => item && chooseMunicipality\(item\)\}/);
   assert.match(source, /import\.meta\.env\.BASE_URL.*data\/adm2\.geojson/);
