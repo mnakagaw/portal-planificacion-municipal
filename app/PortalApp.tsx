@@ -763,7 +763,6 @@ export function PortalApp() {
       <section className="page-heading">
         <div>
           <h1>Tablero de Planificación Municipal</h1>
-          <p className="heading-prompt">Seleccione un municipio</p>
         </div>
         <p>
           Consulte el PMD, el borrador disponible y la situación del CDM y la
@@ -800,6 +799,7 @@ export function PortalApp() {
       </section>
 
       <section className="selection-bar" aria-label="Selección territorial">
+        <h2 className="selection-title">Seleccione un municipio</h2>
         <div className="selection-control">
           <span>Región</span>
           <RegionMultiSelect
@@ -922,8 +922,14 @@ export function PortalApp() {
                       result="shadowColor"
                     />
                     <feComposite
+                      in="shadowOffset"
+                      in2="SourceAlpha"
+                      operator="out"
+                      result="outerShadowMask"
+                    />
+                    <feComposite
                       in="shadowColor"
-                      in2="shadowOffset"
+                      in2="outerShadowMask"
                       operator="in"
                       result="shadow"
                     />

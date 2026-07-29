@@ -31,6 +31,7 @@ test("server-renders the municipal portal", async () => {
   const html = await response.text();
   assert.match(html, /<title>Tablero de Planificación Municipal<\/title>/i);
   assert.match(html, /<h1>Tablero de Planificación Municipal<\/h1>/i);
+  assert.match(html, /<h2 class="selection-title">Seleccione un municipio<\/h2>/i);
   assert.match(html, /Seleccione un municipio/);
   assert.match(html, />Región</);
   assert.match(html, />Provincia</);
@@ -154,6 +155,10 @@ test("keeps the map palette aligned with the color specification", async () => {
   assert.match(source, /className="territory-selection"/);
   assert.match(source, /filter="url\(#territory-selection-filter\)"/);
   assert.match(source, /floodColor="#FFFFFF"/);
+  assert.match(
+    source,
+    /in="shadowOffset"[\s\S]*?in2="SourceAlpha"[\s\S]*?operator="out"[\s\S]*?result="outerShadowMask"/,
+  );
   assert.doesNotMatch(source, /feMergeNode in="SourceGraphic"/);
   assert.doesNotMatch(source, /fillOpacity=\{0\.13\}/);
   assert.match(source, /const visibleRegionIds = useMemo/);
