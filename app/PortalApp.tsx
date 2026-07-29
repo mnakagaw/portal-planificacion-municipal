@@ -749,11 +749,11 @@ export function PortalApp() {
         <div className="header-meta">
           <span className="header-source-links">
             <a href={SISMAP_PMD_URL} target="_blank" rel="noreferrer">
-              Fuente SISMAP 2.02 ↗
+              Fuente SISMAP 2.02(PMD) ↗
             </a>
             <span aria-hidden="true">/</span>
             <a href={SISMAP_CDM_URL} target="_blank" rel="noreferrer">
-              2.01 ↗
+              2.01(CDM) ↗
             </a>
           </span>
           <span>Estado de 162 municipios · 28 jul 2026</span>

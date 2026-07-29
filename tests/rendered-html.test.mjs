@@ -98,10 +98,10 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /useState<MapLayer>\("all"\)/);
   assert.match(source, /function matchesLayer/);
   assert.match(source, /function overviewLayer/);
-  assert.match(source, /Fuente SISMAP 2\.02/);
+  assert.match(source, /Fuente SISMAP 2\.02\(PMD\) ↗/);
   assert.match(source, /const SISMAP_CDM_URL/);
   assert.match(source, /listaevidenciasorganismos\/15/);
-  assert.match(source, />\s*2\.01 ↗\s*</);
+  assert.match(source, />\s*2\.01\(CDM\) ↗\s*</);
   assert.match(source, /setSelectedRegions\(\[item\.region\]\)/);
   assert.match(
     source,
