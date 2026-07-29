@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import diagnosticsData from "./data/diagnosticos.json";
 import municipalLinksData from "./data/municipal-links.json";
 import municipalitiesData from "./data/municipios.json";
 
@@ -10,6 +11,8 @@ type StatusLayer = Exclude<MapLayer, "all">;
 
 const SISMAP_PMD_URL =
   "https://www.sismap.gob.do/municipal/ranking/listaevidenciasorganismos/16?catchall=2.02-Plan-de-De&tipoId=17";
+const PORTAL_DOWNLOAD_ROOT =
+  "https://prodecare.net/DDPT/planificacion-municipal/";
 
 type Municipality = {
   id: number;
@@ -57,6 +60,18 @@ type MunicipalLink = {
   wikipediaUrl: string;
 };
 
+type DiagnosticDocument = {
+  id: number;
+  municipio: string;
+  provincia: string;
+  region: string;
+  adm2Code: string;
+  url: string;
+  filename: string;
+  includesNarrative: boolean;
+  generatedAt: string;
+};
+
 type GeoGeometry = {
   type: "Polygon" | "MultiPolygon";
   coordinates: number[][][] | number[][][][];
@@ -93,8 +108,12 @@ type MapBounds = {
 
 const municipalities = municipalitiesData as Municipality[];
 const municipalLinks = municipalLinksData as MunicipalLink[];
+const diagnosticDocuments = diagnosticsData as DiagnosticDocument[];
 const municipalLinksLookup = new Map(
   municipalLinks.map((item) => [item.id, item]),
+);
+const diagnosticDocumentsLookup = new Map(
+  diagnosticDocuments.map((item) => [item.id, item]),
 );
 
 const regionOrder = [
@@ -674,6 +693,9 @@ export function PortalApp() {
   const selectedLinks = selected
     ? municipalLinksLookup.get(selected.id)
     : undefined;
+  const selectedDiagnostic = selected
+    ? diagnosticDocumentsLookup.get(selected.id)
+    : undefined;
 
   const chooseMunicipality = (item: Municipality) => {
     setSelectedRegions([item.region]);
@@ -1031,6 +1053,16 @@ export function PortalApp() {
               </section>
 
               <div className="external-links">
+                {selectedDiagnostic && (
+                  <a
+                    className="external-link diagnostic-link"
+                    href={`${PORTAL_DOWNLOAD_ROOT}${selectedDiagnostic.url}`}
+                    download={selectedDiagnostic.filename}
+                  >
+                    Descargar Diagnóstico (PDF)
+                    <span aria-hidden="true">↓</span>
+                  </a>
+                )}
                 {selectedLinks?.officialWebsiteUrl && (
                   <a
                     className="external-link municipal-site-link"

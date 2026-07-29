@@ -78,3 +78,23 @@ General y Diagnóstico quedan preparados para revisión final; FODA, visión y
 proyectos permanecen sujetos a validación de la OMPP y el CDM. En los cuatro
 municipios nuevos todavía no cubiertos por el Dashboard no se trasladan cifras
 del municipio de origen.
+
+## Diagnósticos territoriales PDF
+
+El portal ofrece un PDF precompilado del Dashboard territorial para los 158
+municipios cubiertos por esa fuente. Cada archivo incluye los gráficos, las
+tablas comparativas y el resumen narrativo generado exclusivamente con los
+datos del Dashboard.
+
+- Manifiesto: `app/data/diagnosticos.json`
+- Archivos locales/publicados: `public/downloads/diagnosticos/`
+- No cubiertos: Villa Central, Tireo, La Caleta y La Victoria
+
+Para reconstruir los 158 archivos desde el Dashboard publicado:
+
+```bash
+pnpm diagnosticos:generate
+```
+
+Los PDF se conservan fuera de Git por su tamaño. Antes de publicar el portal,
+se cargan al directorio web mediante `pnpm diagnosticos:upload`.

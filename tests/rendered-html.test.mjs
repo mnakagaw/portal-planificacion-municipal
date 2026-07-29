@@ -233,3 +233,48 @@ test("publishes one traceable Word draft for each of the 104 target municipaliti
     }),
   );
 });
+
+test("publishes one dashboard diagnostic PDF for each of the 158 covered municipalities", async () => {
+  const [source, rawData, rawDiagnostics] = await Promise.all([
+    readFile(new URL("../app/PortalApp.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/data/municipios.json", import.meta.url), "utf8"),
+    readFile(new URL("../app/data/diagnosticos.json", import.meta.url), "utf8"),
+  ]);
+  const data = JSON.parse(rawData);
+  const diagnostics = JSON.parse(rawDiagnostics);
+
+  assert.equal(diagnostics.length, 158);
+  assert.equal(new Set(diagnostics.map((item) => item.id)).size, 158);
+  assert.equal(
+    diagnostics.filter((item) => item.includesNarrative).length,
+    158,
+  );
+
+  const uncovered = data
+    .filter(
+      (item) => !diagnostics.some((diagnostic) => diagnostic.id === item.id),
+    )
+    .map((item) => item.municipio)
+    .sort();
+  assert.deepEqual(
+    uncovered,
+    ["La Caleta", "La Victoria", "Tireo", "Villa Central"].sort(),
+  );
+
+  diagnostics.forEach((item) => {
+    assert.match(
+      item.url,
+      /^downloads\/diagnosticos\/\d{5}_diagnostico-territorial-.+\.pdf$/,
+    );
+  });
+
+  assert.match(source, /Descargar Diagnóstico \(PDF\)/);
+  assert.match(
+    source,
+    /https:\/\/prodecare\.net\/DDPT\/planificacion-municipal\//,
+  );
+  assert.match(
+    source,
+    /className="external-links"[\s\S]*?Descargar Diagnóstico \(PDF\)[\s\S]*?Sitio web oficial del municipio/,
+  );
+});

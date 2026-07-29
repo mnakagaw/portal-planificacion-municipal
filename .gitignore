@@ -44,5 +44,6 @@ next-env.d.ts
 /work/
 /tmp/
 /site-package*.tar.gz
+/public/downloads/diagnosticos/*.pdf
 __pycache__/
 *.pyc

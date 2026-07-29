@@ -748,6 +748,12 @@ select,
   text-decoration: underline;
 }
 
+.diagnostic-link {
+  color: #234f7d;
+  font-size: 9px;
+  font-weight: 600;
+}
+
 .municipal-site-link {
   color: #31453f;
   font-size: 9px;
