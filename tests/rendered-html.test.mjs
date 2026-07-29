@@ -138,7 +138,7 @@ test("keeps the map palette aligned with the color specification", async () => {
     "#527E91",
     "#8FADBA",
     "#F2E5BF",
-    "#EEF1F0",
+    "#D7E0DC",
     "#E85D3F",
   ]) {
     assert.match(styles, new RegExp(color, "i"));
@@ -155,12 +155,11 @@ test("keeps the map palette aligned with the color specification", async () => {
   assert.match(source, /className="territory-selection"/);
   assert.match(source, /filter="url\(#territory-selection-filter\)"/);
   assert.match(source, /floodColor="#FFFFFF"/);
-  assert.match(
-    source,
-    /in="shadowOffset"[\s\S]*?in2="SourceAlpha"[\s\S]*?operator="out"[\s\S]*?result="outerShadowMask"/,
-  );
+  assert.doesNotMatch(source, /shadowBlur|shadowOffset|outerShadowMask/);
+  assert.doesNotMatch(source, /feMergeNode in="shadow"/);
   assert.doesNotMatch(source, /feMergeNode in="SourceGraphic"/);
   assert.doesNotMatch(source, /fillOpacity=\{0\.13\}/);
+  assert.match(source, /fillOpacity=\{included \? 1 : 0\.92\}/);
   assert.match(source, /const visibleRegionIds = useMemo/);
   assert.match(source, /const selectedTerritoryIds = useMemo/);
   assert.doesNotMatch(source, /const filteredIds = useMemo/);

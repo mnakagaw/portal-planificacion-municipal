@@ -905,34 +905,6 @@ export function PortalApp() {
                     height="150%"
                     colorInterpolationFilters="sRGB"
                   >
-                    <feGaussianBlur
-                      in="SourceAlpha"
-                      stdDeviation="3"
-                      result="shadowBlur"
-                    />
-                    <feOffset
-                      in="shadowBlur"
-                      dx="0"
-                      dy="3"
-                      result="shadowOffset"
-                    />
-                    <feFlood
-                      floodColor="#55251C"
-                      floodOpacity="0.24"
-                      result="shadowColor"
-                    />
-                    <feComposite
-                      in="shadowOffset"
-                      in2="SourceAlpha"
-                      operator="out"
-                      result="outerShadowMask"
-                    />
-                    <feComposite
-                      in="shadowColor"
-                      in2="outerShadowMask"
-                      operator="in"
-                      result="shadow"
-                    />
                     <feMorphology
                       in="SourceAlpha"
                       operator="dilate"
@@ -979,7 +951,6 @@ export function PortalApp() {
                       result="outline"
                     />
                     <feMerge>
-                      <feMergeNode in="shadow" />
                       <feMergeNode in="halo" />
                       <feMergeNode in="outline" />
                     </feMerge>
@@ -992,7 +963,7 @@ export function PortalApp() {
                     const active = item ? matchesLayer(item, activeLayer) : false;
                     const overview = item ? overviewLayer(item) : null;
                     const fill = !included
-                      ? "#EEF1F0"
+                      ? "#D7E0DC"
                       : activeLayer === "all"
                         ? overview
                           ? layerMeta[overview].color
@@ -1005,7 +976,7 @@ export function PortalApp() {
                         key={shape.adm2Code}
                         d={shape.path}
                         fill={fill}
-                        fillOpacity={included ? 1 : 0.58}
+                        fillOpacity={included ? 1 : 0.92}
                         fillRule="evenodd"
                         stroke="rgba(255, 255, 255, 0.68)"
                         strokeWidth={0.9}
