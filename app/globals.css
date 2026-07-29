@@ -461,10 +461,7 @@ select,
 }
 
 .territory-selection-shape {
-  transition:
-    fill 160ms ease,
-    fill-opacity 160ms ease,
-    filter 160ms ease;
+  transition: filter 160ms ease;
 }
 
 .map-shape.is-muted {

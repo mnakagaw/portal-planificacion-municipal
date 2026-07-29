@@ -905,23 +905,20 @@ export function PortalApp() {
                     height="150%"
                     colorInterpolationFilters="sRGB"
                   >
-                    <feComponentTransfer in="SourceAlpha" result="solidAlpha">
-                      <feFuncA type="linear" slope="100" />
-                    </feComponentTransfer>
                     <feGaussianBlur
-                      in="solidAlpha"
-                      stdDeviation="3.2"
+                      in="SourceAlpha"
+                      stdDeviation="3"
                       result="shadowBlur"
                     />
                     <feOffset
                       in="shadowBlur"
                       dx="0"
-                      dy="4"
+                      dy="3"
                       result="shadowOffset"
                     />
                     <feFlood
                       floodColor="#55251C"
-                      floodOpacity="0.32"
+                      floodOpacity="0.24"
                       result="shadowColor"
                     />
                     <feComposite
@@ -931,14 +928,37 @@ export function PortalApp() {
                       result="shadow"
                     />
                     <feMorphology
-                      in="solidAlpha"
+                      in="SourceAlpha"
                       operator="dilate"
-                      radius="2.4"
-                      result="expanded"
+                      radius="4"
+                      result="haloExpanded"
                     />
                     <feComposite
-                      in="expanded"
-                      in2="solidAlpha"
+                      in="haloExpanded"
+                      in2="SourceAlpha"
+                      operator="out"
+                      result="haloMask"
+                    />
+                    <feFlood
+                      floodColor="#FFFFFF"
+                      floodOpacity="0.95"
+                      result="haloColor"
+                    />
+                    <feComposite
+                      in="haloColor"
+                      in2="haloMask"
+                      operator="in"
+                      result="halo"
+                    />
+                    <feMorphology
+                      in="SourceAlpha"
+                      operator="dilate"
+                      radius="2.4"
+                      result="outlineExpanded"
+                    />
+                    <feComposite
+                      in="outlineExpanded"
+                      in2="SourceAlpha"
                       operator="out"
                       result="outlineMask"
                     />
@@ -954,8 +974,8 @@ export function PortalApp() {
                     />
                     <feMerge>
                       <feMergeNode in="shadow" />
+                      <feMergeNode in="halo" />
                       <feMergeNode in="outline" />
-                      <feMergeNode in="SourceGraphic" />
                     </feMerge>
                   </filter>
                 </defs>
@@ -1032,8 +1052,7 @@ export function PortalApp() {
                         <path
                           key={`selected-${shape.adm2Code}`}
                           d={shape.path}
-                          fill={TERRITORY_SELECTION_COLOR}
-                          fillOpacity={0.13}
+                          fill="#000000"
                           fillRule="evenodd"
                           className="territory-selection-shape"
                         />
