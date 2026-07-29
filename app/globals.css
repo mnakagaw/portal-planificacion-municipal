@@ -129,7 +129,6 @@ select,
   gap: 6px;
 }
 
-.page-heading span,
 .selection-bar > label > span,
 .selection-control > span,
 .document-card > span {
@@ -141,10 +140,17 @@ select,
 }
 
 .page-heading h1 {
-  font-size: clamp(30px, 4vw, 48px);
-  letter-spacing: -0.055em;
-  line-height: 1;
+  font-size: clamp(28px, 3.2vw, 42px);
+  letter-spacing: -0.045em;
+  line-height: 1.04;
   margin: 0;
+}
+
+.page-heading .heading-prompt {
+  color: var(--muted);
+  font-size: clamp(13px, 1.25vw, 17px);
+  line-height: 1.35;
+  margin: 1px 0 0;
 }
 
 .page-heading > p {
@@ -924,7 +930,7 @@ footer p {
   }
 
   .page-heading h1 {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .layer-switcher button {

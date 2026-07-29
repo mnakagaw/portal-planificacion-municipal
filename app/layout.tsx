@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol =
     requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
-  const title = "Portal de Planificación Municipal";
+  const title = "Tablero de Planificación Municipal";
   const description =
     "Estado de OMPP, CDM y PMD por región, provincia y municipio de la República Dominicana.";
   return {

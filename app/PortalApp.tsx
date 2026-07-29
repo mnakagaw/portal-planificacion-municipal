@@ -754,8 +754,8 @@ export function PortalApp() {
 
       <section className="page-heading">
         <div>
-          <span>Portal municipal</span>
-          <h1>Seleccione un municipio</h1>
+          <h1>Tablero de Planificación Municipal</h1>
+          <p className="heading-prompt">Seleccione un municipio</p>
         </div>
         <p>
           Consulte el PMD, el borrador disponible y la situación del CDM y la

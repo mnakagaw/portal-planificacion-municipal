@@ -29,7 +29,8 @@ test("server-renders the municipal portal", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Portal de Planificación Municipal<\/title>/i);
+  assert.match(html, /<title>Tablero de Planificación Municipal<\/title>/i);
+  assert.match(html, /<h1>Tablero de Planificación Municipal<\/h1>/i);
   assert.match(html, /Seleccione un municipio/);
   assert.match(html, />Región</);
   assert.match(html, />Provincia</);
