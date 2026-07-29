@@ -385,7 +385,7 @@ function documentInfo(item: Municipality) {
       heading: "Documento base para elaborar el PMD",
       label: "Descargar documento base del PMD (Word)",
       note: `Información general y diagnóstico preelaborados para revisión de la OMPP y el CDM · ${item.pmd.generatedDraftPeriod || "2025-2028"}`,
-      url: item.pmd.generatedDraftUrl,
+      url: `${PORTAL_DOWNLOAD_ROOT}${item.pmd.generatedDraftUrl}`,
       tone: "base",
       download: true,
     };

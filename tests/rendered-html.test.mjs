@@ -285,6 +285,10 @@ test("publishes one dashboard diagnostic PDF for each of the 158 covered municip
   assert.match(source, /Descargar Diagnóstico \(PDF\)/);
   assert.match(
     source,
+    /url: `\$\{PORTAL_DOWNLOAD_ROOT\}\$\{item\.pmd\.generatedDraftUrl\}`/,
+  );
+  assert.match(
+    source,
     /https:\/\/prodecare\.net\/DDPT\/planificacion-municipal\//,
   );
   assert.match(
