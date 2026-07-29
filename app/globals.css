@@ -715,6 +715,14 @@ select,
   background: #75a67e;
 }
 
+.document-action.action-base {
+  background: #234f7d;
+}
+
+.document-action.action-base:hover {
+  background: #193e66;
+}
+
 .document-action:disabled {
   background: #e5eae8;
   color: #7a8984;

@@ -147,6 +147,10 @@ test("keeps the map palette aligned with the color specification", async () => {
   assert.match(source, /strokeWidth=\{isSelected \? 2 : 0\.9\}/);
   assert.match(css, /\.map-canvas\s*\{\s*background:\s*#f6f8f6/i);
   assert.match(css, /stroke:\s*rgba\(255,\s*255,\s*255,\s*0\.95\)/i);
+  assert.match(css, /\.document-action\.action-official\s*\{\s*background:\s*#286a50/i);
+  assert.match(css, /\.document-action\.action-draft\s*\{\s*background:\s*#75a67e/i);
+  assert.match(css, /\.document-action\.action-base\s*\{\s*background:\s*#234f7d/i);
+  assert.match(source, /tone:\s*"base"/);
 });
 
 test("uses PMD documents instead of administrative evidence links", async () => {
