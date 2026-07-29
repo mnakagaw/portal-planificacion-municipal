@@ -41,8 +41,8 @@ test("server-renders the municipal portal", async () => {
   assert.match(html, /Borrador SISMAP/);
   assert.match(html, />CDM</);
   assert.match(html, />OMPP</);
-  assert.match(html, /Sin confirmar/);
-  assert.match(html, /Exclusivo/);
+  assert.match(html, /Sin estado confirmado/);
+  assert.doesNotMatch(html, /Exclusivo/);
   assert.doesNotMatch(html, /Building your site|codex-preview|loading skeleton/i);
 });
 
@@ -112,7 +112,7 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /useState<MapLayer>\("all"\)/);
   assert.match(source, /function matchesLayer/);
   assert.match(source, /case "unconfirmed":/);
-  assert.match(source, /cardNote: "Exclusivo"/);
+  assert.doesNotMatch(source, /cardNote/);
   assert.match(source, /function overviewLayer/);
   assert.match(source, /Fuente SISMAP 2\.02\(PMD\) ↗/);
   assert.match(source, /const SISMAP_CDM_URL/);

@@ -143,7 +143,6 @@ const layerMeta: Record<
     softColor: string;
     textColor: string;
     description: string;
-    cardNote?: string;
   }
 > = {
   all: {
@@ -188,13 +187,12 @@ const layerMeta: Record<
   },
   unconfirmed: {
     label: "Sin estado confirmado",
-    shortLabel: "Sin confirmar",
+    shortLabel: "Sin estado confirmado",
     color: MAP_UNCONFIRMED_COLOR,
     softColor: "#FBF6E8",
     textColor: "#806A22",
     description:
       "Municipios sin PMD, CDM ni OMPP confirmados; grupo exclusivo, no acumulativo.",
-    cardNote: "Exclusivo",
   },
 };
 
@@ -808,10 +806,7 @@ export function PortalApp() {
             >
               <span className="layer-dot" aria-hidden="true" />
               <span>
-                <small>
-                  {meta.shortLabel}
-                  {meta.cardNote && <em>{meta.cardNote}</em>}
-                </small>
+                <small>{meta.shortLabel}</small>
                 <strong>{layerCounts[layer]}</strong>
               </span>
             </button>

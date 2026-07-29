@@ -219,25 +219,9 @@ select,
 }
 
 .layer-switcher small {
-  align-items: center;
   color: var(--muted);
-  display: flex;
   font-size: 10px;
   font-weight: 650;
-  gap: 5px;
-}
-
-.layer-switcher em {
-  background: #f6edce;
-  border: 1px solid #e5d59e;
-  border-radius: 999px;
-  color: #806a22;
-  font-size: 6px;
-  font-style: normal;
-  font-weight: 750;
-  letter-spacing: 0.07em;
-  padding: 2px 4px;
-  text-transform: uppercase;
 }
 
 .layer-switcher strong {
