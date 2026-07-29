@@ -16,6 +16,8 @@ const SISMAP_CDM_URL =
 const PORTAL_DOWNLOAD_ROOT =
   "https://prodecare.net/DDPT/planificacion-municipal/";
 const TERRITORY_SELECTION_COLOR = "#E85D3F";
+const MAP_UNCONFIRMED_COLOR = "#F2E5BF";
+const MAP_INACTIVE_COLOR = "#DEDAD2";
 
 type Municipality = {
   id: number;
@@ -187,7 +189,7 @@ const layerMeta: Record<
   unconfirmed: {
     label: "Sin estado confirmado",
     shortLabel: "Sin confirmar",
-    color: "#D9BE68",
+    color: MAP_UNCONFIRMED_COLOR,
     softColor: "#FBF6E8",
     textColor: "#806A22",
     description:
@@ -982,18 +984,14 @@ export function PortalApp() {
                     const active = item ? matchesLayer(item, activeLayer) : false;
                     const overview = item ? overviewLayer(item) : null;
                     const fill = !included
-                      ? "#D7E0DC"
+                      ? MAP_INACTIVE_COLOR
                       : activeLayer === "all"
                         ? overview
                           ? layerMeta[overview].color
-                          : "#F2E5BF"
-                        : activeLayer === "unconfirmed"
-                          ? active
-                            ? activeMeta.color
-                            : "#D7E0DC"
-                          : active
-                            ? activeMeta.color
-                            : "#F2E5BF";
+                          : MAP_UNCONFIRMED_COLOR
+                        : active
+                          ? activeMeta.color
+                          : MAP_INACTIVE_COLOR;
                     return (
                       <path
                         key={shape.adm2Code}
