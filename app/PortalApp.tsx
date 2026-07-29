@@ -6,8 +6,8 @@ import municipalLinksData from "./data/municipal-links.json";
 import municipalitiesData from "./data/municipios.json";
 
 type Level = "complete" | "progress" | "warning" | "none" | "unknown";
-type MapLayer = "all" | "pmdOfficial" | "pmdDraft" | "cdm" | "ompp";
-type StatusLayer = Exclude<MapLayer, "all">;
+type StatusLayer = "pmdOfficial" | "pmdDraft" | "cdm" | "ompp";
+type MapLayer = "all" | StatusLayer | "unconfirmed";
 
 const SISMAP_PMD_URL =
   "https://www.sismap.gob.do/municipal/ranking/listaevidenciasorganismos/16?catchall=2.02-Plan-de-De&tipoId=17";
@@ -141,6 +141,7 @@ const layerMeta: Record<
     softColor: string;
     textColor: string;
     description: string;
+    cardNote?: string;
   }
 > = {
   all: {
@@ -182,6 +183,16 @@ const layerMeta: Record<
     softColor: "#F1F5F6",
     textColor: "#53727E",
     description: "La OMPP figura como establecida en la evidencia revisada.",
+  },
+  unconfirmed: {
+    label: "Sin estado confirmado",
+    shortLabel: "Sin confirmar",
+    color: "#D9BE68",
+    softColor: "#FBF6E8",
+    textColor: "#806A22",
+    description:
+      "Municipios sin PMD, CDM ni OMPP confirmados; grupo exclusivo, no acumulativo.",
+    cardNote: "Exclusivo",
   },
 };
 
@@ -229,10 +240,8 @@ function hasFormalPmd(item: Municipality) {
   );
 }
 
-function hasLayerStatus(item: Municipality, layer: MapLayer) {
+function hasLayerStatus(item: Municipality, layer: StatusLayer) {
   switch (layer) {
-    case "all":
-      return true;
     case "pmdOfficial":
       return item.pmd.hasOfficialEvidence;
     case "pmdDraft":
@@ -258,6 +267,8 @@ function matchesLayer(item: Municipality, layer: MapLayer) {
       return hasLayerStatus(item, "cdm");
     case "ompp":
       return hasLayerStatus(item, "ompp");
+    case "unconfirmed":
+      return overviewLayer(item) === null;
   }
 }
 
@@ -795,7 +806,10 @@ export function PortalApp() {
             >
               <span className="layer-dot" aria-hidden="true" />
               <span>
-                <small>{meta.shortLabel}</small>
+                <small>
+                  {meta.shortLabel}
+                  {meta.cardNote && <em>{meta.cardNote}</em>}
+                </small>
                 <strong>{layerCounts[layer]}</strong>
               </span>
             </button>
@@ -913,7 +927,7 @@ export function PortalApp() {
                     <feMorphology
                       in="SourceAlpha"
                       operator="dilate"
-                      radius="4"
+                      radius="3"
                       result="haloExpanded"
                     />
                     <feComposite
@@ -936,7 +950,7 @@ export function PortalApp() {
                     <feMorphology
                       in="SourceAlpha"
                       operator="dilate"
-                      radius="2.4"
+                      radius="1.8"
                       result="outlineExpanded"
                     />
                     <feComposite
@@ -973,9 +987,13 @@ export function PortalApp() {
                         ? overview
                           ? layerMeta[overview].color
                           : "#F2E5BF"
-                        : active
-                          ? activeMeta.color
-                          : "#F2E5BF";
+                        : activeLayer === "unconfirmed"
+                          ? active
+                            ? activeMeta.color
+                            : "#D7E0DC"
+                          : active
+                            ? activeMeta.color
+                            : "#F2E5BF";
                     return (
                       <path
                         key={shape.adm2Code}
@@ -1063,7 +1081,10 @@ export function PortalApp() {
               {activeLayer === "all" ? (
                 <>
                   {(Object.keys(layerMeta) as MapLayer[])
-                    .filter((layer): layer is StatusLayer => layer !== "all")
+                    .filter(
+                      (layer): layer is StatusLayer =>
+                        layer !== "all" && layer !== "unconfirmed",
+                    )
                     .map((layer) => (
                       <span
                         key={layer}
@@ -1142,7 +1163,10 @@ export function PortalApp() {
 
               <div className="status-grid">
                 {(Object.keys(layerMeta) as MapLayer[])
-                  .filter((layer): layer is StatusLayer => layer !== "all")
+                  .filter(
+                    (layer): layer is StatusLayer =>
+                      layer !== "all" && layer !== "unconfirmed",
+                  )
                   .map((layer) => (
                     <StatusItem key={layer} item={selected} layer={layer} />
                   ))}
