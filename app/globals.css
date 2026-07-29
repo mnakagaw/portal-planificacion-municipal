@@ -442,11 +442,16 @@ select,
   stroke-width: 1.35px;
 }
 
-.map-shape.is-selected,
-.map-shape.is-selected:hover,
-.map-shape.is-selected:focus {
-  stroke: #234a3d;
-  stroke-width: 2px;
+.territory-selection,
+.territory-selection-shape {
+  pointer-events: none;
+}
+
+.territory-selection-shape {
+  transition:
+    fill 160ms ease,
+    fill-opacity 160ms ease,
+    filter 160ms ease;
 }
 
 .map-shape.is-muted {

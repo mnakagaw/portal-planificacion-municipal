@@ -134,6 +134,7 @@ test("keeps the map palette aligned with the color specification", async () => {
     "#8FADBA",
     "#F2E5BF",
     "#EEF1F0",
+    "#E85D3F",
   ]) {
     assert.match(styles, new RegExp(color, "i"));
   }
@@ -144,7 +145,13 @@ test("keeps the map palette aligned with the color specification", async () => {
     assert.doesNotMatch(styles, new RegExp(oldColor, "i"));
   }
 
-  assert.match(source, /strokeWidth=\{isSelected \? 2 : 0\.9\}/);
+  assert.match(source, /const TERRITORY_SELECTION_COLOR = "#E85D3F"/);
+  assert.match(source, /id="territory-selection-filter"/);
+  assert.match(source, /className="territory-selection"/);
+  assert.match(source, /filter="url\(#territory-selection-filter\)"/);
+  assert.match(source, /const visibleRegionIds = useMemo/);
+  assert.match(source, /const selectedTerritoryIds = useMemo/);
+  assert.doesNotMatch(source, /const filteredIds = useMemo/);
   assert.match(css, /\.map-canvas\s*\{\s*background:\s*#f6f8f6/i);
   assert.match(css, /stroke:\s*rgba\(255,\s*255,\s*255,\s*0\.95\)/i);
   assert.match(css, /\.document-action\.action-official\s*\{\s*background:\s*#286a50/i);

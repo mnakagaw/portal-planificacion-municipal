@@ -13,6 +13,7 @@ const SISMAP_PMD_URL =
   "https://www.sismap.gob.do/municipal/ranking/listaevidenciasorganismos/16?catchall=2.02-Plan-de-De&tipoId=17";
 const PORTAL_DOWNLOAD_ROOT =
   "https://prodecare.net/DDPT/planificacion-municipal/";
+const TERRITORY_SELECTION_COLOR = "#E85D3F";
 
 type Municipality = {
   id: number;
@@ -611,11 +612,6 @@ export function PortalApp() {
     [province, selectedRegions],
   );
 
-  const filteredIds = useMemo(
-    () => new Set(municipalityOptions.map((item) => item.id)),
-    [municipalityOptions],
-  );
-
   const mappedIds = useMemo(
     () =>
       new Set(
@@ -630,11 +626,10 @@ export function PortalApp() {
     (item) => !mappedIds.has(item.id),
   ).length;
 
-  const mapViewBox = useMemo(() => {
-    let viewportRegions = selected ? [selected.region] : selectedRegions;
-
-    if (!selected && province !== "Todas") {
-      viewportRegions = Array.from(
+  const viewportRegions = useMemo(() => {
+    if (selected) return [selected.region];
+    if (province !== "Todas") {
+      return Array.from(
         new Set(
           municipalities
             .filter((item) => item.provincia === province)
@@ -642,6 +637,42 @@ export function PortalApp() {
         ),
       );
     }
+    return selectedRegions;
+  }, [province, selected, selectedRegions]);
+
+  const visibleRegionIds = useMemo(() => {
+    if (viewportRegions.length === 0) {
+      return new Set(municipalities.map((item) => item.id));
+    }
+    const regionSet = new Set(viewportRegions);
+    return new Set(
+      municipalities
+        .filter((item) => regionSet.has(item.region))
+        .map((item) => item.id),
+    );
+  }, [viewportRegions]);
+
+  const selectedTerritoryIds = useMemo(() => {
+    if (selected) return new Set([selected.id]);
+    if (province !== "Todas") {
+      return new Set(
+        municipalities
+          .filter((item) => item.provincia === province)
+          .map((item) => item.id),
+      );
+    }
+    if (selectedRegions.length > 0) {
+      const regionSet = new Set(selectedRegions);
+      return new Set(
+        municipalities
+          .filter((item) => regionSet.has(item.region))
+          .map((item) => item.id),
+      );
+    }
+    return new Set<number>();
+  }, [province, selected, selectedRegions]);
+
+  const mapViewBox = useMemo(() => {
 
     if (viewportRegions.length === 0) return "0 0 1000 670";
 
@@ -671,9 +702,7 @@ export function PortalApp() {
   }, [
     mapShapes,
     municipalityLookup,
-    province,
-    selected,
-    selectedRegions,
+    viewportRegions,
   ]);
 
   const layerCounts = useMemo(
@@ -859,12 +888,74 @@ export function PortalApp() {
                 role="img"
                 aria-label="Mapa de municipios de la República Dominicana"
               >
+                <defs>
+                  <filter
+                    id="territory-selection-filter"
+                    x="-20%"
+                    y="-20%"
+                    width="140%"
+                    height="150%"
+                    colorInterpolationFilters="sRGB"
+                  >
+                    <feComponentTransfer in="SourceAlpha" result="solidAlpha">
+                      <feFuncA type="linear" slope="100" />
+                    </feComponentTransfer>
+                    <feGaussianBlur
+                      in="solidAlpha"
+                      stdDeviation="3.2"
+                      result="shadowBlur"
+                    />
+                    <feOffset
+                      in="shadowBlur"
+                      dx="0"
+                      dy="4"
+                      result="shadowOffset"
+                    />
+                    <feFlood
+                      floodColor="#55251C"
+                      floodOpacity="0.32"
+                      result="shadowColor"
+                    />
+                    <feComposite
+                      in="shadowColor"
+                      in2="shadowOffset"
+                      operator="in"
+                      result="shadow"
+                    />
+                    <feMorphology
+                      in="solidAlpha"
+                      operator="dilate"
+                      radius="2.4"
+                      result="expanded"
+                    />
+                    <feComposite
+                      in="expanded"
+                      in2="solidAlpha"
+                      operator="out"
+                      result="outlineMask"
+                    />
+                    <feFlood
+                      floodColor={TERRITORY_SELECTION_COLOR}
+                      result="outlineColor"
+                    />
+                    <feComposite
+                      in="outlineColor"
+                      in2="outlineMask"
+                      operator="in"
+                      result="outline"
+                    />
+                    <feMerge>
+                      <feMergeNode in="shadow" />
+                      <feMergeNode in="outline" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
                 <g>
                   {mapShapes.map((shape) => {
                     const item = municipalityLookup.get(shape.municipalityKey);
-                    const included = item ? filteredIds.has(item.id) : false;
+                    const included = item ? visibleRegionIds.has(item.id) : false;
                     const active = item ? matchesLayer(item, activeLayer) : false;
-                    const isSelected = item?.id === selected?.id;
                     const overview = item ? overviewLayer(item) : null;
                     const fill = !included
                       ? "#EEF1F0"
@@ -882,13 +973,11 @@ export function PortalApp() {
                         fill={fill}
                         fillOpacity={included ? 1 : 0.58}
                         fillRule="evenodd"
-                        stroke={isSelected ? "#234A3D" : "rgba(255, 255, 255, 0.68)"}
-                        strokeWidth={isSelected ? 2 : 0.9}
+                        stroke="rgba(255, 255, 255, 0.68)"
+                        strokeWidth={0.9}
                         strokeLinejoin="round"
                         vectorEffect="non-scaling-stroke"
-                        className={`${item ? "map-shape" : "map-shape is-muted"} ${
-                          isSelected ? "is-selected" : ""
-                        }`}
+                        className={item ? "map-shape" : "map-shape is-muted"}
                         onMouseEnter={() => item && setHovered(item)}
                         onMouseLeave={() => setHovered(null)}
                         onFocus={() => item && setHovered(item)}
@@ -922,6 +1011,28 @@ export function PortalApp() {
                     );
                   })}
                 </g>
+                {selectedTerritoryIds.size > 0 && (
+                  <g
+                    className="territory-selection"
+                    filter="url(#territory-selection-filter)"
+                    aria-hidden="true"
+                  >
+                    {mapShapes.map((shape) => {
+                      const item = municipalityLookup.get(shape.municipalityKey);
+                      if (!item || !selectedTerritoryIds.has(item.id)) return null;
+                      return (
+                        <path
+                          key={`selected-${shape.adm2Code}`}
+                          d={shape.path}
+                          fill={TERRITORY_SELECTION_COLOR}
+                          fillOpacity={0.13}
+                          fillRule="evenodd"
+                          className="territory-selection-shape"
+                        />
+                      );
+                    })}
+                  </g>
+                )}
               </svg>
             )}
 
