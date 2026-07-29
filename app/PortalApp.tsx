@@ -138,8 +138,8 @@ const layerMeta: Record<
     description: "SISMAP 2.02 al 100% o evidencia 8-12 confirmada.",
   },
   pmdDraft: {
-    label: "PMD borrador",
-    shortLabel: "PMD Borrador",
+    label: "PMD borrador en SISMAP",
+    shortLabel: "Borrador SISMAP",
     color: "#75A67E",
     softColor: "#EEF4EF",
     textColor: "#486D50",
@@ -331,6 +331,7 @@ function documentInfo(item: Municipality) {
   if (item.pmd.hasOfficialEvidence) {
     if (!item.pmd.officialUrl) {
       return {
+        heading: "Evidencias del PMD",
         label: "Ver evidencias en SISMAP",
         note: "PMD completo no identificado en los archivos disponibles",
         url: item.sismapUrl,
@@ -339,6 +340,7 @@ function documentInfo(item: Municipality) {
       };
     }
     return {
+      heading: "PMD oficial",
       label: "Abrir PMD oficial",
       note: item.pmd.period || "Período por confirmar",
       url: item.pmd.officialUrl,
@@ -348,7 +350,8 @@ function documentInfo(item: Municipality) {
   }
   if (item.pmd.has7_12 || item.pmd.hasDraft) {
     return {
-      label: "Abrir borrador existente",
+      heading: "PMD borrador en SISMAP",
+      label: "Abrir PMD borrador en SISMAP",
       note: "Documento de trabajo para revisión",
       url: item.pmd.pdfUrl || item.sismapUrl,
       tone: "draft",
@@ -357,15 +360,17 @@ function documentInfo(item: Municipality) {
   }
   if (item.pmd.generatedDraftUrl) {
     return {
-      label: "Descargar PMD borrador Word",
-      note: `Información general y diagnóstico precompletados · ${item.pmd.generatedDraftPeriod || "2025-2028"}`,
+      heading: "Documento base para elaborar el PMD",
+      label: "Descargar documento base del PMD (Word)",
+      note: `Información general y diagnóstico preelaborados para revisión de la OMPP y el CDM · ${item.pmd.generatedDraftPeriod || "2025-2028"}`,
       url: item.pmd.generatedDraftUrl,
       tone: "draft",
       download: true,
     };
   }
   return {
-    label: "Borrador Word en preparación",
+    heading: "Documento base para elaborar el PMD",
+    label: "Documento base en preparación",
     note: "Se publicará aquí cuando esté listo",
     url: "",
     tone: "pending",
@@ -1002,7 +1007,7 @@ export function PortalApp() {
               </div>
 
               <section className="document-card">
-                <span>Documento</span>
+                <span>{selectedDocument?.heading}</span>
                 <strong>{selectedDocument?.label}</strong>
                 <small>{selectedDocument?.note}</small>
                 {selectedDocument?.url ? (
@@ -1079,7 +1084,7 @@ export function PortalApp() {
         <p>
           La condición de PMD oficial y la vigencia del período se revisan por
           separado. Los municipios sin documento oficial o borrador SISMAP
-          disponen de un borrador técnico Word para revisión local.
+          disponen de un documento base Word para revisión de la OMPP y el CDM.
         </p>
         <span>Fuente de estado: SISMAP Municipal</span>
       </footer>

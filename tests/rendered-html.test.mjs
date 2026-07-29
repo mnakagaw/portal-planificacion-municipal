@@ -36,7 +36,7 @@ test("server-renders the municipal portal", async () => {
   assert.match(html, />Municipio</);
   assert.match(html, />Todos</);
   assert.match(html, /PMD Oficial/);
-  assert.match(html, /PMD Borrador/);
+  assert.match(html, /Borrador SISMAP/);
   assert.match(html, />CDM</);
   assert.match(html, />OMPP</);
   assert.doesNotMatch(html, /Building your site|codex-preview|loading skeleton/i);
