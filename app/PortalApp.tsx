@@ -11,6 +11,8 @@ type StatusLayer = Exclude<MapLayer, "all">;
 
 const SISMAP_PMD_URL =
   "https://www.sismap.gob.do/municipal/ranking/listaevidenciasorganismos/16?catchall=2.02-Plan-de-De&tipoId=17";
+const SISMAP_CDM_URL =
+  "https://www.sismap.gob.do/municipal/ranking/listaevidenciasorganismos/15?catchall=2.02-Plan-de-De&tipoId=17";
 const PORTAL_DOWNLOAD_ROOT =
   "https://prodecare.net/DDPT/planificacion-municipal/";
 const TERRITORY_SELECTION_COLOR = "#E85D3F";
@@ -745,9 +747,15 @@ export function PortalApp() {
           </span>
         </div>
         <div className="header-meta">
-          <a href={SISMAP_PMD_URL} target="_blank" rel="noreferrer">
-            Fuente SISMAP 2.02 ↗
-          </a>
+          <span className="header-source-links">
+            <a href={SISMAP_PMD_URL} target="_blank" rel="noreferrer">
+              Fuente SISMAP 2.02 ↗
+            </a>
+            <span aria-hidden="true">/</span>
+            <a href={SISMAP_CDM_URL} target="_blank" rel="noreferrer">
+              2.01 ↗
+            </a>
+          </span>
           <span>Estado de 162 municipios · 28 jul 2026</span>
         </div>
       </header>

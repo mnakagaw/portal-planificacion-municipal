@@ -93,6 +93,13 @@ select,
   gap: 14px;
 }
 
+.header-source-links {
+  align-items: center;
+  display: inline-flex;
+  gap: 4px;
+  white-space: nowrap;
+}
+
 .header-meta a {
   color: var(--muted);
   text-decoration-color: transparent;
