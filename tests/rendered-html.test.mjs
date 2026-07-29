@@ -113,6 +113,20 @@ test("keeps the four status definitions aligned with the source data", async () 
   assert.match(source, /function matchesLayer/);
   assert.match(source, /case "unconfirmed":/);
   assert.doesNotMatch(source, /cardNote/);
+  assert.match(source, /const countScope = useMemo/);
+  assert.match(
+    source,
+    /selectedRegions\.length === 0 \|\|\s*selectedRegions\.includes\(item\.region\)/,
+  );
+  assert.match(
+    source,
+    /province === "Todas" \|\| item\.provincia === province/,
+  );
+  assert.match(
+    source,
+    /countScope\.filter\(\(item\) => matchesLayer\(item, layer\)\)\.length/,
+  );
+  assert.match(source, /<strong aria-live="polite">\{layerCounts\[layer\]\}/);
   assert.match(source, /function overviewLayer/);
   assert.match(source, /Fuente SISMAP 2\.02\(PMD\) ↗/);
   assert.match(source, /const SISMAP_CDM_URL/);

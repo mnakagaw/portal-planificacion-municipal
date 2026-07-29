@@ -719,15 +719,29 @@ export function PortalApp() {
     viewportRegions,
   ]);
 
+  const countScope = useMemo(
+    () =>
+      municipalities
+        .filter(
+          (item) =>
+            selectedRegions.length === 0 ||
+            selectedRegions.includes(item.region),
+        )
+        .filter(
+          (item) => province === "Todas" || item.provincia === province,
+        ),
+    [province, selectedRegions],
+  );
+
   const layerCounts = useMemo(
     () =>
       Object.fromEntries(
         (Object.keys(layerMeta) as MapLayer[]).map((layer) => [
           layer,
-          municipalities.filter((item) => matchesLayer(item, layer)).length,
+          countScope.filter((item) => matchesLayer(item, layer)).length,
         ]),
       ) as Record<MapLayer, number>,
-    [],
+    [countScope],
   );
 
   const displayMunicipality = hovered ?? selected;
@@ -807,7 +821,7 @@ export function PortalApp() {
               <span className="layer-dot" aria-hidden="true" />
               <span>
                 <small>{meta.shortLabel}</small>
-                <strong>{layerCounts[layer]}</strong>
+                <strong aria-live="polite">{layerCounts[layer]}</strong>
               </span>
             </button>
           );
