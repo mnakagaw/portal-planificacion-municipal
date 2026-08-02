@@ -110,17 +110,38 @@ def main() -> int:
             errors.append(f"{row['file_name']} contains forbidden text: {forbidden}")
         if text.count("EJEMPLO DE FORMATO · NO APROBADO") != 2:
             errors.append(f"{row['file_name']} must contain exactly two example rows")
-        if row.get("content_version") != "3.2-dashboard-territorial":
+        if row.get("content_version") != "3.3-complete-public-investment":
             errors.append(f"{row['file_name']} has wrong manifest content version")
         if "MapaInversiones, datos abiertos 2026 y perfiles oficiales de proyectos" not in text:
             errors.append(f"{row['file_name']} is missing the MapaInversiones source note")
         if row.get("mapa_project_count", 0) > 0:
-            if (
-                "SNIP " not in text
-                or "Asignación 2026 (RD$)" not in text
-                or "Ejecutado 2026 (RD$)" not in text
-            ):
+            project_count = int(row["mapa_project_count"])
+            detail_headings = [
+                heading for heading in headings if heading.startswith("5.2.")
+            ]
+            if len(detail_headings) != project_count:
+                errors.append(
+                    f"{row['file_name']} has {len(detail_headings)} investment detail headings; "
+                    f"expected {project_count}"
+                )
+            required_project_fields = {
+                "Identificación",
+                "Presupuesto y ejecución 2026",
+                "tasa de ejecución presupuestaria",
+                "Avances reportados",
+                "Contratos",
+                "Ubicaciones codificadas",
+                "Cobertura en archivos fuente",
+                "Enlaces oficiales",
+            }
+            missing_project_fields = sorted(
+                value for value in required_project_fields if value not in text
+            )
+            if "SNIP " not in text or missing_project_fields:
                 errors.append(f"{row['file_name']} is missing investment project rows")
+            state_counts = row.get("mapa_state_counts") or {}
+            if sum(int(value) for value in state_counts.values()) != project_count:
+                errors.append(f"{row['file_name']} has inconsistent investment state counts")
         elif "no se identificaron en el dataset utilizado proyectos" not in text:
             errors.append(f"{row['file_name']} is missing the no-project source statement")
         if "{{" in text or "}}" in text:

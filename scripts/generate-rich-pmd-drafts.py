@@ -73,9 +73,8 @@ spec.loader.exec_module(base)
 
 PERIOD = "2025-2028"
 TODAY = date.today()
-CONTENT_VERSION = "3.2-dashboard-territorial"
-USER_AGENT = "DDPT-PMD-Builder/3.2 (municipal planning research)"
-ACTIVE_MAPA_STATES = {"EJECUCIÓN", "REPROGRAMAR"}
+CONTENT_VERSION = "3.3-complete-public-investment"
+USER_AGENT = "DDPT-PMD-Builder/3.3 (municipal planning research)"
 PROVINCE_ONLY_TERRITORIAL_KEYS = {
     "crime",
     "homicide",
@@ -467,11 +466,9 @@ def territorial_indicator_rows(
 
 
 def index_mapa_projects(payload: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
-    """Index active/programmed projects by specifically identified municipality."""
+    """Index every project explicitly assigned to a municipality by MapaInversiones."""
     indexed: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     for project in payload.get("projects", []):
-        if project.get("state") not in ACTIVE_MAPA_STATES:
-            continue
         if project.get("locationScope") != "municipality":
             continue
         project_id = str(project.get("mapProjectId") or project.get("code") or "")
@@ -486,13 +483,146 @@ def index_mapa_projects(payload: dict[str, Any]) -> dict[str, list[dict[str, Any
         key: sorted(
             projects.values(),
             key=lambda item: (
-                0 if item.get("state") == "EJECUCIÓN" else 1,
+                {
+                    "EJECUCIÓN": 0,
+                    "REPROGRAMAR": 1,
+                    "PARALIZADO": 2,
+                    "DESCONOCIDO": 3,
+                }.get(str(item.get("state") or ""), 4),
                 -float(item.get("budget") or 0),
                 str(item.get("name") or ""),
             ),
         )
         for key, projects in indexed.items()
     }
+
+
+def mapa_progress(value: Any) -> str:
+    if value is None:
+        return "No disponible"
+    return fmt_pct(float(value) * 100.0)
+
+
+def mapa_budget_execution(project: dict[str, Any]) -> str:
+    rate = pct(project.get("executed"), project.get("budget"))
+    if rate is None:
+        return "No calculable (asignación 2026 igual a cero o no disponible)"
+    return fmt_pct(rate)
+
+
+def mapa_locations(project: dict[str, Any]) -> str:
+    values = []
+    for location in project.get("locations", []):
+        parts = []
+        if location.get("region"):
+            parts.append(
+                f"región {location['region']}"
+                + (f" [{location['regionId']}]" if location.get("regionId") else "")
+            )
+        if location.get("province"):
+            parts.append(
+                f"provincia {location['province']}"
+                + (f" [{location['provinceId']}]" if location.get("provinceId") else "")
+            )
+        if location.get("municipality"):
+            parts.append(
+                f"municipio {location['municipality']}"
+                + (
+                    f" [{location['municipalityId']}]"
+                    if location.get("municipalityId")
+                    else ""
+                )
+            )
+        if parts:
+            values.append(", ".join(parts))
+    return "; ".join(values) or "No disponible"
+
+
+def mapa_source_coverage(project: dict[str, Any]) -> str:
+    fields = [
+        ("maestro", "inMaster"),
+        ("presupuesto", "inBudget"),
+        ("territorio", "inTerritory"),
+        ("CSV territorial", "inTerritoryCsv"),
+        ("perfil", "inProfile"),
+    ]
+    return "; ".join(
+        f"{label}: {'sí' if project.get(key) else 'no'}" for label, key in fields
+    )
+
+
+def mapa_project_detail_rows(project: dict[str, Any]) -> list[list[str]]:
+    institutions = project.get("institutions") or []
+    sectors = project.get("sectors") or []
+    profile_locations = project.get("profileLocations") or []
+    provinces = project.get("provinces") or []
+    municipalities = project.get("municipalities") or []
+    return [
+        ["Nombre del proyecto", project.get("name") or "No disponible"],
+        [
+            "Identificación",
+            f"SNIP: {project.get('code') or 'No disponible'}; "
+            f"Ficha MapaInversiones: {project.get('mapProjectId') or 'No disponible'}",
+        ],
+        [
+            "Estado y seguimiento",
+            f"Estado: {project.get('state') or 'No disponible'}; "
+            f"seguimiento: {project.get('tracking') or 'No disponible'}",
+        ],
+        [
+            "Institución ejecutora",
+            f"Principal: {project.get('institution') or 'No disponible'}. "
+            f"Registradas: {'; '.join(institutions) or 'No disponible'}",
+        ],
+        ["Sectores", "; ".join(sectors) or "No disponible"],
+        [
+            "Período",
+            f"Inicio: {project.get('start') or 'No disponible'}; "
+            f"término: {project.get('end') or 'No disponible'}",
+        ],
+        ["Costo total del proyecto (RD$)", fmt_number(project.get("projectCost"))],
+        [
+            "Presupuesto y ejecución 2026",
+            f"Asignación: RD$ {fmt_number(project.get('budget'))}; "
+            f"ejecutado: RD$ {fmt_number(project.get('executed'))}; "
+            f"tasa de ejecución presupuestaria: {mapa_budget_execution(project)}",
+        ],
+        [
+            "Avances reportados",
+            f"Físico: {mapa_progress(project.get('physicalProgress'))}; "
+            f"financiero: {mapa_progress(project.get('financialProgress'))}",
+        ],
+        [
+            "Contratos",
+            f"Registrados: {fmt_number(project.get('contracts'))}; "
+            f"activos: {fmt_number(project.get('activeContracts'))}",
+        ],
+        [
+            "Asignación territorial",
+            f"Alcance: {project.get('locationScope') or 'No disponible'}; "
+            f"región principal: {project.get('region') or 'No disponible'}; "
+            f"provincias: {'; '.join(provinces) or 'No disponible'}; "
+            f"municipios: {'; '.join(municipalities) or 'No disponible'}",
+        ],
+        ["Ubicaciones codificadas", mapa_locations(project)],
+        [
+            "Evidencia de ubicación",
+            f"Perfil: {'; '.join(profile_locations) or 'No disponible'}; "
+            f"fuente: {project.get('locationSource') or 'No disponible'}; "
+            f"verificada: {project.get('locationVerifiedAt') or 'No disponible'}",
+        ],
+        [
+            "Clasificación territorial",
+            f"Nacional: {'sí' if project.get('national') else 'no'}; "
+            f"multirregional: {'sí' if project.get('multiregional') else 'no'}",
+        ],
+        ["Cobertura en archivos fuente", mapa_source_coverage(project)],
+        [
+            "Enlaces oficiales",
+            f"Perfil: {project.get('projectUrl') or 'No disponible'}; "
+            f"contrato: {project.get('contractUrl') or 'No registrado'}",
+        ],
+    ]
 
 
 def pct(part: float | int | None, total: float | int | None) -> float | None:
@@ -2286,7 +2416,7 @@ def build_document(
             ["2", "Diagnóstico municipal: población, vivienda, servicios, educación, salud, economía y territorio."],
             ["3", "Fortalezas y debilidades basadas en el diagnóstico; situaciones que el CDM deberá priorizar."],
             ["4", "Visión Municipal: espacio de decisión del CDM con un ejemplo de formato."],
-            ["5", "Inversión pública: proyectos en ejecución o reprogramados identificados específicamente para el municipio en MapaInversiones."],
+            ["5", "Inversión pública: cartera completa de proyectos asignados específicamente al municipio en MapaInversiones, con presupuesto, ejecución, avances, contratos y trazabilidad."],
             ["6", "Plan de acción: ejemplo de registro para convertir los acuerdos del CDM en acciones verificables."],
         ],
         [900, 8460],
@@ -2452,63 +2582,89 @@ def build_document(
     project_count = len(public_projects)
     programmed = sum(float(project.get("budget") or 0) for project in public_projects)
     executed = sum(float(project.get("executed") or 0) for project in public_projects)
+    project_cost = sum(float(project.get("projectCost") or 0) for project in public_projects)
+    aggregate_execution = pct(executed, programmed)
+    state_counts = Counter(
+        str(project.get("state") or "NO DISPONIBLE") for project in public_projects
+    )
+    state_summary = "; ".join(
+        f"{state}: {count}"
+        for state, count in sorted(state_counts.items(), key=lambda item: item[0])
+    )
     mapa_source = (
         "MapaInversiones, datos abiertos 2026 y perfiles oficiales de proyectos, "
-        "https://mapainversiones.gob.do/. Se incluyen únicamente proyectos con alcance municipal "
-        "específico y estado EJECUCIÓN o REPROGRAMAR; los proyectos nacionales o provinciales sin "
-        "municipio confirmado no se asignan artificialmente. Los importes se presentan en pesos "
+        "https://mapainversiones.gob.do/. Se incluyen todos los proyectos del universo 2026 con alcance "
+        "municipal específico, sin excluir estados publicados como DESCONOCIDO o PARALIZADO. Los "
+        "proyectos nacionales o provinciales sin municipio confirmado no se asignan artificialmente. "
+        "Los importes se presentan en pesos "
         "dominicanos nominales, exactamente en la unidad publicada por la fuente y sin aplicar "
         "multiplicadores; los valores inusualmente bajos deben confirmarse en el perfil oficial."
     )
     if public_projects:
         paragraph(
             doc,
-            f"Con corte al {as_of}, MapaInversiones registra {project_count} proyectos en ejecución o "
-            f"reprogramados con identificación territorial específica para {name}. La programación "
-            f"presupuestaria 2026 asociada suma {fmt_money(programmed)} y la ejecución registrada "
-            f"suma {fmt_money(executed)}. Estos proyectos pertenecen a instituciones públicas y no "
+            f"Con corte al {as_of}, MapaInversiones registra {project_count} proyectos con identificación "
+            f"territorial específica para {name}. El costo total publicado de la cartera suma "
+            f"{fmt_money(project_cost)}; la asignación presupuestaria 2026 suma {fmt_money(programmed)} "
+            f"y la ejecución registrada suma {fmt_money(executed)}, equivalente a "
+            f"{fmt_pct(aggregate_execution) if aggregate_execution is not None else 'una tasa no calculable'}. "
+            f"Estados publicados: {state_summary}. Estos proyectos pertenecen a instituciones públicas y no "
             "constituyen por sí mismos acuerdos, compromisos ni proyectos aprobados por el CDM o el ayuntamiento.",
         )
         add_source_note(doc, mapa_source)
+        doc.add_heading("5.1 Cartera completa asignada al municipio", level=2)
         rows = []
-        for project in public_projects:
-            source_label = (
-                "Ubicación: perfil oficial"
-                if project.get("locationSource") == "profile"
-                else "Ubicación inferida del nombre; validar"
-            )
-            start = str(project.get("start") or "")[:4]
-            end = str(project.get("end") or "")[:4]
-            period = "–".join(value for value in (start, end) if value) or "Sin período"
-            state = "En ejecución" if project.get("state") == "EJECUCIÓN" else "Reprogramado"
+        for project_index, project in enumerate(public_projects, start=1):
+            period = "–".join(
+                value for value in (project.get("start"), project.get("end")) if value
+            ) or "Sin período"
             rows.append(
                 [
+                    project_index,
+                    f"SNIP {project.get('code') or 's/n'}\nFicha {project.get('mapProjectId') or 's/n'}",
                     f"{project.get('name') or 'Proyecto sin nombre'}\n"
-                    f"SNIP {project.get('code') or 's/n'} · Ficha {project.get('mapProjectId') or 's/n'}\n"
-                    f"{source_label}",
-                    project.get("institution") or "No disponible",
-                    f"{state}\n{period}",
-                    fmt_number(project.get("budget")),
-                    fmt_number(project.get("executed")),
+                    f"Institución: {project.get('institution') or 'No disponible'}",
+                    f"{project.get('state') or 'No disponible'}\n{period}",
+                    f"Asignación: {fmt_number(project.get('budget'))}\n"
+                    f"Ejecutado: {fmt_number(project.get('executed'))}\n"
+                    f"Tasa: {mapa_budget_execution(project)}",
                 ]
             )
         add_data_table(
             doc,
             [
-                "Proyecto",
-                "Institución",
+                "N.º",
+                "Identificación",
+                "Proyecto / institución",
                 "Estado / período",
-                "Asignación 2026 (RD$)",
-                "Ejecutado 2026 (RD$)",
+                "Presupuesto 2026 (RD$)",
             ],
             rows,
-            [3540, 1980, 1500, 1170, 1170],
+            [500, 1200, 3700, 1300, 2660],
         )
+        doc.add_heading("5.2 Fichas completas de los proyectos", level=2)
+        paragraph(
+            doc,
+            "Las fichas siguientes reproducen todos los campos disponibles en el dataset utilizado. "
+            "La tasa de ejecución presupuestaria se calcula como ejecutado 2026 dividido entre la "
+            "asignación 2026; los avances físico y financiero son los porcentajes publicados en el perfil.",
+        )
+        for project_index, project in enumerate(public_projects, start=1):
+            title = re.sub(r"\s+", " ", str(project.get("name") or "Proyecto sin nombre")).strip()
+            if len(title) > 115:
+                title = f"{title[:112].rstrip()}…"
+            doc.add_heading(f"5.2.{project_index} {title}", level=3)
+            add_data_table(
+                doc,
+                ["Campo", "Dato publicado"],
+                mapa_project_detail_rows(project),
+                [2600, 6760],
+            )
     else:
         paragraph(
             doc,
-            f"Con corte al {as_of}, no se identificaron en el dataset utilizado proyectos en ejecución "
-            f"o reprogramados con una vinculación municipal específica para {name}. Esta constatación "
+            f"Con corte al {as_of}, no se identificaron en el dataset utilizado proyectos con una "
+            f"vinculación municipal específica para {name}. Esta constatación "
             "no excluye proyectos nacionales o provinciales que puedan beneficiar al territorio, ni "
             "sustituye la verificación de la OMPP con las instituciones ejecutoras.",
         )
@@ -3063,6 +3219,10 @@ def main() -> int:
                     or len(list(asset_dir.glob("diagnostico-*.png")))
                 ),
                 "mapa_project_count": len(public_projects),
+                "mapa_project_cost": round(
+                    sum(float(project.get("projectCost") or 0) for project in public_projects),
+                    2,
+                ),
                 "mapa_budget_2026": round(
                     sum(float(project.get("budget") or 0) for project in public_projects),
                     2,
@@ -3070,6 +3230,30 @@ def main() -> int:
                 "mapa_executed_2026": round(
                     sum(float(project.get("executed") or 0) for project in public_projects),
                     2,
+                ),
+                "mapa_execution_pct_2026": (
+                    round(
+                        100.0
+                        * sum(float(project.get("executed") or 0) for project in public_projects)
+                        / sum(float(project.get("budget") or 0) for project in public_projects),
+                        2,
+                    )
+                    if sum(float(project.get("budget") or 0) for project in public_projects)
+                    else None
+                ),
+                "mapa_state_counts": dict(
+                    sorted(
+                        Counter(
+                            str(project.get("state") or "NO DISPONIBLE")
+                            for project in public_projects
+                        ).items()
+                    )
+                ),
+                "mapa_contract_count": sum(
+                    int(project.get("contracts") or 0) for project in public_projects
+                ),
+                "mapa_active_contract_count": sum(
+                    int(project.get("activeContracts") or 0) for project in public_projects
                 ),
                 "mapa_as_of": mapa_meta.get("asOf") or mapa_meta.get("sourceCut"),
                 "file_name": file_name,
@@ -3133,8 +3317,13 @@ def main() -> int:
         "dashboard_pdf_filename",
         "dashboard_pdf_pages",
         "mapa_project_count",
+        "mapa_project_cost",
         "mapa_budget_2026",
         "mapa_executed_2026",
+        "mapa_execution_pct_2026",
+        "mapa_state_counts",
+        "mapa_contract_count",
+        "mapa_active_contract_count",
         "mapa_as_of",
         "file_name",
         "relative_url",
@@ -3147,6 +3336,9 @@ def main() -> int:
             copy["historical_periods"] = "; ".join(copy.get("historical_periods", []))
             copy["territorial_antecedent_periods"] = "; ".join(
                 copy.get("territorial_antecedent_periods", [])
+            )
+            copy["mapa_state_counts"] = json.dumps(
+                copy.get("mapa_state_counts", {}), ensure_ascii=False, sort_keys=True
             )
             writer.writerow(copy)
     print(

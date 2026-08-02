@@ -269,6 +269,16 @@ test("publishes one traceable Word draft for each of the 104 target municipaliti
   assert.equal(generated.length, 104);
   assert.equal(manifest.generated_count, 104);
   assert.equal(manifest.municipalities.length, 104);
+  assert.equal(manifest.content_version, "3.3-complete-public-investment");
+  assert.ok(
+    manifest.municipalities.every(
+      (item) =>
+        Object.values(item.mapa_state_counts ?? {}).reduce(
+          (sum, value) => sum + value,
+          0,
+        ) === item.mapa_project_count,
+    ),
+  );
   assert.equal(
     generated.filter(
       (item) =>
