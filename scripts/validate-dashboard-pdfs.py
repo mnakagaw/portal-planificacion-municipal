@@ -47,7 +47,7 @@ def main() -> int:
 
             document = fitz.open(pdf_path)
             page_count = document.page_count
-            if not 6 <= page_count <= 9:
+            if not 7 <= page_count <= 10:
                 raise ValueError(f"Número de páginas inesperado: {page_count}")
 
             page_texts = [page.get_text("text") for page in document]
@@ -58,9 +58,12 @@ def main() -> int:
             required = [
                 municipality,
                 "Diagnóstico Territorial",
-                "Resumen Narrativo",
-                "Panorama general",
+                "Indicadores complementarios de población",
+                "Resultados, riesgos e inversión territorial",
+                "Resumen de Comparación",
             ]
+            if entry.get("includesNarrative"):
+                required.extend(["Resumen Narrativo", "Panorama general"])
             missing = [label for label in required if label not in all_text]
             if missing:
                 raise ValueError(f"Texto requerido ausente: {', '.join(missing)}")
@@ -70,12 +73,15 @@ def main() -> int:
             forbidden = [
                 "Aún no se ha generado el resumen",
                 "Error al generar resumen",
+                "Cargando indicadores territoriales adicionales",
             ]
             found_forbidden = [label for label in forbidden if label in all_text]
             if found_forbidden:
                 raise ValueError(
                     f"Texto de error presente: {', '.join(found_forbidden)}"
                 )
+            if entry.get("dashboardVersion") != "DDPT-Dashboard-Territorial-2026-08":
+                raise ValueError("Versión del Dashboard ausente o incorrecta en el manifiesto.")
 
             checked.append(
                 {
@@ -86,6 +92,7 @@ def main() -> int:
                     "bytes": size,
                     "pages": page_count,
                     "sha256": digest,
+                    "dashboardVersion": entry.get("dashboardVersion"),
                 }
             )
         except Exception as error:  # noqa: BLE001

@@ -18,7 +18,8 @@ REQUIRED_HEADINGS = {
     "2. Diagnóstico municipal",
     "3. Fortalezas y debilidades basadas en el diagnóstico",
     "4. Visión Municipal",
-    "5. Plan de acción a acordar por el CDM",
+    "5. Inversión pública",
+    "6. Plan de acción a acordar por el CDM",
     "Fuentes y trazabilidad",
 }
 
@@ -109,14 +110,32 @@ def main() -> int:
             errors.append(f"{row['file_name']} contains forbidden text: {forbidden}")
         if text.count("EJEMPLO DE FORMATO · NO APROBADO") != 2:
             errors.append(f"{row['file_name']} must contain exactly two example rows")
-        if row.get("content_version") != "3.0-cdm-ready":
+        if row.get("content_version") != "3.2-dashboard-territorial":
             errors.append(f"{row['file_name']} has wrong manifest content version")
+        if "MapaInversiones, datos abiertos 2026 y perfiles oficiales de proyectos" not in text:
+            errors.append(f"{row['file_name']} is missing the MapaInversiones source note")
+        if row.get("mapa_project_count", 0) > 0:
+            if (
+                "SNIP " not in text
+                or "Asignación 2026 (RD$)" not in text
+                or "Ejecutado 2026 (RD$)" not in text
+            ):
+                errors.append(f"{row['file_name']} is missing investment project rows")
+        elif "no se identificaron en el dataset utilizado proyectos" not in text:
+            errors.append(f"{row['file_name']} is missing the no-project source statement")
         if "{{" in text or "}}" in text:
             errors.append(f"{row['file_name']} contains template tokens")
         if "para No disponible de los hogares" in text:
             errors.append(f"{row['file_name']} contains an invalid missing-value sentence")
         if row["dashboard_available"] and "No existe una serie municipal separada" in text:
             errors.append(f"{row['file_name']} incorrectly reports missing dashboard data")
+        if row["dashboard_available"]:
+            if "2.7 Indicadores territoriales adicionales" not in headings:
+                errors.append(f"{row['file_name']} is missing the current territorial indicators")
+            if not row.get("dashboard_pdf_filename") or row.get("dashboard_pdf_pages", 0) < 7:
+                errors.append(f"{row['file_name']} has incomplete Dashboard PDF metadata")
+            if "Provincia completa" not in text:
+                errors.append(f"{row['file_name']} is missing provincial-scope labeling")
         if not row["dashboard_available"] and "no se trasladaron cifras del municipio de origen" not in text:
             errors.append(f"{row['file_name']} missing safe source-gap warning")
         if row["municipio"] == "Villa Central":
@@ -131,8 +150,12 @@ def main() -> int:
         tables = len(document.tables)
         images = len(document.inline_shapes)
         words = len(text.split())
-        if images < 5:
-            errors.append(f"{row['file_name']} has only {images} diagnostic images")
+        expected_images = int(row.get("dashboard_pdf_pages") or 5)
+        if images < expected_images:
+            errors.append(
+                f"{row['file_name']} has only {images} diagnostic images; "
+                f"expected at least {expected_images}"
+            )
         if row["dashboard_available"] and words < 1800:
             errors.append(f"{row['file_name']} is too short for a completed diagnosis ({words} words)")
         if not row["dashboard_available"] and words < 900:

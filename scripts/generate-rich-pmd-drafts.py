@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Generate source-traceable PMD documents for final municipal review.
 
-This is the third-generation builder for the Paquete Mínimo. It turns the
-territorial dashboard into a five-page visual diagnostic and adds municipal
+This is the third-generation builder for the Paquete Mínimo. It incorporates
+the current PDF export of the territorial dashboard and adds municipal
 narrative based only on:
 
 * the dashboard's official statistical datasets;
@@ -25,6 +25,7 @@ import json
 import math
 import re
 import shutil
+import subprocess
 import sys
 import textwrap
 import time
@@ -35,12 +36,21 @@ from datetime import date
 from pathlib import Path
 from typing import Any, Iterable
 
-import fitz
-import matplotlib
+try:
+    import fitz
+except ImportError:  # Historical text stays available from the local cache.
+    fitz = None
+try:
+    import matplotlib
 
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-from matplotlib.patches import FancyBboxPatch, Polygon
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import FancyBboxPatch, Polygon
+except ImportError:
+    matplotlib = None
+    plt = None
+    FancyBboxPatch = None
+    Polygon = None
 
 from docx import Document
 from docx.enum.section import WD_ORIENT
@@ -62,8 +72,18 @@ spec.loader.exec_module(base)
 
 
 PERIOD = "2025-2028"
-TODAY = date(2026, 7, 28)
-USER_AGENT = "DDPT-PMD-Builder/3.0 (municipal planning research)"
+TODAY = date.today()
+CONTENT_VERSION = "3.2-dashboard-territorial"
+USER_AGENT = "DDPT-PMD-Builder/3.2 (municipal planning research)"
+ACTIVE_MAPA_STATES = {"EJECUCIÓN", "REPROGRAMAR"}
+PROVINCE_ONLY_TERRITORIAL_KEYS = {
+    "crime",
+    "homicide",
+    "traffic",
+    "overcrowding",
+    "disability",
+    "births",
+}
 
 WIKIPEDIA_TITLE_OVERRIDES = {
     base.territory_key("Salcedo", "Hermanas Mirabal"): "Salcedo (República Dominicana)",
@@ -185,6 +205,294 @@ def fmt_pct(value: float | int | None, decimals: int = 1) -> str:
     if value is None:
         return "No disponible"
     return f"{float(value):.{decimals}f}%"
+
+
+def fmt_money(value: float | int | None) -> str:
+    if value is None:
+        return "No disponible"
+    amount = float(value)
+    if math.isnan(amount) or math.isinf(amount):
+        return "No disponible"
+    return f"RD$ {amount:,.0f}"
+
+
+def find_pdftoppm() -> Path:
+    candidates = [
+        Path.home()
+        / ".cache"
+        / "codex-runtimes"
+        / "codex-primary-runtime"
+        / "dependencies"
+        / "native"
+        / "poppler"
+        / "Library"
+        / "bin"
+        / "pdftoppm.exe",
+        Path(shutil.which("pdftoppm") or ""),
+        Path(shutil.which("pdftoppm.exe") or ""),
+    ]
+    for candidate in candidates:
+        if str(candidate) and candidate.is_file():
+            return candidate
+    raise RuntimeError("No se encontró pdftoppm para convertir el PDF del Dashboard.")
+
+
+def rasterize_dashboard_pdf(
+    pdf_path: Path,
+    asset_dir: Path,
+    *,
+    reuse_existing: bool = False,
+) -> list[Path]:
+    """Render every dashboard PDF page as a readable Word image."""
+    asset_dir.mkdir(parents=True, exist_ok=True)
+    pattern = "dashboard-pdf-page-*.jpg"
+    existing = sorted(
+        asset_dir.glob(pattern),
+        key=lambda path: int(re.search(r"(\d+)$", path.stem).group(1)),
+    )
+    if reuse_existing and existing:
+        return existing
+    for path in existing:
+        path.unlink()
+
+    prefix = asset_dir / "dashboard-pdf-page"
+    command = [
+        str(find_pdftoppm()),
+        "-jpeg",
+        "-jpegopt",
+        "quality=88,optimize=y,progressive=y",
+        "-r",
+        "144",
+        str(pdf_path),
+        str(prefix),
+    ]
+    completed = subprocess.run(
+        command,
+        check=False,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    if completed.returncode:
+        raise RuntimeError(
+            f"No se pudo convertir {pdf_path.name}: "
+            f"{(completed.stderr or completed.stdout).strip()}"
+        )
+    pages = sorted(
+        asset_dir.glob(pattern),
+        key=lambda path: int(re.search(r"(\d+)$", path.stem).group(1)),
+    )
+    if not pages:
+        raise RuntimeError(f"El PDF {pdf_path.name} no produjo imágenes.")
+    return pages
+
+
+def territorial_indicator_rows(
+    municipality: dict[str, Any],
+    context: dict[str, Any],
+) -> list[list[str]]:
+    """Build a scope-safe summary of the new Dashboard Territorial indicators."""
+    name = municipality["municipio"]
+    province_name = municipality["provincia"]
+    municipal = (context.get("municipality") or {}).get("metrics") or {}
+    province = (context.get("province") or {}).get("metrics") or {}
+    rows: list[list[str]] = []
+
+    def latest(metric: dict[str, Any]) -> dict[str, Any]:
+        return metric.get("latest") or {}
+
+    def period(metric: dict[str, Any]) -> str:
+        item = latest(metric)
+        return str(item.get("period") or item.get("year") or metric.get("year") or "s/f")
+
+    def add(
+        label: str,
+        value: str,
+        scope: str,
+        period_value: str,
+        source_key: str,
+    ) -> None:
+        rows.append([label, value, scope, period_value, source_key])
+
+    fires = municipal.get("fires") or {}
+    if latest(fires):
+        item = latest(fires)
+        add(
+            "Incendios forestales registrados",
+            f"{fmt_number(item.get('records'))} registros; "
+            f"{fmt_number(item.get('affected'))} tareas declaradas afectadas",
+            f"Municipio de {name}",
+            period(fires),
+            "Datos abiertos · incendios forestales",
+        )
+
+    inaipi = municipal.get("inaipi") or {}
+    if inaipi.get("centers") is not None:
+        add(
+            "Centros INAIPI",
+            f"{fmt_number(inaipi.get('centers'))} centros",
+            f"Municipio de {name}",
+            str(inaipi.get("snapshot") or "s/f"),
+            "Datos abiertos · INAIPI",
+        )
+
+    sports = municipal.get("sports") or {}
+    if sports.get("count") is not None:
+        add(
+            "Instalaciones deportivas registradas",
+            f"{fmt_number(sports.get('count'))} instalaciones; "
+            f"{fmt_number(sports.get('per10k'), 1)} por 10 mil habitantes",
+            f"Municipio de {name}",
+            str(sports.get("year") or "s/f"),
+            "Datos abiertos · instalaciones deportivas",
+        )
+
+    investment = municipal.get("investment") or {}
+    if latest(investment):
+        item = latest(investment)
+        add(
+            "Inversión pública territorial",
+            f"Presupuesto {fmt_money(item.get('budget'))}; ejecutado "
+            f"{fmt_money(item.get('executed'))}; ejecución {fmt_pct(item.get('executionPct'))}",
+            f"Municipio de {name}",
+            period(investment),
+            "Datos abiertos · estadísticas de proyectos de inversión",
+        )
+
+    sismap = municipal.get("sismap") or {}
+    if sismap.get("score") is not None:
+        add(
+            "Puntuación SISMAP Municipal",
+            f"{fmt_number(sismap.get('score'), 1)} / 100",
+            f"Municipio de {name}",
+            str(sismap.get("date") or "s/f"),
+            "SISMAP Municipal",
+        )
+
+    roads = municipal.get("roads") or {}
+    if latest(roads):
+        item = latest(roads)
+        add(
+            "Trabajos viales registrados",
+            f"{fmt_number(item.get('records'))} registros; "
+            f"{fmt_number(item.get('lengthKm'), 1)} km",
+            f"Municipio de {name}",
+            period(roads),
+            "Datos abiertos · infraestructura vial",
+        )
+
+    permits = municipal.get("permits") or {}
+    if latest(permits):
+        item = latest(permits)
+        add(
+            "Licencias de construcción",
+            f"{fmt_number(item.get('licenses'))} licencias; "
+            f"{fmt_number(item.get('areaM2'))} m²; inversión {fmt_money(item.get('investment'))}",
+            f"Municipio de {name}",
+            period(permits),
+            "Datos abiertos · licencias emitidas",
+        )
+
+    provincial_scope = f"Provincia completa de {province_name}; no es valor municipal"
+    crime = province.get("crime") or {}
+    if latest(crime):
+        item = latest(crime)
+        add(
+            "Robos reportados",
+            f"{fmt_number(item.get('count'))} casos; "
+            f"{fmt_number(item.get('rate'), 1)} por 100 mil habitantes",
+            provincial_scope,
+            period(crime),
+            "Datos abiertos · robos reportados",
+        )
+    homicide = province.get("homicide") or {}
+    if latest(homicide):
+        item = latest(homicide)
+        add(
+            "Homicidios intencionales",
+            f"{fmt_number(item.get('count'))} casos; "
+            f"{fmt_number(item.get('rate'), 1)} por 100 mil habitantes",
+            provincial_scope,
+            period(homicide),
+            "ONE · muertes accidentales y violentas",
+        )
+    traffic = province.get("traffic") or {}
+    if latest(traffic):
+        item = latest(traffic)
+        add(
+            "Fallecimientos de tránsito",
+            f"{fmt_number(item.get('count'))} personas; "
+            f"{fmt_number(item.get('rate'), 1)} por 100 mil habitantes",
+            provincial_scope,
+            period(traffic),
+            "Datos abiertos · fallecimientos de tránsito",
+        )
+    overcrowding = province.get("overcrowding") or {}
+    if overcrowding:
+        total_pct = float(overcrowding.get("extremePct") or 0) + float(
+            overcrowding.get("moderatePct") or 0
+        )
+        add(
+            "Hacinamiento extremo o moderado",
+            fmt_pct(total_pct),
+            provincial_scope,
+            str(overcrowding.get("year") or overcrowding.get("snapshot") or "s/f"),
+            "Datos abiertos · hacinamiento",
+        )
+    disability = province.get("disability") or {}
+    if disability:
+        vulnerable_pct = float(disability.get("icv1Pct") or 0) + float(
+            disability.get("icv2Pct") or 0
+        )
+        add(
+            "Personas con discapacidad en ICV-1 o ICV-2",
+            fmt_pct(vulnerable_pct),
+            provincial_scope,
+            str(disability.get("year") or disability.get("snapshot") or "s/f"),
+            "Datos abiertos · discapacidad por provincia",
+        )
+    births = province.get("births") or {}
+    if latest(births):
+        item = latest(births)
+        add(
+            "Registros de nacimiento",
+            f"{fmt_number(item.get('count'))} registros; "
+            f"{fmt_number(item.get('rate'), 1)} por mil habitantes",
+            provincial_scope,
+            period(births),
+            "Datos abiertos · provincia de registro",
+        )
+    return rows
+
+
+def index_mapa_projects(payload: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
+    """Index active/programmed projects by specifically identified municipality."""
+    indexed: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
+    for project in payload.get("projects", []):
+        if project.get("state") not in ACTIVE_MAPA_STATES:
+            continue
+        if project.get("locationScope") != "municipality":
+            continue
+        project_id = str(project.get("mapProjectId") or project.get("code") or "")
+        for location in project.get("locations", []):
+            municipality = location.get("municipality")
+            province = location.get("province")
+            if not municipality or not province:
+                continue
+            key = base.territory_key(municipality, province)
+            indexed[key][project_id] = project
+    return {
+        key: sorted(
+            projects.values(),
+            key=lambda item: (
+                0 if item.get("state") == "EJECUCIÓN" else 1,
+                -float(item.get("budget") or 0),
+                str(item.get("name") or ""),
+            ),
+        )
+        for key, projects in indexed.items()
+    }
 
 
 def pct(part: float | int | None, total: float | int | None) -> float | None:
@@ -313,6 +621,8 @@ def extract_historical_context(
     for row in candidates:
         path = Path(row.get("local_path", ""))
         if not path.exists():
+            continue
+        if fitz is None:
             continue
         try:
             pdf = fitz.open(path)
@@ -552,6 +862,10 @@ def generate_dashboard_pages(
     asset_dir: Path,
     reuse_existing_rest: bool = False,
 ) -> list[Path]:
+    if plt is None:
+        raise RuntimeError(
+            "Matplotlib no está disponible y no existen láminas del Dashboard para reutilizar."
+        )
     asset_dir.mkdir(parents=True, exist_ok=True)
     name = municipality["municipio"]
     pages = [asset_dir / f"diagnostico-{index}.png" for index in range(1, 6)]
@@ -1872,19 +2186,21 @@ def add_dashboard_images(doc: Document, paths: list[Path], name: str) -> None:
     doc.add_heading("2. Diagnóstico municipal", level=1)
     paragraph(
         doc,
-        "Las cinco láminas siguientes reproducen en Word la lógica de impresión del Dashboard de Diagnóstico Territorial. "
-        "Presentan la línea base estadística antes de su interpretación narrativa. Los datos corresponden al territorio "
-        "seleccionado y conservan el año y la fuente; una ausencia se muestra como «No disponible» y no se sustituye por estimaciones.",
+        f"Las {len(paths)} páginas siguientes reproducen la exportación vigente del Dashboard Territorial. "
+        "Presentan la línea base estadística antes de su interpretación narrativa e incorporan los indicadores "
+        "demográficos, sociales, económicos, institucionales, ambientales y de inversión disponibles. Los datos "
+        "conservan el año, la fuente y el ámbito territorial; cuando la fuente solo publica un total provincial, "
+        "la página lo identifica como «Provincia completa» y no lo atribuye al municipio.",
     )
     add_data_table(
         doc,
-        ["Lámina", "Contenido", "Lectura esperada"],
+        ["Bloque", "Contenido", "Lectura esperada"],
         [
-            ["1", "Población, mapa, pirámides 2010/2022, hogares y viviendas", "Cambio y composición demográfica"],
-            ["2", "Agua, saneamiento, alumbrado, combustible y residuos", "Coberturas declaradas por hogares"],
-            ["3", "Oferta, nivel de instrucción, infraestructura y eficiencia educativa", "Capacidades y alertas educativas"],
-            ["4", "Establecimientos, empleo, tamaño empresarial y sectores CIIU", "Estructura económica formal observada"],
-            ["5", "Establecimientos de salud y comparación nacional", "Presencia física y brechas relativas"],
+            ["Demografía", "Población, mapa, pirámides 2010/2022, hogares y viviendas", "Cambio y composición demográfica"],
+            ["Condiciones de vida", "Agua, saneamiento, energía, residuos, educación, salud y conectividad", "Coberturas y brechas observadas"],
+            ["Resultados y riesgos", "Seguridad, movilidad, incendios, inclusión, primera infancia y deporte", "Dato municipal o contexto provincial, según la fuente"],
+            ["Gestión e inversión", "Inversión territorial, SISMAP, obras viales y licencias", "Magnitud, ejecución y capacidad institucional"],
+            ["Comparación", "Municipio, provincia, región y país", "Posición relativa sin convertirla automáticamente en prioridad"],
         ],
         [1000, 4300, 4060],
     )
@@ -1904,7 +2220,7 @@ def add_dashboard_images(doc: Document, paths: list[Path], name: str) -> None:
         if index == len(paths):
             add_source_note(
                 doc,
-                f"Dashboard de Diagnóstico Territorial, ficha de {name}. Láminas generadas el {TODAY.isoformat()}.",
+                f"DDPT, Dashboard Territorial, ficha de {name}. Exportación generada el {TODAY.isoformat()}.",
             )
 
 
@@ -1920,6 +2236,9 @@ def build_document(
     historical_context: dict[str, Any],
     area_km2: float | None,
     dashboard_pages: list[Path],
+    territorial_context: dict[str, Any],
+    public_projects: list[dict[str, Any]],
+    mapa_meta: dict[str, Any],
     output_path: Path,
 ) -> None:
     name = municipality["municipio"]
@@ -1967,7 +2286,8 @@ def build_document(
             ["2", "Diagnóstico municipal: población, vivienda, servicios, educación, salud, economía y territorio."],
             ["3", "Fortalezas y debilidades basadas en el diagnóstico; situaciones que el CDM deberá priorizar."],
             ["4", "Visión Municipal: espacio de decisión del CDM con un ejemplo de formato."],
-            ["5", "Plan de acción: ejemplo de registro para convertir los acuerdos del CDM en acciones verificables."],
+            ["5", "Inversión pública: proyectos en ejecución o reprogramados identificados específicamente para el municipio en MapaInversiones."],
+            ["6", "Plan de acción: ejemplo de registro para convertir los acuerdos del CDM en acciones verificables."],
         ],
         [900, 8460],
     )
@@ -2031,6 +2351,27 @@ def build_document(
         "Se diferencia entre dato observado, interpretación técnica y asunto que requiere comprobación municipal.",
     )
     findings = write_diagnostic_narrative(doc, municipality, data, national, historical_context)
+    territorial_rows = territorial_indicator_rows(municipality, territorial_context)
+    if territorial_rows:
+        doc.add_heading("2.7 Indicadores territoriales adicionales", level=2)
+        paragraph(
+            doc,
+            "El Dashboard Territorial amplía la línea base con registros administrativos recientes. "
+            "La columna de ámbito es parte del dato: los valores provinciales sirven como contexto y "
+            "no describen por sí solos la situación exclusiva del municipio.",
+        )
+        add_data_table(
+            doc,
+            ["Indicador", "Valor publicado", "Ámbito", "Período", "Fuente"],
+            territorial_rows,
+            [2200, 2200, 2020, 1300, 1640],
+        )
+        add_source_note(
+            doc,
+            "DDPT, Dashboard Territorial, dataset generado el "
+            f"{(territorial_context.get('meta') or {}).get('generated') or TODAY.isoformat()}. "
+            "La ausencia de registros no se interpreta automáticamente como cero.",
+        )
 
     doc.add_heading("3. Fortalezas y debilidades basadas en el diagnóstico", level=1)
     paragraph(
@@ -2105,7 +2446,75 @@ def build_document(
         "MEPyD, Guía para la formulación de planes de desarrollo municipales, formulación estratégica, pp. 33–45.",
     )
 
-    doc.add_heading("5. Plan de acción a acordar por el CDM", level=1)
+    add_page_break(doc)
+    doc.add_heading("5. Inversión pública", level=1)
+    as_of = mapa_meta.get("asOf") or mapa_meta.get("sourceCut") or TODAY.isoformat()
+    project_count = len(public_projects)
+    programmed = sum(float(project.get("budget") or 0) for project in public_projects)
+    executed = sum(float(project.get("executed") or 0) for project in public_projects)
+    mapa_source = (
+        "MapaInversiones, datos abiertos 2026 y perfiles oficiales de proyectos, "
+        "https://mapainversiones.gob.do/. Se incluyen únicamente proyectos con alcance municipal "
+        "específico y estado EJECUCIÓN o REPROGRAMAR; los proyectos nacionales o provinciales sin "
+        "municipio confirmado no se asignan artificialmente. Los importes se presentan en pesos "
+        "dominicanos nominales, exactamente en la unidad publicada por la fuente y sin aplicar "
+        "multiplicadores; los valores inusualmente bajos deben confirmarse en el perfil oficial."
+    )
+    if public_projects:
+        paragraph(
+            doc,
+            f"Con corte al {as_of}, MapaInversiones registra {project_count} proyectos en ejecución o "
+            f"reprogramados con identificación territorial específica para {name}. La programación "
+            f"presupuestaria 2026 asociada suma {fmt_money(programmed)} y la ejecución registrada "
+            f"suma {fmt_money(executed)}. Estos proyectos pertenecen a instituciones públicas y no "
+            "constituyen por sí mismos acuerdos, compromisos ni proyectos aprobados por el CDM o el ayuntamiento.",
+        )
+        add_source_note(doc, mapa_source)
+        rows = []
+        for project in public_projects:
+            source_label = (
+                "Ubicación: perfil oficial"
+                if project.get("locationSource") == "profile"
+                else "Ubicación inferida del nombre; validar"
+            )
+            start = str(project.get("start") or "")[:4]
+            end = str(project.get("end") or "")[:4]
+            period = "–".join(value for value in (start, end) if value) or "Sin período"
+            state = "En ejecución" if project.get("state") == "EJECUCIÓN" else "Reprogramado"
+            rows.append(
+                [
+                    f"{project.get('name') or 'Proyecto sin nombre'}\n"
+                    f"SNIP {project.get('code') or 's/n'} · Ficha {project.get('mapProjectId') or 's/n'}\n"
+                    f"{source_label}",
+                    project.get("institution") or "No disponible",
+                    f"{state}\n{period}",
+                    fmt_number(project.get("budget")),
+                    fmt_number(project.get("executed")),
+                ]
+            )
+        add_data_table(
+            doc,
+            [
+                "Proyecto",
+                "Institución",
+                "Estado / período",
+                "Asignación 2026 (RD$)",
+                "Ejecutado 2026 (RD$)",
+            ],
+            rows,
+            [3540, 1980, 1500, 1170, 1170],
+        )
+    else:
+        paragraph(
+            doc,
+            f"Con corte al {as_of}, no se identificaron en el dataset utilizado proyectos en ejecución "
+            f"o reprogramados con una vinculación municipal específica para {name}. Esta constatación "
+            "no excluye proyectos nacionales o provinciales que puedan beneficiar al territorio, ni "
+            "sustituye la verificación de la OMPP con las instituciones ejecutoras.",
+        )
+        add_source_note(doc, mapa_source)
+
+    doc.add_heading("6. Plan de acción a acordar por el CDM", level=1)
     paragraph(
         doc,
         "La fila siguiente sirve únicamente para mostrar cómo convertir un acuerdo futuro del CDM "
@@ -2146,10 +2555,24 @@ def build_document(
     doc.add_heading("Fuentes y trazabilidad", level=1)
     source_rows = [
         ["GEO-01", "Clasificador geográfico y GeoJSON municipal", "2026", "Sin paginación", "Alta"],
+        [
+            "MAPA-IP",
+            "MapaInversiones: datos abiertos y perfiles de proyectos",
+            str(mapa_meta.get("year") or 2026),
+            f"{len(public_projects)} proyectos con alcance municipal específico; corte {mapa_meta.get('asOf') or '2026'}",
+            "Alta si perfil oficial; media si nombre del proyecto",
+        ],
     ]
     if adm2_code:
         source_rows.extend(
             [
+                [
+                    "DASH-TERR",
+                    "DDPT Dashboard Territorial: indicadores administrativos y comparación territorial",
+                    str((territorial_context.get("meta") or {}).get("generated") or TODAY.isoformat())[:10],
+                    "Dataset municipal y provincial; ámbito rotulado en cada indicador",
+                    "Alta / según fuente oficial enlazada",
+                ],
                 ["DASH-BASE", "IX y X Censos Nacionales de Población y Vivienda", "2010 / 2022", "Dataset municipal", "Alta"],
                 ["DASH-PYR", "IX y X Censos: edad y sexo", "2010 / 2022", "Dataset municipal", "Alta"],
                 ["DASH-HOG", "X Censo: hogares y viviendas", "2022", "Dataset municipal", "Alta"],
@@ -2219,7 +2642,7 @@ def build_document(
         "el rango de páginas y su alcance territorial se consignan en el párrafo correspondiente.",
     )
     doc.core_properties.title = f"Plan Municipal de Desarrollo de {name} {PERIOD}"
-    doc.core_properties.subject = "Información general y diagnóstico municipal con trazabilidad"
+    doc.core_properties.subject = "Información general, diagnóstico territorial e inversión pública municipal con trazabilidad"
     doc.core_properties.author = "DDPT"
     doc.core_properties.keywords = "PMD, municipio, diagnóstico, OMPP, CDM, trazabilidad"
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -2313,6 +2736,22 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--workspace", type=Path, required=True)
     parser.add_argument("--portal-repo", type=Path, required=True)
+    parser.add_argument(
+        "--mapa-data",
+        type=Path,
+        required=True,
+        help="MapaInversiones municipal dataset produced by IPRegional2",
+    )
+    parser.add_argument(
+        "--dashboard-repo",
+        type=Path,
+        help="Current DDPT_Dashboard-Territorial repository",
+    )
+    parser.add_argument(
+        "--diagnosticos-dir",
+        type=Path,
+        help="Directory containing the 158 current Dashboard PDF exports",
+    )
     parser.add_argument("--municipality", help="Generate one municipality as a prototype")
     parser.add_argument("--all", action="store_true", help="Generate all 104 targets")
     parser.add_argument("--web-copy", action="store_true", help="Copy DOCX files to the portal downloads folder")
@@ -2322,6 +2761,16 @@ def main() -> int:
         "--reuse-existing-dashboard-pages",
         action="store_true",
         help="Regenerate the 2010/2022 demographic page but reuse existing pages 2-5",
+    )
+    parser.add_argument(
+        "--reuse-all-dashboard-pages",
+        action="store_true",
+        help="Reuse all five existing diagnostic images when only the Word narrative changes",
+    )
+    parser.add_argument(
+        "--reuse-dashboard-pdf-pages",
+        action="store_true",
+        help="Reuse previously rasterized pages from the current Dashboard PDF",
     )
     parser.add_argument("--partition-count", type=int, default=1)
     parser.add_argument("--partition-index", type=int, default=0)
@@ -2334,7 +2783,24 @@ def main() -> int:
 
     workspace = args.workspace.resolve()
     portal_repo = args.portal_repo.resolve()
-    data_dir = workspace / "tmp" / "dashboard_repo_full_inspect" / "src" / "data"
+    dashboard_repo = (
+        args.dashboard_repo.resolve()
+        if args.dashboard_repo
+        else workspace.parent.parent
+        / "Plan Regional de Desarrollo"
+        / "DDPT_Dashboard-Territorial"
+    )
+    if not (dashboard_repo / "public" / "data" / "municipios_index.json").exists():
+        raise RuntimeError(f"Dashboard repository not found: {dashboard_repo}")
+    diagnosticos_dir = (
+        args.diagnosticos_dir.resolve()
+        if args.diagnosticos_dir
+        else portal_repo / "public" / "downloads" / "diagnosticos"
+    )
+    mapa_payload = load_json(args.mapa_data.resolve())
+    mapa_meta = mapa_payload.get("meta", {})
+    mapa_projects_by_territory = index_mapa_projects(mapa_payload)
+    data_dir = dashboard_repo / "public" / "data"
     output_dir = workspace / "output" / "pmd_borradores_2025_2028"
     docx_dir = output_dir / "docx"
     assets_dir = output_dir / "assets"
@@ -2384,6 +2850,15 @@ def main() -> int:
         for item in dashboard_index
     }
     datasets, national, adm2_map_2010 = load_datasets(data_dir)
+    territorial_payload = load_json(data_dir / "territorial-dashboard.json")
+    territorial_by_code = {
+        base.code_key(item.get("code")): item
+        for item in territorial_payload.get("municipalities", [])
+    }
+    territorial_province_by_name = {
+        base.clean(item.get("name", "")): item
+        for item in territorial_payload.get("provinces", [])
+    }
     geojson = load_json(geojson_path)
     geo_by_territory = {
         base.territory_key(
@@ -2449,7 +2924,7 @@ def main() -> int:
             base.fetch_wikipedia_exact_batches(targets, wikipedia_cache)
         sanitize_wikipedia_cache(wikipedia_cache, targets)
         fetch_full_wikipedia(wikipedia_cache, targets)
-    save_json(wikipedia_cache_path, wikipedia_cache)
+        save_json(wikipedia_cache_path, wikipedia_cache)
     historical_cache = load_json(historical_cache_path) if historical_cache_path.exists() else {}
 
     previous_manifest = load_json(manifest_path).get("municipalities", []) if manifest_path.exists() else []
@@ -2487,6 +2962,7 @@ def main() -> int:
             else "municipality_historical_pmd"
         )
         wikipedia = wikipedia_cache.get(key, {"status": "not_found"})
+        public_projects = mapa_projects_by_territory.get(key, [])
         previous = previous_by_id.get(item["id"], {})
         file_name = previous.get("file_name") or (
             f"{geographic_code or f'id-{item['id']:03d}'}_"
@@ -2494,16 +2970,43 @@ def main() -> int:
         )
         output_path = docx_dir / file_name
         asset_dir = assets_dir / base.slugify(item["municipio"])
-        if not (args.resume and output_path.exists() and all((asset_dir / f"diagnostico-{i}.png").exists() for i in range(1, 6))):
-            pages = generate_dashboard_pages(
-                item,
-                map_adm2_code,
-                data,
-                national,
-                geojson,
-                asset_dir,
-                reuse_existing_rest=args.reuse_existing_dashboard_pages,
+        pdf_matches = sorted(diagnosticos_dir.glob(f"{adm2_code}_*.pdf")) if adm2_code else []
+        if adm2_code and len(pdf_matches) != 1:
+            raise RuntimeError(
+                f"Expected one current Dashboard PDF for {item['municipio']} ({adm2_code}); "
+                f"found {len(pdf_matches)}"
             )
+        dashboard_pdf_path = pdf_matches[0] if pdf_matches else None
+        territorial_context = {
+            "municipality": territorial_by_code.get(adm2_code),
+            "province": territorial_province_by_name.get(base.clean(item["provincia"])),
+            "meta": territorial_payload.get("meta", {}),
+            "sources": territorial_payload.get("sources", {}),
+        }
+        pages: list[Path] = []
+        if not (args.resume and output_path.exists()):
+            if dashboard_pdf_path:
+                pages = rasterize_dashboard_pdf(
+                    dashboard_pdf_path,
+                    asset_dir,
+                    reuse_existing=(
+                        args.reuse_dashboard_pdf_pages or args.reuse_all_dashboard_pages
+                    ),
+                )
+            else:
+                existing_pages = [asset_dir / f"diagnostico-{index}.png" for index in range(1, 6)]
+                if args.reuse_all_dashboard_pages and all(path.exists() for path in existing_pages):
+                    pages = existing_pages
+                else:
+                    pages = generate_dashboard_pages(
+                        item,
+                        map_adm2_code,
+                        data,
+                        national,
+                        geojson,
+                        asset_dir,
+                        reuse_existing_rest=args.reuse_existing_dashboard_pages,
+                    )
             area_km2 = (feature or {}).get("properties", {}).get("km2")
             build_document(
                 item,
@@ -2517,6 +3020,9 @@ def main() -> int:
                 historical_context,
                 area_km2,
                 pages,
+                territorial_context,
+                public_projects,
+                mapa_meta,
                 output_path,
             )
         if args.web_copy:
@@ -2541,9 +3047,31 @@ def main() -> int:
                 ],
                 "wikipedia_status": wikipedia.get("status"),
                 "wikipedia_url": wikipedia.get("url", ""),
-                "content_version": "3.0-cdm-ready",
+                "content_version": CONTENT_VERSION,
                 "information_general_status": "precompleted",
                 "diagnostic_status": "precompleted" if adm2_code else "source-gap",
+                "dashboard_dataset_generated": (
+                    territorial_payload.get("meta", {}).get("generated")
+                ),
+                "dashboard_pdf_filename": (
+                    dashboard_pdf_path.name if dashboard_pdf_path else ""
+                ),
+                "dashboard_pdf_pages": (
+                    len(pages)
+                    if pages
+                    else len(list(asset_dir.glob("dashboard-pdf-page-*.jpg")))
+                    or len(list(asset_dir.glob("diagnostico-*.png")))
+                ),
+                "mapa_project_count": len(public_projects),
+                "mapa_budget_2026": round(
+                    sum(float(project.get("budget") or 0) for project in public_projects),
+                    2,
+                ),
+                "mapa_executed_2026": round(
+                    sum(float(project.get("executed") or 0) for project in public_projects),
+                    2,
+                ),
+                "mapa_as_of": mapa_meta.get("asOf") or mapa_meta.get("sourceCut"),
                 "file_name": file_name,
                 "relative_url": f"downloads/pmd-borradores/{file_name}",
             }
@@ -2574,7 +3102,7 @@ def main() -> int:
     manifest = {
         "generated_at": TODAY.isoformat(),
         "period": PERIOD,
-        "content_version": "3.0-cdm-ready",
+        "content_version": CONTENT_VERSION,
         "target_rule": "No PMD official evidence and no existing 7-12/draft",
         "expected_target_count": 104,
         "generated_count": len(combined),
@@ -2601,6 +3129,13 @@ def main() -> int:
         "content_version",
         "information_general_status",
         "diagnostic_status",
+        "dashboard_dataset_generated",
+        "dashboard_pdf_filename",
+        "dashboard_pdf_pages",
+        "mapa_project_count",
+        "mapa_budget_2026",
+        "mapa_executed_2026",
+        "mapa_as_of",
         "file_name",
         "relative_url",
     ]

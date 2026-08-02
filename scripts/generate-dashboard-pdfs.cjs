@@ -4,15 +4,34 @@ const { chromium } = require("playwright-core");
 
 const projectRoot = path.resolve(__dirname, "..");
 const workspaceRoot = path.resolve(projectRoot, "..", "..");
-const dashboardIndexPath =
-  process.env.DASHBOARD_INDEX_PATH ||
+const dashboardIndexCandidates = [
+  process.env.DASHBOARD_INDEX_PATH,
+  path.resolve(
+    workspaceRoot,
+    "..",
+    "..",
+    "Plan Regional de Desarrollo",
+    "DDPT_Dashboard-Territorial",
+    "public",
+    "data",
+    "municipios_index.json",
+  ),
   path.join(
     workspaceRoot,
     "reference-dashboard-municipal",
     "public",
     "data",
     "municipios_index.json",
+  ),
+].filter(Boolean);
+const dashboardIndexPath = dashboardIndexCandidates.find((candidate) =>
+  fs.existsSync(candidate),
+);
+if (!dashboardIndexPath) {
+  throw new Error(
+    `No se encontró municipios_index.json. Rutas probadas: ${dashboardIndexCandidates.join(", ")}`,
   );
+}
 const portalDataPath = path.join(
   projectRoot,
   "app",
@@ -40,8 +59,11 @@ const argumentValue = (name) => {
 const baseUrl =
   argumentValue("--base-url") ||
   process.env.DASHBOARD_URL ||
-  "https://prodecare.net/dashboard/";
-const includeNarrative = !args.has("--no-narrative");
+  "https://prodecare.net/DDPT/Dashboard-Territorial/";
+// The downloadable demographic diagnostic is deterministic. The optional AI
+// narrative remains available for one-off runs, but is not required for the
+// 158-document batch and must be requested explicitly.
+const includeNarrative = args.has("--with-narrative") && !args.has("--no-narrative");
 const overwrite = args.has("--overwrite");
 const onlyCode = argumentValue("--only");
 const limit = Number.parseInt(argumentValue("--limit"), 10) || null;
@@ -156,6 +178,10 @@ async function chooseMunicipality(page, item) {
       Yuma: "yuma",
       Higuamo: "higuamo",
     };
+    // Let the dashboard's initial auto-selection effect finish before setting
+    // the target. Otherwise it can overwrite our region a few milliseconds
+    // later and leave the requested province outside the option list.
+    await page.waitForTimeout(900);
     await selects.nth(0).selectOption(regionIdByName[item.region]);
     provinceSelect = selects.nth(1);
     municipalitySelect = selects.nth(2);
@@ -181,8 +207,24 @@ async function chooseMunicipality(page, item) {
   }
 
   await provinceSelect.waitFor({ state: "visible" });
+  await page.waitForFunction(
+    ({ index, value }) =>
+      Array.from(document.querySelectorAll("select")[index]?.options ?? []).some(
+        (option) => option.value === value,
+      ),
+    { index: selectCount === 3 ? 1 : 0, value: item.provincia },
+    { timeout: 60_000 },
+  );
   await provinceSelect.selectOption(item.provincia);
   await municipalitySelect.waitFor({ state: "visible" });
+  await page.waitForFunction(
+    ({ index, value }) =>
+      Array.from(document.querySelectorAll("select")[index]?.options ?? []).some(
+        (option) => option.value === value,
+      ),
+    { index: selectCount === 3 ? 2 : 1, value: item.adm2_code },
+    { timeout: 60_000 },
+  );
   await municipalitySelect.selectOption(item.adm2_code);
 
   await page.waitForFunction(
@@ -196,6 +238,8 @@ async function chooseMunicipality(page, item) {
       const root = document.querySelector("#dashboard-pdf");
       return (
         root?.textContent?.includes(municipality) &&
+        root.textContent.includes("Resultados, riesgos e inversión territorial") &&
+        !root.textContent.includes("Cargando indicadores territoriales adicionales") &&
         root.querySelectorAll("svg").length >= 8
       );
     },
@@ -238,6 +282,8 @@ async function validatePage(page, municipality) {
     "Información básica",
     "Pirámide de población 2022",
     "Resumen de Comparación",
+    "Indicadores complementarios de población",
+    "Resultados, riesgos e inversión territorial",
   ];
   const missing = required.filter((label) => !text.includes(label));
   if (missing.length) {
@@ -249,6 +295,9 @@ async function validatePage(page, municipality) {
       text.includes("Error al generar resumen"))
   ) {
     throw new Error("El resumen narrativo no está disponible.");
+  }
+  if (text.includes("Cargando indicadores territoriales adicionales")) {
+    throw new Error("Los indicadores territoriales adicionales no terminaron de cargar.");
   }
 }
 
@@ -368,6 +417,7 @@ async function main() {
         url: `downloads/diagnosticos/${filename}`,
         filename,
         includesNarrative: includeNarrative,
+        dashboardVersion: "DDPT-Dashboard-Territorial-2026-08",
         generatedAt: new Date().toISOString(),
       });
       writeJson(

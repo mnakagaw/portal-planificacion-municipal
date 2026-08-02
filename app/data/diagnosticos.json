@@ -7,8 +7,9 @@
     "adm2Code": "01001",
     "url": "downloads/diagnosticos/01001_diagnostico-territorial-santo-domingo-de-guzman.pdf",
     "filename": "01001_diagnostico-territorial-santo-domingo-de-guzman.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:06:38.675Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:48:25.779Z"
   },
   {
     "id": 2,
@@ -18,8 +19,9 @@
     "adm2Code": "02001",
     "url": "downloads/diagnosticos/02001_diagnostico-territorial-azua.pdf",
     "filename": "02001_diagnostico-territorial-azua.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.631Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:42:40.047Z"
   },
   {
     "id": 3,
@@ -29,8 +31,9 @@
     "adm2Code": "02010",
     "url": "downloads/diagnosticos/02010_diagnostico-territorial-estebania.pdf",
     "filename": "02010_diagnostico-territorial-estebania.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.637Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:43:21.461Z"
   },
   {
     "id": 4,
@@ -40,8 +43,9 @@
     "adm2Code": "02009",
     "url": "downloads/diagnosticos/02009_diagnostico-territorial-guayabal.pdf",
     "filename": "02009_diagnostico-territorial-guayabal.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.644Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:42:39.043Z"
   },
   {
     "id": 5,
@@ -51,8 +55,9 @@
     "adm2Code": "02002",
     "url": "downloads/diagnosticos/02002_diagnostico-territorial-las-charcas.pdf",
     "filename": "02002_diagnostico-territorial-las-charcas.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.649Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:42:40.040Z"
   },
   {
     "id": 6,
@@ -62,8 +67,9 @@
     "adm2Code": "02003",
     "url": "downloads/diagnosticos/02003_diagnostico-territorial-las-yayas-de-viajama.pdf",
     "filename": "02003_diagnostico-territorial-las-yayas-de-viajama.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.653Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:44:08.781Z"
   },
   {
     "id": 7,
@@ -73,8 +79,9 @@
     "adm2Code": "02004",
     "url": "downloads/diagnosticos/02004_diagnostico-territorial-padre-las-casas.pdf",
     "filename": "02004_diagnostico-territorial-padre-las-casas.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.660Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:43:32.939Z"
   },
   {
     "id": 8,
@@ -84,8 +91,9 @@
     "adm2Code": "02005",
     "url": "downloads/diagnosticos/02005_diagnostico-territorial-peralta.pdf",
     "filename": "02005_diagnostico-territorial-peralta.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.704Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:43:05.143Z"
   },
   {
     "id": 9,
@@ -95,8 +103,9 @@
     "adm2Code": "02007",
     "url": "downloads/diagnosticos/02007_diagnostico-territorial-pueblo-viejo.pdf",
     "filename": "02007_diagnostico-territorial-pueblo-viejo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.746Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:43:39.274Z"
   },
   {
     "id": 10,
@@ -106,8 +115,9 @@
     "adm2Code": "02006",
     "url": "downloads/diagnosticos/02006_diagnostico-territorial-sabana-yegua.pdf",
     "filename": "02006_diagnostico-territorial-sabana-yegua.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.763Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:44:58.574Z"
   },
   {
     "id": 11,
@@ -117,8 +127,9 @@
     "adm2Code": "02008",
     "url": "downloads/diagnosticos/02008_diagnostico-territorial-tabara-arriba.pdf",
     "filename": "02008_diagnostico-territorial-tabara-arriba.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.820Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:44:58.765Z"
   },
   {
     "id": 12,
@@ -128,8 +139,9 @@
     "adm2Code": "03001",
     "url": "downloads/diagnosticos/03001_diagnostico-territorial-neiba.pdf",
     "filename": "03001_diagnostico-territorial-neiba.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.918Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:45:05.883Z"
   },
   {
     "id": 13,
@@ -139,8 +151,9 @@
     "adm2Code": "03002",
     "url": "downloads/diagnosticos/03002_diagnostico-territorial-galvan.pdf",
     "filename": "03002_diagnostico-territorial-galvan.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.844Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:44:05.508Z"
   },
   {
     "id": 14,
@@ -150,8 +163,9 @@
     "adm2Code": "03005",
     "url": "downloads/diagnosticos/03005_diagnostico-territorial-los-rios.pdf",
     "filename": "03005_diagnostico-territorial-los-rios.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.851Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:44:35.075Z"
   },
   {
     "id": 15,
@@ -161,8 +175,9 @@
     "adm2Code": "03003",
     "url": "downloads/diagnosticos/03003_diagnostico-territorial-tamayo.pdf",
     "filename": "03003_diagnostico-territorial-tamayo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:40.979Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:44:58.578Z"
   },
   {
     "id": 16,
@@ -172,8 +187,9 @@
     "adm2Code": "03004",
     "url": "downloads/diagnosticos/03004_diagnostico-territorial-villa-jaragua.pdf",
     "filename": "03004_diagnostico-territorial-villa-jaragua.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.032Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:46:15.495Z"
   },
   {
     "id": 17,
@@ -183,8 +199,9 @@
     "adm2Code": "04001",
     "url": "downloads/diagnosticos/04001_diagnostico-territorial-barahona.pdf",
     "filename": "04001_diagnostico-territorial-barahona.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.045Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:45:25.839Z"
   },
   {
     "id": 18,
@@ -194,8 +211,9 @@
     "adm2Code": "04002",
     "url": "downloads/diagnosticos/04002_diagnostico-territorial-cabral.pdf",
     "filename": "04002_diagnostico-territorial-cabral.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.052Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:46:19.898Z"
   },
   {
     "id": 19,
@@ -205,8 +223,9 @@
     "adm2Code": "04006",
     "url": "downloads/diagnosticos/04006_diagnostico-territorial-el-penon.pdf",
     "filename": "04006_diagnostico-territorial-el-penon.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.099Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:46:09.734Z"
   },
   {
     "id": 20,
@@ -216,8 +235,9 @@
     "adm2Code": "04003",
     "url": "downloads/diagnosticos/04003_diagnostico-territorial-enriquillo.pdf",
     "filename": "04003_diagnostico-territorial-enriquillo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.150Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:46:02.264Z"
   },
   {
     "id": 21,
@@ -227,8 +247,9 @@
     "adm2Code": "04008",
     "url": "downloads/diagnosticos/04008_diagnostico-territorial-fundacion.pdf",
     "filename": "04008_diagnostico-territorial-fundacion.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.155Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:46:30.437Z"
   },
   {
     "id": 22,
@@ -238,8 +259,9 @@
     "adm2Code": "04011",
     "url": "downloads/diagnosticos/04011_diagnostico-territorial-jaquimeyes.pdf",
     "filename": "04011_diagnostico-territorial-jaquimeyes.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.204Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:46:51.554Z"
   },
   {
     "id": 23,
@@ -249,8 +271,9 @@
     "adm2Code": "04007",
     "url": "downloads/diagnosticos/04007_diagnostico-territorial-la-cienaga.pdf",
     "filename": "04007_diagnostico-territorial-la-cienaga.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.279Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:47:05.509Z"
   },
   {
     "id": 24,
@@ -260,8 +283,9 @@
     "adm2Code": "04009",
     "url": "downloads/diagnosticos/04009_diagnostico-territorial-las-salinas.pdf",
     "filename": "04009_diagnostico-territorial-las-salinas.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.283Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:46:39.576Z"
   },
   {
     "id": 25,
@@ -271,8 +295,9 @@
     "adm2Code": "04004",
     "url": "downloads/diagnosticos/04004_diagnostico-territorial-paraiso.pdf",
     "filename": "04004_diagnostico-territorial-paraiso.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.292Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:46:51.312Z"
   },
   {
     "id": 26,
@@ -282,8 +307,9 @@
     "adm2Code": "04010",
     "url": "downloads/diagnosticos/04010_diagnostico-territorial-polo.pdf",
     "filename": "04010_diagnostico-territorial-polo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.354Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:47:36.478Z"
   },
   {
     "id": 27,
@@ -293,8 +319,9 @@
     "adm2Code": "04005",
     "url": "downloads/diagnosticos/04005_diagnostico-territorial-vicente-noble.pdf",
     "filename": "04005_diagnostico-territorial-vicente-noble.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.416Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:47:17.947Z"
   },
   {
     "id": 29,
@@ -304,8 +331,9 @@
     "adm2Code": "05001",
     "url": "downloads/diagnosticos/05001_diagnostico-territorial-dajabon.pdf",
     "filename": "05001_diagnostico-territorial-dajabon.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.514Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:47:37.336Z"
   },
   {
     "id": 30,
@@ -315,8 +343,9 @@
     "adm2Code": "05005",
     "url": "downloads/diagnosticos/05005_diagnostico-territorial-el-pino.pdf",
     "filename": "05005_diagnostico-territorial-el-pino.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.567Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:48:36.627Z"
   },
   {
     "id": 31,
@@ -326,8 +355,9 @@
     "adm2Code": "05002",
     "url": "downloads/diagnosticos/05002_diagnostico-territorial-loma-de-cabrera.pdf",
     "filename": "05002_diagnostico-territorial-loma-de-cabrera.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.581Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:47:57.102Z"
   },
   {
     "id": 32,
@@ -337,8 +367,9 @@
     "adm2Code": "05003",
     "url": "downloads/diagnosticos/05003_diagnostico-territorial-partido.pdf",
     "filename": "05003_diagnostico-territorial-partido.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.632Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:49:00.862Z"
   },
   {
     "id": 33,
@@ -348,8 +379,9 @@
     "adm2Code": "05004",
     "url": "downloads/diagnosticos/05004_diagnostico-territorial-restauracion.pdf",
     "filename": "05004_diagnostico-territorial-restauracion.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:41.684Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:48:14.727Z"
   },
   {
     "id": 34,
@@ -359,8 +391,9 @@
     "adm2Code": "06001",
     "url": "downloads/diagnosticos/06001_diagnostico-territorial-san-francisco-de-macoris.pdf",
     "filename": "06001_diagnostico-territorial-san-francisco-de-macoris.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:07:09.559Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:49:49.981Z"
   },
   {
     "id": 35,
@@ -370,8 +403,9 @@
     "adm2Code": "06002",
     "url": "downloads/diagnosticos/06002_diagnostico-territorial-arenoso.pdf",
     "filename": "06002_diagnostico-territorial-arenoso.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:42.420Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:49:20.266Z"
   },
   {
     "id": 36,
@@ -381,8 +415,9 @@
     "adm2Code": "06003",
     "url": "downloads/diagnosticos/06003_diagnostico-territorial-castillo.pdf",
     "filename": "06003_diagnostico-territorial-castillo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:42.426Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:48:46.445Z"
   },
   {
     "id": 37,
@@ -392,8 +427,9 @@
     "adm2Code": "06007",
     "url": "downloads/diagnosticos/06007_diagnostico-territorial-eugenio-maria-de-hostos.pdf",
     "filename": "06007_diagnostico-territorial-eugenio-maria-de-hostos.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:05:42.433Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:50:03.186Z"
   },
   {
     "id": 38,
@@ -403,8 +439,9 @@
     "adm2Code": "06006",
     "url": "downloads/diagnosticos/06006_diagnostico-territorial-las-guaranas.pdf",
     "filename": "06006_diagnostico-territorial-las-guaranas.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:07:32.510Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:49:13.959Z"
   },
   {
     "id": 39,
@@ -414,8 +451,9 @@
     "adm2Code": "06004",
     "url": "downloads/diagnosticos/06004_diagnostico-territorial-pimentel.pdf",
     "filename": "06004_diagnostico-territorial-pimentel.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:07:15.605Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:50:27.525Z"
   },
   {
     "id": 40,
@@ -425,8 +463,9 @@
     "adm2Code": "06005",
     "url": "downloads/diagnosticos/06005_diagnostico-territorial-villa-riva.pdf",
     "filename": "06005_diagnostico-territorial-villa-riva.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:07:58.063Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:50:45.215Z"
   },
   {
     "id": 41,
@@ -436,8 +475,9 @@
     "adm2Code": "07001",
     "url": "downloads/diagnosticos/07001_diagnostico-territorial-comendador.pdf",
     "filename": "07001_diagnostico-territorial-comendador.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:09:26.004Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:15:00.013Z"
   },
   {
     "id": 42,
@@ -447,8 +487,9 @@
     "adm2Code": "07002",
     "url": "downloads/diagnosticos/07002_diagnostico-territorial-banica.pdf",
     "filename": "07002_diagnostico-territorial-banica.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:09:21.603Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:50:40.033Z"
   },
   {
     "id": 43,
@@ -458,8 +499,9 @@
     "adm2Code": "07003",
     "url": "downloads/diagnosticos/07003_diagnostico-territorial-el-llano.pdf",
     "filename": "07003_diagnostico-territorial-el-llano.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:09:41.624Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:51:08.940Z"
   },
   {
     "id": 44,
@@ -469,8 +511,9 @@
     "adm2Code": "07004",
     "url": "downloads/diagnosticos/07004_diagnostico-territorial-hondo-valle.pdf",
     "filename": "07004_diagnostico-territorial-hondo-valle.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:10:09.197Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:51:34.957Z"
   },
   {
     "id": 45,
@@ -480,8 +523,9 @@
     "adm2Code": "07006",
     "url": "downloads/diagnosticos/07006_diagnostico-territorial-juan-santiago.pdf",
     "filename": "07006_diagnostico-territorial-juan-santiago.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:10:51.918Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:52:14.747Z"
   },
   {
     "id": 46,
@@ -491,8 +535,9 @@
     "adm2Code": "07005",
     "url": "downloads/diagnosticos/07005_diagnostico-territorial-pedro-santana.pdf",
     "filename": "07005_diagnostico-territorial-pedro-santana.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:11:37.569Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:51:29.211Z"
   },
   {
     "id": 47,
@@ -502,8 +547,9 @@
     "adm2Code": "08001",
     "url": "downloads/diagnosticos/08001_diagnostico-territorial-el-seibo.pdf",
     "filename": "08001_diagnostico-territorial-el-seibo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:08:46.945Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:50:18.488Z"
   },
   {
     "id": 48,
@@ -513,8 +559,9 @@
     "adm2Code": "08002",
     "url": "downloads/diagnosticos/08002_diagnostico-territorial-miches.pdf",
     "filename": "08002_diagnostico-territorial-miches.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:08:57.832Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:51:07.091Z"
   },
   {
     "id": 49,
@@ -524,8 +571,9 @@
     "adm2Code": "09001",
     "url": "downloads/diagnosticos/09001_diagnostico-territorial-moca.pdf",
     "filename": "09001_diagnostico-territorial-moca.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:13:09.631Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:52:23.372Z"
   },
   {
     "id": 50,
@@ -535,8 +583,9 @@
     "adm2Code": "09002",
     "url": "downloads/diagnosticos/09002_diagnostico-territorial-cayetano-germosen.pdf",
     "filename": "09002_diagnostico-territorial-cayetano-germosen.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:10:58.660Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:52:01.453Z"
   },
   {
     "id": 51,
@@ -546,8 +595,9 @@
     "adm2Code": "09003",
     "url": "downloads/diagnosticos/09003_diagnostico-territorial-gaspar-hernandez.pdf",
     "filename": "09003_diagnostico-territorial-gaspar-hernandez.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:11:58.954Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:52:39.509Z"
   },
   {
     "id": 52,
@@ -557,8 +607,9 @@
     "adm2Code": "09004",
     "url": "downloads/diagnosticos/09004_diagnostico-territorial-jamao-al-norte.pdf",
     "filename": "09004_diagnostico-territorial-jamao-al-norte.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:11:53.927Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:52:01.700Z"
   },
   {
     "id": 53,
@@ -568,8 +619,9 @@
     "adm2Code": "09005",
     "url": "downloads/diagnosticos/09005_diagnostico-territorial-san-victor.pdf",
     "filename": "09005_diagnostico-territorial-san-victor.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:12:46.458Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:52:52.511Z"
   },
   {
     "id": 54,
@@ -579,8 +631,9 @@
     "adm2Code": "30001",
     "url": "downloads/diagnosticos/30001_diagnostico-territorial-hato-mayor.pdf",
     "filename": "30001_diagnostico-territorial-hato-mayor.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:13:16.016Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:52:47.250Z"
   },
   {
     "id": 55,
@@ -590,8 +643,9 @@
     "adm2Code": "30002",
     "url": "downloads/diagnosticos/30002_diagnostico-territorial-sabana-de-la-mar.pdf",
     "filename": "30002_diagnostico-territorial-sabana-de-la-mar.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:14:28.989Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:04.182Z"
   },
   {
     "id": 56,
@@ -601,8 +655,9 @@
     "adm2Code": "30003",
     "url": "downloads/diagnosticos/30003_diagnostico-territorial-el-valle.pdf",
     "filename": "30003_diagnostico-territorial-el-valle.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:13:20.815Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:53:11.000Z"
   },
   {
     "id": 57,
@@ -612,8 +667,9 @@
     "adm2Code": "19001",
     "url": "downloads/diagnosticos/19001_diagnostico-territorial-salcedo.pdf",
     "filename": "19001_diagnostico-territorial-salcedo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:14:01.604Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:53:23.538Z"
   },
   {
     "id": 58,
@@ -623,8 +679,9 @@
     "adm2Code": "19002",
     "url": "downloads/diagnosticos/19002_diagnostico-territorial-tenares.pdf",
     "filename": "19002_diagnostico-territorial-tenares.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:14:29.788Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:04.719Z"
   },
   {
     "id": 59,
@@ -634,8 +691,9 @@
     "adm2Code": "19003",
     "url": "downloads/diagnosticos/19003_diagnostico-territorial-villa-tapia.pdf",
     "filename": "19003_diagnostico-territorial-villa-tapia.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:14:48.398Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:19.811Z"
   },
   {
     "id": 60,
@@ -645,8 +703,9 @@
     "adm2Code": "10001",
     "url": "downloads/diagnosticos/10001_diagnostico-territorial-jimani.pdf",
     "filename": "10001_diagnostico-territorial-jimani.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:15:25.206Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:44.695Z"
   },
   {
     "id": 61,
@@ -656,8 +715,9 @@
     "adm2Code": "10005",
     "url": "downloads/diagnosticos/10005_diagnostico-territorial-cristobal.pdf",
     "filename": "10005_diagnostico-territorial-cristobal.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:15:13.077Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:53:55.832Z"
   },
   {
     "id": 62,
@@ -667,8 +727,9 @@
     "adm2Code": "10002",
     "url": "downloads/diagnosticos/10002_diagnostico-territorial-duverge.pdf",
     "filename": "10002_diagnostico-territorial-duverge.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:15:23.833Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:18.094Z"
   },
   {
     "id": 63,
@@ -678,8 +739,9 @@
     "adm2Code": "10003",
     "url": "downloads/diagnosticos/10003_diagnostico-territorial-la-descubierta.pdf",
     "filename": "10003_diagnostico-territorial-la-descubierta.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:16:04.615Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:25.462Z"
   },
   {
     "id": 64,
@@ -689,8 +751,9 @@
     "adm2Code": "10006",
     "url": "downloads/diagnosticos/10006_diagnostico-territorial-mella.pdf",
     "filename": "10006_diagnostico-territorial-mella.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:16:14.673Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:43.047Z"
   },
   {
     "id": 65,
@@ -700,8 +763,9 @@
     "adm2Code": "10004",
     "url": "downloads/diagnosticos/10004_diagnostico-territorial-postrer-rio.pdf",
     "filename": "10004_diagnostico-territorial-postrer-rio.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:15:53.191Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:55:44.363Z"
   },
   {
     "id": 66,
@@ -711,8 +775,9 @@
     "adm2Code": "11001",
     "url": "downloads/diagnosticos/11001_diagnostico-territorial-higuey.pdf",
     "filename": "11001_diagnostico-territorial-higuey.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:16:35.126Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:40.828Z"
   },
   {
     "id": 67,
@@ -722,8 +787,9 @@
     "adm2Code": "11002",
     "url": "downloads/diagnosticos/11002_diagnostico-territorial-san-rafael-del-yuma.pdf",
     "filename": "11002_diagnostico-territorial-san-rafael-del-yuma.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:17:10.654Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:56:06.395Z"
   },
   {
     "id": 68,
@@ -733,8 +799,9 @@
     "adm2Code": "12001",
     "url": "downloads/diagnosticos/12001_diagnostico-territorial-la-romana.pdf",
     "filename": "12001_diagnostico-territorial-la-romana.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:17:03.559Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:55:02.492Z"
   },
   {
     "id": 69,
@@ -744,8 +811,9 @@
     "adm2Code": "12002",
     "url": "downloads/diagnosticos/12002_diagnostico-territorial-guaymate.pdf",
     "filename": "12002_diagnostico-territorial-guaymate.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:17:08.146Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:54:57.972Z"
   },
   {
     "id": 70,
@@ -755,8 +823,9 @@
     "adm2Code": "12003",
     "url": "downloads/diagnosticos/12003_diagnostico-territorial-villa-hermosa.pdf",
     "filename": "12003_diagnostico-territorial-villa-hermosa.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:17:52.532Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:55:35.437Z"
   },
   {
     "id": 71,
@@ -766,8 +835,9 @@
     "adm2Code": "13001",
     "url": "downloads/diagnosticos/13001_diagnostico-territorial-la-vega.pdf",
     "filename": "13001_diagnostico-territorial-la-vega.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:18:28.234Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:56:27.220Z"
   },
   {
     "id": 72,
@@ -777,8 +847,9 @@
     "adm2Code": "13002",
     "url": "downloads/diagnosticos/13002_diagnostico-territorial-constanza.pdf",
     "filename": "13002_diagnostico-territorial-constanza.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:17:57.732Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:56:18.235Z"
   },
   {
     "id": 73,
@@ -788,8 +859,9 @@
     "adm2Code": "13003",
     "url": "downloads/diagnosticos/13003_diagnostico-territorial-jarabacoa.pdf",
     "filename": "13003_diagnostico-territorial-jarabacoa.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:17:43.475Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:56:04.740Z"
   },
   {
     "id": 74,
@@ -799,8 +871,9 @@
     "adm2Code": "13004",
     "url": "downloads/diagnosticos/13004_diagnostico-territorial-jima-abajo.pdf",
     "filename": "13004_diagnostico-territorial-jima-abajo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:18:46.295Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:56:44.348Z"
   },
   {
     "id": 76,
@@ -810,8 +883,9 @@
     "adm2Code": "14001",
     "url": "downloads/diagnosticos/14001_diagnostico-territorial-nagua.pdf",
     "filename": "14001_diagnostico-territorial-nagua.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:20:00.758Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:56:53.007Z"
   },
   {
     "id": 77,
@@ -821,8 +895,9 @@
     "adm2Code": "14002",
     "url": "downloads/diagnosticos/14002_diagnostico-territorial-cabrera.pdf",
     "filename": "14002_diagnostico-territorial-cabrera.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:18:48.178Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:57:13.453Z"
   },
   {
     "id": 78,
@@ -832,8 +907,9 @@
     "adm2Code": "14003",
     "url": "downloads/diagnosticos/14003_diagnostico-territorial-el-factor.pdf",
     "filename": "14003_diagnostico-territorial-el-factor.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:18:56.296Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:57:22.578Z"
   },
   {
     "id": 79,
@@ -843,8 +919,9 @@
     "adm2Code": "14004",
     "url": "downloads/diagnosticos/14004_diagnostico-territorial-rio-san-juan.pdf",
     "filename": "14004_diagnostico-territorial-rio-san-juan.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:19:29.047Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:58:28.775Z"
   },
   {
     "id": 80,
@@ -854,8 +931,9 @@
     "adm2Code": "28001",
     "url": "downloads/diagnosticos/28001_diagnostico-territorial-bonao.pdf",
     "filename": "28001_diagnostico-territorial-bonao.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:19:38.117Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:57:29.935Z"
   },
   {
     "id": 81,
@@ -865,8 +943,9 @@
     "adm2Code": "28002",
     "url": "downloads/diagnosticos/28002_diagnostico-territorial-maimon.pdf",
     "filename": "28002_diagnostico-territorial-maimon.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:20:39.388Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:15:36.447Z"
   },
   {
     "id": 82,
@@ -876,8 +955,9 @@
     "adm2Code": "28003",
     "url": "downloads/diagnosticos/28003_diagnostico-territorial-piedra-blanca.pdf",
     "filename": "28003_diagnostico-territorial-piedra-blanca.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:20:19.540Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:58:26.776Z"
   },
   {
     "id": 83,
@@ -887,8 +967,9 @@
     "adm2Code": "15001",
     "url": "downloads/diagnosticos/15001_diagnostico-territorial-monte-cristi.pdf",
     "filename": "15001_diagnostico-territorial-monte-cristi.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:22:13.232Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:58:53.759Z"
   },
   {
     "id": 84,
@@ -898,8 +979,9 @@
     "adm2Code": "15002",
     "url": "downloads/diagnosticos/15002_diagnostico-territorial-castanuelas.pdf",
     "filename": "15002_diagnostico-territorial-castanuelas.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:20:55.187Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:57:49.644Z"
   },
   {
     "id": 85,
@@ -909,8 +991,9 @@
     "adm2Code": "15003",
     "url": "downloads/diagnosticos/15003_diagnostico-territorial-guayubin.pdf",
     "filename": "15003_diagnostico-territorial-guayubin.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:21:05.160Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:58:03.847Z"
   },
   {
     "id": 86,
@@ -920,8 +1003,9 @@
     "adm2Code": "15004",
     "url": "downloads/diagnosticos/15004_diagnostico-territorial-las-matas-de-santa-cruz.pdf",
     "filename": "15004_diagnostico-territorial-las-matas-de-santa-cruz.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:21:27.149Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:58:24.336Z"
   },
   {
     "id": 87,
@@ -931,8 +1015,9 @@
     "adm2Code": "15005",
     "url": "downloads/diagnosticos/15005_diagnostico-territorial-pepillo-salcedo.pdf",
     "filename": "15005_diagnostico-territorial-pepillo-salcedo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:21:47.078Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:58:45.305Z"
   },
   {
     "id": 88,
@@ -942,8 +1027,9 @@
     "adm2Code": "15006",
     "url": "downloads/diagnosticos/15006_diagnostico-territorial-villa-vasquez.pdf",
     "filename": "15006_diagnostico-territorial-villa-vasquez.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:22:25.947Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:58:46.419Z"
   },
   {
     "id": 89,
@@ -953,8 +1039,9 @@
     "adm2Code": "29001",
     "url": "downloads/diagnosticos/29001_diagnostico-territorial-monte-plata.pdf",
     "filename": "29001_diagnostico-territorial-monte-plata.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:22:49.474Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:59:01.906Z"
   },
   {
     "id": 90,
@@ -964,8 +1051,9 @@
     "adm2Code": "29002",
     "url": "downloads/diagnosticos/29002_diagnostico-territorial-bayaguana.pdf",
     "filename": "29002_diagnostico-territorial-bayaguana.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:22:23.329Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:59:54.350Z"
   },
   {
     "id": 91,
@@ -975,8 +1063,9 @@
     "adm2Code": "29005",
     "url": "downloads/diagnosticos/29005_diagnostico-territorial-peralvillo.pdf",
     "filename": "29005_diagnostico-territorial-peralvillo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:22:54.010Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:59:10.116Z"
   },
   {
     "id": 92,
@@ -986,8 +1075,9 @@
     "adm2Code": "29003",
     "url": "downloads/diagnosticos/29003_diagnostico-territorial-sabana-grande-de-boya.pdf",
     "filename": "29003_diagnostico-territorial-sabana-grande-de-boya.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:23:03.300Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:00:26.492Z"
   },
   {
     "id": 93,
@@ -997,8 +1087,9 @@
     "adm2Code": "29004",
     "url": "downloads/diagnosticos/29004_diagnostico-territorial-yamasa.pdf",
     "filename": "29004_diagnostico-territorial-yamasa.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:23:53.496Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T13:59:40.687Z"
   },
   {
     "id": 94,
@@ -1008,8 +1099,9 @@
     "adm2Code": "16001",
     "url": "downloads/diagnosticos/16001_diagnostico-territorial-pedernales.pdf",
     "filename": "16001_diagnostico-territorial-pedernales.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:23:50.779Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:00:08.918Z"
   },
   {
     "id": 95,
@@ -1019,8 +1111,9 @@
     "adm2Code": "16002",
     "url": "downloads/diagnosticos/16002_diagnostico-territorial-oviedo.pdf",
     "filename": "16002_diagnostico-territorial-oviedo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:23:25.379Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:00:25.256Z"
   },
   {
     "id": 96,
@@ -1030,8 +1123,9 @@
     "adm2Code": "17001",
     "url": "downloads/diagnosticos/17001_diagnostico-territorial-bani.pdf",
     "filename": "17001_diagnostico-territorial-bani.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:24:05.634Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:00:36.437Z"
   },
   {
     "id": 97,
@@ -1041,8 +1135,9 @@
     "adm2Code": "17003",
     "url": "downloads/diagnosticos/17003_diagnostico-territorial-matanzas.pdf",
     "filename": "17003_diagnostico-territorial-matanzas.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:24:39.053Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:00:28.128Z"
   },
   {
     "id": 98,
@@ -1052,8 +1147,9 @@
     "adm2Code": "17002",
     "url": "downloads/diagnosticos/17002_diagnostico-territorial-nizao.pdf",
     "filename": "17002_diagnostico-territorial-nizao.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:24:22.961Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:01:25.343Z"
   },
   {
     "id": 99,
@@ -1063,8 +1159,9 @@
     "adm2Code": "18001",
     "url": "downloads/diagnosticos/18001_diagnostico-territorial-puerto-plata.pdf",
     "filename": "18001_diagnostico-territorial-puerto-plata.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:25:54.554Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:01:56.573Z"
   },
   {
     "id": 100,
@@ -1074,8 +1171,9 @@
     "adm2Code": "18002",
     "url": "downloads/diagnosticos/18002_diagnostico-territorial-altamira.pdf",
     "filename": "18002_diagnostico-territorial-altamira.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:24:40.998Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:00:45.258Z"
   },
   {
     "id": 101,
@@ -1085,8 +1183,9 @@
     "adm2Code": "18003",
     "url": "downloads/diagnosticos/18003_diagnostico-territorial-guananico.pdf",
     "filename": "18003_diagnostico-territorial-guananico.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:24:53.071Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:00:50.489Z"
   },
   {
     "id": 102,
@@ -1096,8 +1195,9 @@
     "adm2Code": "18004",
     "url": "downloads/diagnosticos/18004_diagnostico-territorial-imbert.pdf",
     "filename": "18004_diagnostico-territorial-imbert.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:25:21.001Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:01:35.527Z"
   },
   {
     "id": 103,
@@ -1107,8 +1207,9 @@
     "adm2Code": "18005",
     "url": "downloads/diagnosticos/18005_diagnostico-territorial-los-hidalgos.pdf",
     "filename": "18005_diagnostico-territorial-los-hidalgos.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:25:07.038Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:01:55.256Z"
   },
   {
     "id": 104,
@@ -1118,8 +1219,9 @@
     "adm2Code": "18006",
     "url": "downloads/diagnosticos/18006_diagnostico-territorial-luperon.pdf",
     "filename": "18006_diagnostico-territorial-luperon.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:25:40.555Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:01:20.707Z"
   },
   {
     "id": 105,
@@ -1129,8 +1231,9 @@
     "adm2Code": "18007",
     "url": "downloads/diagnosticos/18007_diagnostico-territorial-sosua.pdf",
     "filename": "18007_diagnostico-territorial-sosua.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:26:40.069Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:02:22.192Z"
   },
   {
     "id": 106,
@@ -1140,8 +1243,9 @@
     "adm2Code": "18008",
     "url": "downloads/diagnosticos/18008_diagnostico-territorial-villa-isabela.pdf",
     "filename": "18008_diagnostico-territorial-villa-isabela.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:27:09.807Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:02:26.696Z"
   },
   {
     "id": 107,
@@ -1151,8 +1255,9 @@
     "adm2Code": "18009",
     "url": "downloads/diagnosticos/18009_diagnostico-territorial-villa-montellano.pdf",
     "filename": "18009_diagnostico-territorial-villa-montellano.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:26:30.069Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:02:36.639Z"
   },
   {
     "id": 108,
@@ -1162,8 +1267,9 @@
     "adm2Code": "20001",
     "url": "downloads/diagnosticos/20001_diagnostico-territorial-samana.pdf",
     "filename": "20001_diagnostico-territorial-samana.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:27:45.230Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:02:31.839Z"
   },
   {
     "id": 109,
@@ -1173,8 +1279,9 @@
     "adm2Code": "20003",
     "url": "downloads/diagnosticos/20003_diagnostico-territorial-las-terrenas.pdf",
     "filename": "20003_diagnostico-territorial-las-terrenas.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:27:04.286Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:02:10.386Z"
   },
   {
     "id": 110,
@@ -1184,8 +1291,9 @@
     "adm2Code": "20002",
     "url": "downloads/diagnosticos/20002_diagnostico-territorial-sanchez.pdf",
     "filename": "20002_diagnostico-territorial-sanchez.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:28:05.666Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:03:20.591Z"
   },
   {
     "id": 111,
@@ -1195,8 +1303,9 @@
     "adm2Code": "21001",
     "url": "downloads/diagnosticos/21001_diagnostico-territorial-san-cristobal.pdf",
     "filename": "21001_diagnostico-territorial-san-cristobal.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:30:30.732Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:03:35.948Z"
   },
   {
     "id": 112,
@@ -1206,8 +1315,9 @@
     "adm2Code": "21003",
     "url": "downloads/diagnosticos/21003_diagnostico-territorial-bajos-de-haina.pdf",
     "filename": "21003_diagnostico-territorial-bajos-de-haina.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:28:40.970Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:02:47.166Z"
   },
   {
     "id": 113,
@@ -1217,8 +1327,9 @@
     "adm2Code": "21004",
     "url": "downloads/diagnosticos/21004_diagnostico-territorial-cambita-garabitos.pdf",
     "filename": "21004_diagnostico-territorial-cambita-garabitos.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:28:54.557Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:02:58.693Z"
   },
   {
     "id": 114,
@@ -1228,8 +1339,9 @@
     "adm2Code": "21008",
     "url": "downloads/diagnosticos/21008_diagnostico-territorial-los-cacaos.pdf",
     "filename": "21008_diagnostico-territorial-los-cacaos.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:28:38.610Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:03:23.191Z"
   },
   {
     "id": 115,
@@ -1239,8 +1351,9 @@
     "adm2Code": "21002",
     "url": "downloads/diagnosticos/21002_diagnostico-territorial-sabana-grande-de-palenque.pdf",
     "filename": "21002_diagnostico-territorial-sabana-grande-de-palenque.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:29:22.312Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:04:08.687Z"
   },
   {
     "id": 116,
@@ -1250,8 +1363,9 @@
     "adm2Code": "21007",
     "url": "downloads/diagnosticos/21007_diagnostico-territorial-san-gregorio-de-nigua.pdf",
     "filename": "21007_diagnostico-territorial-san-gregorio-de-nigua.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:30:33.059Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:04:33.262Z"
   },
   {
     "id": 117,
@@ -1261,8 +1375,9 @@
     "adm2Code": "21005",
     "url": "downloads/diagnosticos/21005_diagnostico-territorial-villa-altagracia.pdf",
     "filename": "21005_diagnostico-territorial-villa-altagracia.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:30:02.038Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:04:32.709Z"
   },
   {
     "id": 118,
@@ -1272,8 +1387,9 @@
     "adm2Code": "21006",
     "url": "downloads/diagnosticos/21006_diagnostico-territorial-yaguate.pdf",
     "filename": "21006_diagnostico-territorial-yaguate.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:30:35.556Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:04:03.389Z"
   },
   {
     "id": 119,
@@ -1283,8 +1399,9 @@
     "adm2Code": "31001",
     "url": "downloads/diagnosticos/31001_diagnostico-territorial-san-jose-de-ocoa.pdf",
     "filename": "31001_diagnostico-territorial-san-jose-de-ocoa.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:31:16.029Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:04:51.175Z"
   },
   {
     "id": 120,
@@ -1294,8 +1411,9 @@
     "adm2Code": "31003",
     "url": "downloads/diagnosticos/31003_diagnostico-territorial-rancho-arriba.pdf",
     "filename": "31003_diagnostico-territorial-rancho-arriba.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:31:29.421Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:04:26.800Z"
   },
   {
     "id": 121,
@@ -1305,8 +1423,9 @@
     "adm2Code": "31002",
     "url": "downloads/diagnosticos/31002_diagnostico-territorial-sabana-larga.pdf",
     "filename": "31002_diagnostico-territorial-sabana-larga.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:31:11.817Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:04:57.101Z"
   },
   {
     "id": 122,
@@ -1316,8 +1435,9 @@
     "adm2Code": "22001",
     "url": "downloads/diagnosticos/22001_diagnostico-territorial-san-juan.pdf",
     "filename": "22001_diagnostico-territorial-san-juan.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:33:12.517Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:06:19.072Z"
   },
   {
     "id": 123,
@@ -1327,8 +1447,9 @@
     "adm2Code": "22002",
     "url": "downloads/diagnosticos/22002_diagnostico-territorial-bohechio.pdf",
     "filename": "22002_diagnostico-territorial-bohechio.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:32:12.245Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:05:54.554Z"
   },
   {
     "id": 124,
@@ -1338,8 +1459,9 @@
     "adm2Code": "22003",
     "url": "downloads/diagnosticos/22003_diagnostico-territorial-el-cercado.pdf",
     "filename": "22003_diagnostico-territorial-el-cercado.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:31:58.265Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:04:54.507Z"
   },
   {
     "id": 125,
@@ -1349,8 +1471,9 @@
     "adm2Code": "22004",
     "url": "downloads/diagnosticos/22004_diagnostico-territorial-juan-de-herrera.pdf",
     "filename": "22004_diagnostico-territorial-juan-de-herrera.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:32:17.972Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:05:23.436Z"
   },
   {
     "id": 126,
@@ -1360,8 +1483,9 @@
     "adm2Code": "22005",
     "url": "downloads/diagnosticos/22005_diagnostico-territorial-las-matas-de-farfan.pdf",
     "filename": "22005_diagnostico-territorial-las-matas-de-farfan.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:32:30.768Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:06:16.111Z"
   },
   {
     "id": 127,
@@ -1371,8 +1495,9 @@
     "adm2Code": "22006",
     "url": "downloads/diagnosticos/22006_diagnostico-territorial-vallejuelo.pdf",
     "filename": "22006_diagnostico-territorial-vallejuelo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:33:25.803Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:05:55.385Z"
   },
   {
     "id": 128,
@@ -1382,8 +1507,9 @@
     "adm2Code": "23001",
     "url": "downloads/diagnosticos/23001_diagnostico-territorial-san-pedro-de-macoris.pdf",
     "filename": "23001_diagnostico-territorial-san-pedro-de-macoris.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:34:47.648Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:06:56.766Z"
   },
   {
     "id": 129,
@@ -1393,8 +1519,9 @@
     "adm2Code": "23004",
     "url": "downloads/diagnosticos/23004_diagnostico-territorial-consuelo.pdf",
     "filename": "23004_diagnostico-territorial-consuelo.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:33:11.233Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:06:45.568Z"
   },
   {
     "id": 130,
@@ -1404,8 +1531,9 @@
     "adm2Code": "23006",
     "url": "downloads/diagnosticos/23006_diagnostico-territorial-guayacanes.pdf",
     "filename": "23006_diagnostico-territorial-guayacanes.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:33:44.446Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:06:21.300Z"
   },
   {
     "id": 131,
@@ -1415,8 +1543,9 @@
     "adm2Code": "23005",
     "url": "downloads/diagnosticos/23005_diagnostico-territorial-quisqueya.pdf",
     "filename": "23005_diagnostico-territorial-quisqueya.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:34:00.738Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:07:47.451Z"
   },
   {
     "id": 132,
@@ -1426,8 +1555,9 @@
     "adm2Code": "23003",
     "url": "downloads/diagnosticos/23003_diagnostico-territorial-ramon-santana.pdf",
     "filename": "23003_diagnostico-territorial-ramon-santana.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:34:13.890Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:06:33.235Z"
   },
   {
     "id": 133,
@@ -1437,8 +1567,9 @@
     "adm2Code": "23002",
     "url": "downloads/diagnosticos/23002_diagnostico-territorial-los-llanos.pdf",
     "filename": "23002_diagnostico-territorial-los-llanos.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:34:32.646Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:16:26.487Z"
   },
   {
     "id": 134,
@@ -1448,8 +1579,9 @@
     "adm2Code": "24001",
     "url": "downloads/diagnosticos/24001_diagnostico-territorial-cotui.pdf",
     "filename": "24001_diagnostico-territorial-cotui.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:34:51.470Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:07:28.611Z"
   },
   {
     "id": 135,
@@ -1459,8 +1591,9 @@
     "adm2Code": "24002",
     "url": "downloads/diagnosticos/24002_diagnostico-territorial-cevicos.pdf",
     "filename": "24002_diagnostico-territorial-cevicos.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:34:13.894Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:16:01.442Z"
   },
   {
     "id": 136,
@@ -1470,8 +1603,9 @@
     "adm2Code": "24003",
     "url": "downloads/diagnosticos/24003_diagnostico-territorial-fantino.pdf",
     "filename": "24003_diagnostico-territorial-fantino.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:35:30.532Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:08:05.188Z"
   },
   {
     "id": 137,
@@ -1481,8 +1615,9 @@
     "adm2Code": "24004",
     "url": "downloads/diagnosticos/24004_diagnostico-territorial-villa-la-mata.pdf",
     "filename": "24004_diagnostico-territorial-villa-la-mata.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:35:34.503Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:10:28.527Z"
   },
   {
     "id": 138,
@@ -1492,8 +1627,9 @@
     "adm2Code": "25001",
     "url": "downloads/diagnosticos/25001_diagnostico-territorial-santiago.pdf",
     "filename": "25001_diagnostico-territorial-santiago.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:42:53.982Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:17:56.071Z"
   },
   {
     "id": 139,
@@ -1503,8 +1639,9 @@
     "adm2Code": "25010",
     "url": "downloads/diagnosticos/25010_diagnostico-territorial-baitoa.pdf",
     "filename": "25010_diagnostico-territorial-baitoa.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:35:11.329Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:16:56.894Z"
   },
   {
     "id": 140,
@@ -1514,8 +1651,9 @@
     "adm2Code": "25003",
     "url": "downloads/diagnosticos/25003_diagnostico-territorial-janico.pdf",
     "filename": "25003_diagnostico-territorial-janico.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:36:26.165Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:08:32.416Z"
   },
   {
     "id": 141,
@@ -1525,8 +1663,9 @@
     "adm2Code": "25004",
     "url": "downloads/diagnosticos/25004_diagnostico-territorial-licey-al-medio.pdf",
     "filename": "25004_diagnostico-territorial-licey-al-medio.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:36:10.403Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:08:31.334Z"
   },
   {
     "id": 142,
@@ -1536,8 +1675,9 @@
     "adm2Code": "25008",
     "url": "downloads/diagnosticos/25008_diagnostico-territorial-punal.pdf",
     "filename": "25008_diagnostico-territorial-punal.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:36:23.721Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:08:54.966Z"
   },
   {
     "id": 143,
@@ -1547,8 +1687,9 @@
     "adm2Code": "25009",
     "url": "downloads/diagnosticos/25009_diagnostico-territorial-sabana-iglesia.pdf",
     "filename": "25009_diagnostico-territorial-sabana-iglesia.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:42:14.853Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:17:32.927Z"
   },
   {
     "id": 144,
@@ -1558,8 +1699,9 @@
     "adm2Code": "25005",
     "url": "downloads/diagnosticos/25005_diagnostico-territorial-san-jose-de-las-matas.pdf",
     "filename": "25005_diagnostico-territorial-san-jose-de-las-matas.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:37:14.690Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:09:28.250Z"
   },
   {
     "id": 145,
@@ -1569,8 +1711,9 @@
     "adm2Code": "25006",
     "url": "downloads/diagnosticos/25006_diagnostico-territorial-tamboril.pdf",
     "filename": "25006_diagnostico-territorial-tamboril.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:37:51.495Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:09:56.477Z"
   },
   {
     "id": 146,
@@ -1580,8 +1723,9 @@
     "adm2Code": "25002",
     "url": "downloads/diagnosticos/25002_diagnostico-territorial-bisono.pdf",
     "filename": "25002_diagnostico-territorial-bisono.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:35:41.850Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:08:19.141Z"
   },
   {
     "id": 147,
@@ -1591,8 +1735,9 @@
     "adm2Code": "25007",
     "url": "downloads/diagnosticos/25007_diagnostico-territorial-villa-gonzalez.pdf",
     "filename": "25007_diagnostico-territorial-villa-gonzalez.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:38:09.107Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:11:43.445Z"
   },
   {
     "id": 148,
@@ -1602,8 +1747,9 @@
     "adm2Code": "26001",
     "url": "downloads/diagnosticos/26001_diagnostico-territorial-san-ignacio-de-sabaneta.pdf",
     "filename": "26001_diagnostico-territorial-san-ignacio-de-sabaneta.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:38:28.580Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:12:47.906Z"
   },
   {
     "id": 149,
@@ -1613,8 +1759,9 @@
     "adm2Code": "26003",
     "url": "downloads/diagnosticos/26003_diagnostico-territorial-moncion.pdf",
     "filename": "26003_diagnostico-territorial-moncion.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:38:14.218Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:10:21.777Z"
   },
   {
     "id": 150,
@@ -1624,8 +1771,9 @@
     "adm2Code": "26002",
     "url": "downloads/diagnosticos/26002_diagnostico-territorial-villa-los-almacigos.pdf",
     "filename": "26002_diagnostico-territorial-villa-los-almacigos.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:39:38.720Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:10:45.518Z"
   },
   {
     "id": 151,
@@ -1635,8 +1783,9 @@
     "adm2Code": "32001",
     "url": "downloads/diagnosticos/32001_diagnostico-territorial-santo-domingo-este.pdf",
     "filename": "32001_diagnostico-territorial-santo-domingo-este.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:40:16.701Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:12:08.104Z"
   },
   {
     "id": 152,
@@ -1646,8 +1795,9 @@
     "adm2Code": "32003",
     "url": "downloads/diagnosticos/32003_diagnostico-territorial-santo-domingo-norte.pdf",
     "filename": "32003_diagnostico-territorial-santo-domingo-norte.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:40:39.790Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:12:30.620Z"
   },
   {
     "id": 153,
@@ -1657,8 +1807,9 @@
     "adm2Code": "32002",
     "url": "downloads/diagnosticos/32002_diagnostico-territorial-santo-domingo-oeste.pdf",
     "filename": "32002_diagnostico-territorial-santo-domingo-oeste.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:40:24.672Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:12:57.804Z"
   },
   {
     "id": 154,
@@ -1668,8 +1819,9 @@
     "adm2Code": "32004",
     "url": "downloads/diagnosticos/32004_diagnostico-territorial-boca-chica.pdf",
     "filename": "32004_diagnostico-territorial-boca-chica.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:39:02.121Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:12:32.639Z"
   },
   {
     "id": 155,
@@ -1679,8 +1831,9 @@
     "adm2Code": "32006",
     "url": "downloads/diagnosticos/32006_diagnostico-territorial-los-alcarrizos.pdf",
     "filename": "32006_diagnostico-territorial-los-alcarrizos.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:38:57.296Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:11:14.545Z"
   },
   {
     "id": 156,
@@ -1690,8 +1843,9 @@
     "adm2Code": "32007",
     "url": "downloads/diagnosticos/32007_diagnostico-territorial-pedro-brand.pdf",
     "filename": "32007_diagnostico-territorial-pedro-brand.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:39:36.408Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:11:53.255Z"
   },
   {
     "id": 157,
@@ -1701,8 +1855,9 @@
     "adm2Code": "32005",
     "url": "downloads/diagnosticos/32005_diagnostico-territorial-san-antonio-de-guerra.pdf",
     "filename": "32005_diagnostico-territorial-san-antonio-de-guerra.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:39:45.798Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:18:24.479Z"
   },
   {
     "id": 160,
@@ -1712,8 +1867,9 @@
     "adm2Code": "27001",
     "url": "downloads/diagnosticos/27001_diagnostico-territorial-mao.pdf",
     "filename": "27001_diagnostico-territorial-mao.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:41:10.354Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:13:34.804Z"
   },
   {
     "id": 161,
@@ -1723,8 +1879,9 @@
     "adm2Code": "27002",
     "url": "downloads/diagnosticos/27002_diagnostico-territorial-esperanza.pdf",
     "filename": "27002_diagnostico-territorial-esperanza.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:41:08.819Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:13:52.352Z"
   },
   {
     "id": 162,
@@ -1734,7 +1891,8 @@
     "adm2Code": "27003",
     "url": "downloads/diagnosticos/27003_diagnostico-territorial-laguna-salada.pdf",
     "filename": "27003_diagnostico-territorial-laguna-salada.pdf",
-    "includesNarrative": true,
-    "generatedAt": "2026-07-29T01:40:56.638Z"
+    "includesNarrative": false,
+    "dashboardVersion": "DDPT-Dashboard-Territorial-2026-08",
+    "generatedAt": "2026-08-02T14:13:58.036Z"
   }
 ]

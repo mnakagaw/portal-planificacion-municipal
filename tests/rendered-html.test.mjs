@@ -305,7 +305,12 @@ test("publishes one dashboard diagnostic PDF for each of the 158 covered municip
   assert.equal(new Set(diagnostics.map((item) => item.id)).size, 158);
   assert.equal(
     diagnostics.filter((item) => item.includesNarrative).length,
-    158,
+    0,
+  );
+  assert.ok(
+    diagnostics.every(
+      (item) => item.dashboardVersion === "DDPT-Dashboard-Territorial-2026-08",
+    ),
   );
 
   const uncovered = data

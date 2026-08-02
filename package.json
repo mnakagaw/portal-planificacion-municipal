@@ -13,6 +13,7 @@
     "deploy:prodecare": "npm run build:static && node scripts/deploy-prodecare.mjs",
     "diagnosticos:generate": "node scripts/generate-dashboard-pdfs.cjs",
     "diagnosticos:upload": "node scripts/upload-diagnostics.mjs",
+    "documentos-base:upload": "node scripts/upload-pmd-documents.mjs",
     "geo:merge-former-dm": "node scripts/merge-former-dm-geometry.mjs",
     "geo:optimize": "node scripts/optimize-geojson.mjs",
     "start": "vinext start",
